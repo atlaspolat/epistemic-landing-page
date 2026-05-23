@@ -1,11 +1,853 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Hello World</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Epistemic LLC | AI automation to reduce cost and save time</title>
+		<meta name="description" content="Epistemic LLC designs AI automation for document-heavy workflows, reducing operating cost and freeing teams for higher-value work.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<style>
+			:root {
+				color-scheme: dark;
+				--bg: #060708;
+				--surface: #0c1014;
+				--surface-strong: #0f151b;
+				--text: #e6edf3;
+				--muted: #a7b4c1;
+				--line: #1b2630;
+				--accent: #7fd7ff;
+				--accent-strong: #58c2ee;
+				--accent-warm: #f1c66a;
+				--glow: rgba(127, 215, 255, 0.16);
+				--shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+				--radius: 6px;
+				--radius-small: 4px;
+				--container: 1120px;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				font-family: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+				background: radial-gradient(1200px circle at 10% 10%, rgba(127, 215, 255, 0.06), transparent 58%),
+					radial-gradient(800px circle at 80% 0%, rgba(88, 194, 238, 0.08), transparent 60%),
+					#060708;
+				color: var(--text);
+				line-height: 1.6;
+			}
+
+			.page {
+				position: relative;
+				z-index: 1;
+			}
+
+			.global-bg {
+				position: fixed;
+				inset: 0;
+				z-index: 0;
+				pointer-events: none;
+				overflow: hidden;
+			}
+
+			.global-bg::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background: radial-gradient(700px circle at 20% 20%, rgba(127, 215, 255, 0.08), transparent 60%),
+					radial-gradient(900px circle at 80% 10%, rgba(88, 194, 238, 0.07), transparent 55%),
+					linear-gradient(180deg, rgba(6, 7, 8, 0.25) 0%, rgba(6, 7, 8, 0.7) 65%, rgba(6, 7, 8, 1) 100%);
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			img {
+				max-width: 100%;
+				display: block;
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.container {
+				width: min(100% - 48px, var(--container));
+				margin: 0 auto;
+			}
+
+			.site-header {
+				position: sticky;
+				top: 0;
+				z-index: 10;
+				backdrop-filter: blur(12px);
+				background: linear-gradient(180deg, rgba(6, 7, 8, 0.32), rgba(6, 7, 8, 0.12));
+				border-bottom: 1px solid rgba(27, 38, 48, 0.6);
+			}
+
+			.nav {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 18px 0;
+				gap: 24px;
+			}
+
+			.logo {
+				display: inline-flex;
+				align-items: center;
+				gap: 12px;
+				font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
+				font-weight: 600;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			.logo img {
+				width: 58px;
+				height: 58px;
+				object-fit: contain;
+			}
+
+			.logo-fallback {
+				display: none;
+				font-size: 0.95rem;
+			}
+
+			.nav-links {
+				display: flex;
+				align-items: center;
+				gap: 22px;
+				color: var(--muted);
+				font-size: 0.92rem;
+			}
+
+			.nav-links a {
+				position: relative;
+				padding-bottom: 4px;
+			}
+
+			.nav-links a::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -2px;
+				width: 0;
+				height: 1px;
+				background: var(--accent);
+				transition: width 0.25s ease;
+			}
+
+			.nav-links a:hover::after,
+			.nav-links a:focus-visible::after {
+				width: 100%;
+			}
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+				padding: 12px 20px;
+				border-radius: var(--radius-small);
+				border: 1px solid var(--line);
+				font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
+				font-size: 0.95rem;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+			}
+
+			.btn-primary {
+				background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+				color: #060708;
+				border-color: transparent;
+				box-shadow: 0 12px 30px rgba(88, 194, 238, 0.25);
+			}
+
+			.btn-primary:hover,
+			.btn-primary:focus-visible {
+				transform: translateY(-1px);
+				box-shadow: 0 18px 34px rgba(88, 194, 238, 0.35);
+			}
+
+			.btn-secondary {
+				background: transparent;
+				color: var(--text);
+			}
+
+			.btn-secondary:hover,
+			.btn-secondary:focus-visible {
+				border-color: var(--accent);
+				box-shadow: 0 0 0 1px rgba(127, 215, 255, 0.4);
+				transform: translateY(-1px);
+			}
+
+			.hero {
+				position: relative;
+				min-height: 82vh;
+				padding: 120px 0 110px;
+				overflow: hidden;
+			}
+
+			.global-grid {
+				position: absolute;
+				inset: -25%;
+				background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+				background-size: 60px 60px;
+				opacity: 0.18;
+				animation: grid-drift 24s linear infinite;
+			}
+
+			#hero-canvas {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0.55;
+			}
+
+			.hero-content {
+				position: relative;
+				z-index: 1;
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 48px;
+				align-items: center;
+			}
+
+			.eyebrow {
+				font-size: 0.82rem;
+				text-transform: uppercase;
+				letter-spacing: 0.4em;
+				color: var(--muted);
+				margin: 0 0 16px;
+			}
+
+			h1,
+			h2,
+			h3 {
+				font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
+				margin: 0;
+			}
+
+			h1 {
+				font-size: clamp(2.6rem, 3.8vw, 4.2rem);
+				line-height: 1.05;
+				letter-spacing: -0.02em;
+			}
+
+			.subheadline {
+				font-size: 1.1rem;
+				color: var(--muted);
+				margin: 18px 0 30px;
+			}
+
+			.cta-group {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 16px;
+				margin-bottom: 26px;
+			}
+
+			.hero-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				color: var(--muted);
+				font-size: 0.9rem;
+			}
+
+			.hero-tags span {
+				padding: 8px 12px;
+				border: 1px solid var(--line);
+				border-radius: var(--radius-small);
+				background: rgba(12, 16, 20, 0.7);
+			}
+
+			.hero-panel {
+				padding: 28px;
+				border-radius: var(--radius);
+				border: 1px solid rgba(127, 215, 255, 0.2);
+				background: linear-gradient(145deg, rgba(12, 16, 20, 0.8), rgba(15, 21, 27, 0.9));
+				box-shadow: var(--shadow);
+			}
+
+			.hero-panel h3 {
+				font-size: 1.15rem;
+				margin-bottom: 10px;
+			}
+
+			.hero-panel p {
+				color: var(--muted);
+				margin-bottom: 22px;
+			}
+
+			.panel-list {
+				display: grid;
+				gap: 14px;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			.panel-list li {
+				padding: 14px;
+				border-radius: var(--radius-small);
+				background: rgba(7, 10, 13, 0.7);
+				border: 1px solid rgba(27, 38, 48, 0.8);
+			}
+
+			section {
+				padding: 96px 0;
+			}
+
+			.section-title {
+				font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+				margin-bottom: 16px;
+			}
+
+			.section-subtitle {
+				color: var(--muted);
+				max-width: 720px;
+			}
+
+			.grid-2 {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 36px;
+				margin-top: 38px;
+			}
+
+			.grid-3 {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 24px;
+				margin-top: 32px;
+			}
+
+			.card {
+				padding: 24px;
+				border-radius: var(--radius);
+				background: var(--surface);
+				border: 1px solid var(--line);
+				box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+			}
+
+			.card h3 {
+				margin-bottom: 10px;
+				font-size: 1.1rem;
+			}
+
+			.card p {
+				color: var(--muted);
+				margin: 0;
+			}
+
+			.list {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				display: grid;
+				gap: 14px;
+			}
+
+			.list li {
+				padding-left: 18px;
+				position: relative;
+				color: var(--muted);
+			}
+
+			.list li::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 10px;
+				width: 8px;
+				height: 2px;
+				background: var(--accent);
+			}
+
+			.process-steps {
+				display: grid;
+				gap: 18px;
+				margin-top: 32px;
+			}
+
+			.process-step {
+				display: grid;
+				grid-template-columns: 120px 1fr;
+				gap: 18px;
+				padding: 20px 24px;
+				border-radius: var(--radius);
+				border: 1px solid var(--line);
+				background: var(--surface-strong);
+			}
+
+			.process-step span {
+				font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
+				text-transform: uppercase;
+				letter-spacing: 0.18em;
+				font-size: 0.75rem;
+				color: var(--accent);
+			}
+
+			.cta-section {
+				padding: 110px 0;
+				background: linear-gradient(180deg, rgba(12, 16, 20, 0.85), rgba(6, 7, 8, 0.9));
+				border-top: 1px solid var(--line);
+				border-bottom: 1px solid var(--line);
+			}
+
+			.cta-panel {
+				display: grid;
+				grid-template-columns: 1.3fr 1fr;
+				gap: 32px;
+				padding: 36px;
+				border-radius: var(--radius);
+				border: 1px solid rgba(127, 215, 255, 0.18);
+				background: rgba(12, 16, 20, 0.8);
+				box-shadow: var(--shadow);
+			}
+
+			.form-placeholder {
+				border: 1px dashed rgba(127, 215, 255, 0.4);
+				border-radius: var(--radius-small);
+				padding: 20px;
+				color: var(--muted);
+				font-size: 0.92rem;
+			}
+
+			footer {
+				padding: 50px 0 40px;
+				color: var(--muted);
+				font-size: 0.9rem;
+			}
+
+			.footer-grid {
+				display: grid;
+				grid-template-columns: 1.3fr 1fr 1fr;
+				gap: 24px;
+				border-top: 1px solid var(--line);
+				padding-top: 30px;
+			}
+
+			.footer-nav {
+				display: grid;
+				gap: 8px;
+			}
+
+			@keyframes grid-drift {
+				0% {
+					transform: translate3d(0, 0, 0);
+				}
+				100% {
+					transform: translate3d(80px, 40px, 0);
+				}
+			}
+
+			@media (max-width: 980px) {
+				.hero-content {
+					grid-template-columns: 1fr;
+				}
+
+				.cta-panel {
+					grid-template-columns: 1fr;
+				}
+
+				.grid-3 {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+
+			@media (max-width: 780px) {
+				.container {
+					width: min(100% - 32px, var(--container));
+				}
+
+				.nav {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 14px;
+					padding: 14px 0 18px;
+				}
+
+				.nav-links {
+					flex-wrap: wrap;
+					gap: 14px;
+					font-size: 0.88rem;
+				}
+
+				.hero {
+					padding: 96px 0 84px;
+				}
+
+				.cta-group {
+					width: 100%;
+				}
+
+				.cta-group .btn {
+					flex: 1 1 160px;
+				}
+
+				.grid-2 {
+					grid-template-columns: 1fr;
+				}
+
+				.grid-3 {
+					grid-template-columns: 1fr;
+				}
+
+				.process-step {
+					grid-template-columns: 1fr;
+				}
+
+				.footer-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto;
+				}
+
+				.global-grid {
+					animation: none;
+				}
+
+				.btn,
+				.btn-primary,
+				.btn-secondary {
+					transition: none;
+				}
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Hello, world!</h1>
+		<div class="global-bg" aria-hidden="true">
+			<div class="global-grid"></div>
+			<canvas id="hero-canvas"></canvas>
+		</div>
+		<div class="page">
+			<header class="site-header">
+				<nav class="nav container">
+					<a class="logo" href="#top" aria-label="Epistemic LLC">
+						<img src="assets/company-logo.png" alt="Epistemic LLC logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+						<span class="logo-fallback">Epistemic</span>
+					</a>
+					<div class="nav-links">
+						<a href="#problem">Problem</a>
+						<a href="#solution">Solution</a>
+						<a href="#benefits">Benefits</a>
+						<a href="#process">Process</a>
+						<a href="careers.html">Careers</a>
+					</div>
+					<a class="btn btn-primary" href="#contact">Book a call</a>
+				</nav>
+			</header>
+
+			<main>
+				<section class="hero" id="top">
+					<div class="container hero-content">
+					<div class="hero-copy">
+						<p class="eyebrow">AI workflow automation</p>
+						<h1>Leverage AI to reduce cost and reclaim time.</h1>
+						<p class="subheadline">
+							We design AI systems for document-heavy and approval-heavy workflows inside real organizations, reducing
+							operational cost while freeing teams for higher-value work.
+						</p>
+						<div class="cta-group">
+							<a class="btn btn-primary" href="#contact">Contact us</a>
+							<a class="btn btn-secondary" href="#solution">See how it works</a>
+						</div>
+						<div class="hero-tags">
+							<span>AI workflow automation</span>
+							<span>Cost reduction</span>
+							<span>Time savings</span>
+							<span>Compliance-ready</span>
+						</div>
+					</div>
+					<aside class="hero-panel">
+						<h3>Built for high-cost workflows</h3>
+						<p>Founder-led delivery for teams buried in documents, approvals, and recurring admin.</p>
+						<ul class="panel-list">
+							<li>Apply AI extraction and validation to messy documents.</li>
+							<li>Route approvals with clear logic and fewer handoffs.</li>
+							<li>Generate audit-ready summaries and decision packets.</li>
+							<li>Replace repetitive re-entry with verified automation.</li>
+						</ul>
+					</aside>
+				</div>
+			</section>
+
+			<section id="problem">
+				<div class="container">
+					<h2 class="section-title">Manual workflows compound cost and delay.</h2>
+					<p class="section-subtitle">
+						Teams spend hours on intake, formatting, cross-checks, approvals, and internal coordination. The work is
+						repetitive, but the cost is real: delays, rework, and missed deadlines.
+					</p>
+					<div class="grid-2">
+						<div class="card">
+							<h3>Admin overhead</h3>
+							<p>
+								Teams copy data between systems, chase signatures, and reconcile documents across email, shared drives,
+								and internal tools.
+							</p>
+						</div>
+						<div class="card">
+							<h3>Operational drag</h3>
+							<p>
+								Approvals slow down when people are out, files are missing, or every request requires a new version of
+								the same paperwork.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="solution">
+				<div class="container">
+					<h2 class="section-title">AI automation that fits real workflows.</h2>
+					<p class="section-subtitle">
+						Epistemic maps your workflows, then automates the high-volume steps with guardrails. The result: faster
+						throughput, lower operating cost, and clean handoffs that are easy to audit.
+					</p>
+					<div class="grid-3">
+						<div class="card">
+							<h3>Document processing</h3>
+							<p>Ingest, extract, validate, and classify incoming paperwork with consistent output formats.</p>
+						</div>
+						<div class="card">
+							<h3>Approval orchestration</h3>
+							<p>Route requests to the right owners, manage exceptions, and keep SLA-critical work moving.</p>
+						</div>
+						<div class="card">
+							<h3>Summaries and packets</h3>
+							<p>Generate concise decision packets and audit summaries from long, messy source files.</p>
+						</div>
+						<div class="card">
+							<h3>Internal workflows</h3>
+							<p>Automate recurring internal tasks like onboarding, vendor reviews, and compliance updates.</p>
+						</div>
+						<div class="card">
+							<h3>Structured handoffs</h3>
+							<p>Deliver clean, structured outputs that flow into your existing systems without re-entry.</p>
+						</div>
+						<div class="card">
+							<h3>Monitoring and QA</h3>
+							<p>Track exceptions, log changes, and keep a traceable record for every automated step.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="benefits">
+				<div class="container">
+					<h2 class="section-title">Clear gains in cost, time, and throughput.</h2>
+					<p class="section-subtitle">Focus experts on judgment calls, not repetitive processing.</p>
+					<div class="grid-3">
+						<div class="card">
+							<h3>Save real time</h3>
+							<p>Remove repetitive steps so teams reclaim hours every week.</p>
+						</div>
+						<div class="card">
+							<h3>Reduce operational drag</h3>
+							<p>Keep work flowing through approvals and handoffs without constant follow-ups.</p>
+						</div>
+						<div class="card">
+							<h3>Lower cost per workflow</h3>
+							<p>Reduce manual effort without adding headcount or overhead.</p>
+						</div>
+						<div class="card">
+							<h3>Lower repetitive labor</h3>
+							<p>Automate the busywork that quietly consumes headcount.</p>
+						</div>
+						<div class="card">
+							<h3>Sharper decision cycles</h3>
+							<p>Deliver clean summaries so stakeholders can decide faster.</p>
+						</div>
+						<div class="card">
+							<h3>Stronger compliance</h3>
+							<p>Standardize inputs and outputs with traceable workflows.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="process">
+				<div class="container">
+					<h2 class="section-title">A focused delivery process.</h2>
+					<p class="section-subtitle">Clear steps, tight feedback loops, and automation that fits your reality.</p>
+					<div class="process-steps">
+						<div class="process-step">
+							<span>Discovery</span>
+							<div>
+								<h3>Align on outcomes</h3>
+								<p>We define the workflows that are draining time, then identify automation-ready opportunities.</p>
+							</div>
+						</div>
+						<div class="process-step">
+							<span>Analysis</span>
+							<div>
+								<h3>Map the workflow</h3>
+								<p>We document the real process, dependencies, edge cases, and approval logic.</p>
+							</div>
+						</div>
+						<div class="process-step">
+							<span>Design</span>
+							<div>
+								<h3>Build the automation</h3>
+								<p>We design the automation stack, validation rules, and outputs you need.</p>
+							</div>
+						</div>
+						<div class="process-step">
+							<span>Deploy</span>
+							<div>
+								<h3>Iterate and harden</h3>
+								<p>We ship, monitor, and refine until the system is reliable under real workload.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="cta-section" id="contact">
+				<div class="container">
+					<div class="cta-panel">
+						<div>
+							<h2 class="section-title">Ready to cut cost and reclaim time?</h2>
+							<p class="section-subtitle">
+								Tell us where your team is losing time. We will map it, automate it, and keep the workflow visible.
+							</p>
+							<div class="cta-group">
+								<a class="btn btn-primary" href="mailto:contact@epistemic.llc">Contact us</a>
+								<a class="btn btn-secondary" href="#contact">Book a call</a>
+							</div>
+							<p class="section-subtitle">Use the space on the right to embed a form or link to your scheduler.</p>
+						</div>
+						<div class="form-placeholder">
+							<strong>Form placeholder</strong>
+							<p>Replace this block with your embedded form or external scheduling link.</p>
+							<p>Example: https://cal.com/epistemic</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="careers">
+				<div class="container">
+					<h2 class="section-title">Join the team</h2>
+					<p class="section-subtitle">
+						We are hiring people who care about rigorous engineering, clean execution, and measurable outcomes.
+					</p>
+					<div class="cta-group">
+						<a class="btn btn-primary" href="careers.html">View open roles</a>
+						<a class="btn btn-secondary" href="mailto:hire@epistemic.llc?subject=Careers">Email the team</a>
+					</div>
+				</div>
+			</section>
+			</main>
+
+			<footer>
+				<div class="container footer-grid">
+					<div>
+						<div class="logo" aria-label="Epistemic LLC">
+							<img src="assets/company-logo.png" alt="Epistemic LLC logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+							<span class="logo-fallback">Epistemic LLC</span>
+						</div>
+						<p>Epistemic LLC</p>
+						<p>30 N Gould St, STE R, Sheridan, WY 82801, USA</p>
+						<p><a href="mailto:contact@epistemic.llc">contact@epistemic.llc</a></p>
+					</div>
+					<div class="footer-nav">
+						<strong>Navigate</strong>
+						<a href="#problem">Problem</a>
+						<a href="#solution">Solution</a>
+						<a href="#benefits">Benefits</a>
+						<a href="#process">Process</a>
+						<a href="#contact">Contact</a>
+						<a href="careers.html">Careers</a>
+					</div>
+					<div class="footer-nav">
+						<strong>Focus areas</strong>
+						<span>Approvals and routing</span>
+						<span>Document processing</span>
+						<span>Compliance workflows</span>
+						<span>Internal operations</span>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<script>
+			const canvas = document.getElementById("hero-canvas");
+			const ctx = canvas.getContext("2d");
+			const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			let width = 0;
+			let height = 0;
+			const maxDpr = 2;
+
+			const resizeCanvas = () => {
+				const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
+				width = window.innerWidth;
+				height = window.innerHeight;
+				canvas.width = width * dpr;
+				canvas.height = height * dpr;
+				ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			};
+
+			const draw = (time = 0) => {
+				const t = time * 0.00012;
+				ctx.clearRect(0, 0, width, height);
+				ctx.lineWidth = 1;
+
+				const waveCount = 14;
+				for (let i = 0; i < waveCount; i += 1) {
+					const base = ((i + 1) / (waveCount + 1)) * height;
+					const amp = height * (0.03 + (i % 3) * 0.004);
+					ctx.beginPath();
+					for (let x = 0; x <= width; x += 18) {
+						const y = base
+							+ Math.sin(x * 0.006 + t * 2 + i) * amp
+							+ Math.sin(x * 0.014 - t * 1.4 + i * 0.7) * amp * 0.45;
+						if (x === 0) {
+							ctx.moveTo(x, y);
+						} else {
+							ctx.lineTo(x, y);
+						}
+					}
+					const alpha = 0.08 + i * 0.004;
+					ctx.strokeStyle = `rgba(127, 215, 255, ${alpha})`;
+					ctx.stroke();
+				}
+
+				if (!prefersReducedMotion) {
+					requestAnimationFrame(draw);
+				}
+			};
+
+			resizeCanvas();
+			if (!prefersReducedMotion) {
+				requestAnimationFrame(draw);
+			} else {
+				draw(0);
+			}
+
+			window.addEventListener("resize", () => {
+				resizeCanvas();
+				if (prefersReducedMotion) {
+					draw(0);
+				}
+			});
+		</script>
 	</body>
 </html>

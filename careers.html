@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Careers | Epistemic LLC</title>
+		<meta name="description" content="Open roles at Epistemic LLC: Junior AI Developer and Marketing Intern.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<style>
+			:root {
+				color-scheme: dark;
+				--bg: #060708;
+				--surface: #0c1014;
+				--surface-strong: #0f151b;
+				--text: #e6edf3;
+				--muted: #a7b4c1;
+				--line: #1b2630;
+				--accent: #7fd7ff;
+				--accent-strong: #58c2ee;
+				--shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+				--radius: 8px;
+				--radius-small: 5px;
+				--container: 1040px;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				font-family: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+				background: radial-gradient(900px circle at 10% 10%, rgba(127, 215, 255, 0.06), transparent 58%),
+					rgba(6, 7, 8, 1);
+				color: var(--text);
+				line-height: 1.6;
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.container {
+				width: min(100% - 48px, var(--container));
+				margin: 0 auto;
+			}
+
+			header {
+				position: sticky;
+				top: 0;
+				z-index: 10;
+				background: rgba(6, 7, 8, 0.88);
+				backdrop-filter: blur(12px);
+				border-bottom: 1px solid rgba(27, 38, 48, 0.7);
+			}
+
+			.nav {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 18px 0;
+				gap: 24px;
+			}
+
+			.logo {
+				display: inline-flex;
+				align-items: center;
+				gap: 12px;
+				font-family: "Space Grotesk", sans-serif;
+				font-weight: 600;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			.logo img {
+				width: 42px;
+				height: 42px;
+				object-fit: contain;
+			}
+
+			.logo-fallback {
+				display: none;
+				font-size: 0.95rem;
+			}
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 12px 20px;
+				border-radius: var(--radius-small);
+				border: 1px solid var(--line);
+				font-family: "Space Grotesk", sans-serif;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				font-size: 0.9rem;
+				transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+			}
+
+			.btn-primary {
+				background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+				color: #060708;
+				border-color: transparent;
+				box-shadow: 0 12px 30px rgba(88, 194, 238, 0.25);
+			}
+
+			.btn-primary:hover,
+			.btn-primary:focus-visible {
+				transform: translateY(-1px);
+				box-shadow: 0 18px 34px rgba(88, 194, 238, 0.35);
+			}
+
+			.hero {
+				padding: 90px 0 60px;
+			}
+
+			h1 {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+				line-height: 1.1;
+				margin: 0 0 18px;
+			}
+
+			.lead {
+				color: var(--muted);
+				max-width: 680px;
+			}
+
+			.role-grid {
+				display: grid;
+				gap: 28px;
+				margin-top: 36px;
+			}
+
+			.role-card {
+				background: var(--surface);
+				border: 1px solid var(--line);
+				border-radius: var(--radius);
+				padding: 28px;
+				box-shadow: var(--shadow);
+			}
+
+			.role-card h2 {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 1.4rem;
+				margin-bottom: 6px;
+			}
+
+			.meta {
+				color: var(--muted);
+				font-size: 0.95rem;
+				margin-bottom: 18px;
+			}
+
+			.role-section {
+				margin-top: 18px;
+			}
+
+			.role-section h3 {
+				font-size: 1rem;
+				text-transform: uppercase;
+				letter-spacing: 0.12em;
+				color: var(--accent);
+				margin-bottom: 10px;
+			}
+
+			.role-section ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				gap: 10px;
+			}
+
+			.role-section li {
+				color: var(--muted);
+				padding-left: 16px;
+				position: relative;
+			}
+
+			.role-section li::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 10px;
+				width: 6px;
+				height: 2px;
+				background: var(--accent);
+			}
+
+			.apply-bar {
+				margin-top: 22px;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 14px;
+			}
+
+			.apply-note {
+				color: var(--muted);
+				font-size: 0.92rem;
+			}
+
+			footer {
+				padding: 40px 0 60px;
+				color: var(--muted);
+				font-size: 0.9rem;
+			}
+
+			@media (max-width: 780px) {
+				.container {
+					width: min(100% - 32px, var(--container));
+				}
+
+				.nav {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 12px;
+				}
+
+				.apply-bar .btn {
+					flex: 1 1 180px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<nav class="nav container">
+				<a class="logo" href="index.html" aria-label="Epistemic LLC">
+					<img src="assets/company-logo.png" alt="Epistemic LLC logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+					<span class="logo-fallback">Epistemic</span>
+				</a>
+				<a class="btn btn-primary" href="index.html#contact">Work with us</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="hero container">
+				<h1>Careers at Epistemic LLC</h1>
+				<p class="lead">
+					We build AI automation systems for document-heavy, process-heavy work. If you care about precision,
+					reliable delivery, and measurable outcomes, we should talk.
+				</p>
+				<div class="role-grid">
+					<article class="role-card" id="junior-ai-developer">
+						<h2>Junior AI Developer</h2>
+						<p class="meta">Focus: workflow automation, document processing, internal tooling</p>
+						<p>
+							You will work alongside senior engineers to implement AI-powered workflow automation. This role is
+							ideal for someone who is curious, detail-oriented, and eager to ship production-grade systems.
+						</p>
+						<div class="role-section">
+							<h3>Responsibilities</h3>
+							<ul>
+								<li>Implement and test AI workflow components under senior guidance.</li>
+								<li>Build data extraction, validation, and automation scripts for document-heavy workflows.</li>
+								<li>Assist with evaluation, QA, and monitoring of automation outcomes.</li>
+								<li>Contribute to internal tooling and workflow dashboards.</li>
+							</ul>
+						</div>
+						<div class="role-section">
+							<h3>What we are looking for</h3>
+							<ul>
+								<li>Comfort with Python or JavaScript and basic API usage.</li>
+								<li>Interest in AI systems, automation, and practical engineering.</li>
+								<li>Strong attention to detail and a preference for clean, readable code.</li>
+								<li>Ability to communicate progress clearly and ask good questions.</li>
+							</ul>
+						</div>
+						<div class="role-section">
+							<h3>Nice to have</h3>
+							<ul>
+								<li>Experience with document parsing, OCR, or data pipelines.</li>
+								<li>Familiarity with automation tools, workflows, or RPA concepts.</li>
+							</ul>
+						</div>
+						<div class="apply-bar">
+							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Junior%20AI%20Developer%20Application">Apply for this role</a>
+							<span class="apply-note">Include a resume and a short note about your interest.</span>
+						</div>
+					</article>
+
+					<article class="role-card" id="marketing-intern">
+						<h2>Marketing Intern</h2>
+						<p class="meta">Focus: B2B positioning, outbound campaigns, and content support</p>
+						<p>
+							You will support go-to-market execution for a premium B2B automation studio. This role is best for
+							someone who is organized, crisp in writing, and eager to learn how technical services firms grow.
+						</p>
+						<div class="role-section">
+							<h3>Responsibilities</h3>
+							<ul>
+								<li>Draft and refine outreach messaging for target professional teams.</li>
+								<li>Support content creation for the website, briefs, and case-style materials.</li>
+								<li>Coordinate campaign lists and organize basic performance tracking.</li>
+								<li>Assist with scheduling, follow-ups, and light market research.</li>
+							</ul>
+						</div>
+						<div class="role-section">
+							<h3>What we are looking for</h3>
+							<ul>
+								<li>Clear, concise writing ability and comfort with structured messaging.</li>
+								<li>Interest in B2B services, automation, and modern operations.</li>
+								<li>Strong organizational skills and attention to detail.</li>
+								<li>Willingness to learn and iterate quickly on feedback.</li>
+							</ul>
+						</div>
+						<div class="role-section">
+							<h3>Nice to have</h3>
+							<ul>
+								<li>Experience with CRM tools, email outreach, or analytics dashboards.</li>
+								<li>Basic knowledge of B2B SaaS or professional services.</li>
+							</ul>
+						</div>
+						<div class="apply-bar">
+							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Marketing%20Intern%20Application">Apply for this role</a>
+							<span class="apply-note">Include a resume and one writing sample or portfolio link.</span>
+						</div>
+					</article>
+				</div>
+			</section>
+		</main>
+
+		<footer class="container">
+			<p>Epistemic LLC · 30 N Gould St, STE R, Sheridan, WY 82801, USA · hire@epistemic.llc</p>
+		</footer>
+	</body>
+</html>
