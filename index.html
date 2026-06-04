@@ -646,6 +646,50 @@
 					transition: none;
 				}
 			}
+
+			.cookie-banner {
+				position: fixed;
+				bottom: 24px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: calc(100% - 48px);
+				max-width: 600px;
+				z-index: 1000;
+				background: linear-gradient(145deg, rgba(12, 16, 20, 0.95), rgba(15, 21, 27, 0.98));
+				border: 1px solid rgba(127, 215, 255, 0.2);
+				border-radius: var(--radius);
+				box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+				padding: 20px 24px;
+				backdrop-filter: blur(12px);
+				display: none;
+			}
+
+			.cookie-banner.is-visible {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 20px;
+			}
+
+			.cookie-banner p {
+				margin: 0;
+				color: var(--text);
+				font-size: 0.95rem;
+			}
+
+			.cookie-banner .btn {
+				padding: 8px 16px;
+				font-size: 0.85rem;
+				white-space: nowrap;
+			}
+
+			@media (max-width: 600px) {
+				.cookie-banner.is-visible {
+					flex-direction: column;
+					text-align: center;
+					gap: 16px;
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -935,6 +979,11 @@
 					</div>
 				</div>
 			</footer>
+
+			<div id="cookie-banner" class="cookie-banner">
+				<p>This website uses no cookies. Your privacy matters to us.</p>
+				<button id="dismiss-cookie" class="btn btn-secondary">Got it</button>
+			</div>
 		</div>
 
 		<script>
@@ -1135,6 +1184,19 @@
 			if (!prefersReducedMotion) {
 				requestAnimationFrame(tick);
 			}
+
+			// Cookie banner logic
+			const cookieBanner = document.getElementById("cookie-banner");
+			const dismissBtn = document.getElementById("dismiss-cookie");
+			
+			if (!localStorage.getItem("cookie_banner_dismissed")) {
+				cookieBanner.classList.add("is-visible");
+			}
+
+			dismissBtn.addEventListener("click", () => {
+				cookieBanner.classList.remove("is-visible");
+				localStorage.setItem("cookie_banner_dismissed", "true");
+			});
 		</script>
 	</body>
 </html>
