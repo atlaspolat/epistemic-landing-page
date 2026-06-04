@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Impressum | Epistemic LLC</title>
+		<meta name="description" content="Impressum (legal notice) for Epistemic LLC pursuant to § 5 DDG.">
+		<link rel="icon" href="assets/company-logo.png" type="image/png">
+			<link rel="stylesheet" href="assets/fonts.css">
+		<style>
+			:root {
+				--bg: #f4f1ea;
+				--bg-deep: #ebe6db;
+				--surface: #ffffff;
+				--ink: #11100e;
+				--ink-soft: #2c2a26;
+				--muted: #6a655c;
+				--line: #ddd6c8;
+				--line-strong: #c7bfae;
+				--accent-warm: #c5572a;
+				--container: 820px;
+				--ease: cubic-bezier(0.22, 1, 0.36, 1);
+			}
+			* { box-sizing: border-box; }
+			body {
+				margin: 0;
+				font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+				background: var(--bg);
+				color: var(--ink-soft);
+				line-height: 1.7;
+				-webkit-font-smoothing: antialiased;
+			}
+			a { color: inherit; text-decoration: none; }
+			.container { width: min(100% - 40px, var(--container)); margin: 0 auto; }
+			h1, h2, h3 { font-family: "Space Grotesk", "Inter", sans-serif; color: var(--ink); letter-spacing: -0.02em; }
+
+			.site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 20; }
+			.nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+			.logo { display: inline-flex; align-items: center; gap: 10px; font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.18rem; color: var(--ink); }
+			.nav-right { display: inline-flex; align-items: center; gap: 12px; }
+			.nav-back { font-size: 0.86rem; color: var(--muted); }
+			.nav-back:hover { color: var(--ink); }
+			.lang-toggle {
+				display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--line-strong);
+				border-radius: 100px; padding: 3px; background: transparent; cursor: pointer; font-family: "Space Grotesk", sans-serif;
+			}
+			.lang-toggle span {
+				font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 100px;
+				color: var(--muted); transition: background 0.25s var(--ease), color 0.25s var(--ease);
+			}
+			.lang-toggle span.is-active { background: var(--ink); color: var(--bg); }
+
+			.doc { padding: clamp(40px, 7vw, 80px) 0 80px; }
+			.eyebrow { font-family: "Space Grotesk", sans-serif; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.28em; color: var(--accent-warm); margin: 0 0 16px; }
+			h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 10px; }
+			.intro { color: var(--muted); font-size: 0.96rem; margin: 0 0 8px; }
+			h2 { font-size: 1.2rem; margin: 40px 0 10px; }
+			p { margin: 0 0 10px; }
+			address { font-style: normal; color: var(--ink-soft); margin: 0 0 10px; }
+			.doc a[href^="mailto"], .doc a[href^="http"], .doc a[href^="tel"] { color: var(--accent-warm); border-bottom: 1px solid transparent; }
+			.doc a[href^="mailto"]:hover, .doc a[href^="http"]:hover, .doc a[href^="tel"]:hover { border-color: var(--accent-warm); }
+			.placeholder { color: var(--accent-warm); }
+
+			footer { background: var(--bg-deep); border-top: 1px solid var(--line); padding: 36px 0; color: var(--muted); font-size: 0.88rem; }
+			.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
+			.footer-inner a:hover { color: var(--ink); }
+			@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+		</style>
+	</head>
+	<body>
+		<header class="site-header">
+			<nav class="nav container">
+				<a class="logo" href="index.html">Epistemic</a>
+				<div class="nav-right">
+					<button class="lang-toggle" type="button" aria-label="Language / Sprache">
+						<span data-lang="en">EN</span>
+						<span data-lang="de">DE</span>
+					</button>
+					<a class="nav-back" href="index.html">← Home</a>
+				</div>
+			</nav>
+		</header>
+
+		<main class="doc">
+			<div class="container">
+				<p class="eyebrow" data-i18n="im.eyebrow">Legal</p>
+				<h1 data-i18n="im.h1">Impressum</h1>
+				<p class="intro" data-i18n="im.intro">Information pursuant to Section 5 of the German Digital Services Act (DDG).</p>
+
+				<h2 data-i18n="im.provider.h">Service provider</h2>
+				<address>
+					Epistemic LLC<br>
+					30 N Gould St, STE R<br>
+					Sheridan, WY 82801, USA
+				</address>
+
+				<h2 data-i18n="im.rep.h">Represented by</h2>
+				<p data-i18n="im.rep.v">Atlas Berk Polat</p>
+
+				<h2 data-i18n="im.contact.h">Contact</h2>
+				<p>
+					<a href="mailto:contact@epistemic.llc">contact@epistemic.llc</a><br>
+					<span data-i18n="im.contact.phone">Phone: <a href="tel:+4915146280693">+49 1514 6280693</a></span>
+				</p>
+
+				<h2 data-i18n="im.reg.h">Register entry</h2>
+				<p data-i18n="im.reg.v">Registered as a Limited Liability Company in Wyoming, USA. The company is not registered in a German commercial register (Handelsregister).</p>
+
+				<h2 data-i18n="im.vat.h">VAT identification number</h2>
+				<p data-i18n="im.vat.v">VAT ID pursuant to Section 27 a of the German VAT Act: not applicable.</p>
+
+				<h2 data-i18n="im.resp.h">Responsible for content pursuant to Section 18 (2) MStV</h2>
+				<p data-i18n="im.resp.v">Atlas Berk Polat<br>30 N Gould St, STE R, Sheridan, WY 82801, USA</p>
+
+				<h2 data-i18n="im.odr.h">EU dispute resolution</h2>
+				<p data-i18n="im.odr.v">The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>. Our email address can be found above.</p>
+
+				<h2 data-i18n="im.cons.h">Consumer dispute resolution</h2>
+				<p data-i18n="im.cons.v">We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+
+				<h2 data-i18n="im.liab.h">Liability for content</h2>
+				<p data-i18n="im.liab.v">As a service provider, we are responsible for our own content on these pages in accordance with general law pursuant to Section 7 (1) DDG. According to Sections 8 to 10 DDG, however, we are not obliged to monitor transmitted or stored third-party information.</p>
+
+				<h2 data-i18n="im.links.h">Liability for links</h2>
+				<p data-i18n="im.links.v">Our website contains links to external third-party websites over whose content we have no influence. The respective provider is always responsible for the content of linked pages.</p>
+
+				<h2 data-i18n="im.copy.h">Copyright</h2>
+				<p data-i18n="im.copy.v">The content and works created by the site operator on these pages are subject to copyright law. Contributions by third parties are marked as such.</p>
+			</div>
+		</main>
+
+		<footer>
+			<div class="container footer-inner">
+				<span data-i18n="im.foot.note">© 2026 Epistemic LLC</span>
+				<span><a href="datenschutz.html" data-i18n="foot.ds">Privacy</a> · <a href="index.html">Epistemic home</a> · <a href="lawsec.html">Lawsec</a></span>
+			</div>
+		</footer>
+		<script src="assets/i18n.js"></script>
+	</body>
+</html>

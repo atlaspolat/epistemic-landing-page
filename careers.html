@@ -3,330 +3,235 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Careers | Epistemic LLC</title>
-		<meta name="description" content="Open roles at Epistemic LLC: Junior AI Developer and Marketing Intern.">
+		<title>Careers | Epistemic</title>
+		<meta name="description" content="Open roles at Epistemic: Junior AI Developer and Marketing Intern.">
 		<link rel="icon" href="assets/company-logo.png" type="image/png">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+			<link rel="stylesheet" href="assets/fonts.css">
 		<style>
 			:root {
-				color-scheme: dark;
-				--bg: #060708;
-				--surface: #0c1014;
-				--surface-strong: #0f151b;
-				--text: #e6edf3;
-				--muted: #a7b4c1;
-				--line: #1b2630;
-				--accent: #7fd7ff;
-				--accent-strong: #58c2ee;
-				--shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
-				--radius: 8px;
-				--radius-small: 5px;
+				--bg: #f4f1ea;
+				--bg-deep: #ebe6db;
+				--surface: #ffffff;
+				--ink: #11100e;
+				--ink-soft: #2c2a26;
+				--muted: #6a655c;
+				--line: #ddd6c8;
+				--line-strong: #c7bfae;
+				--accent-warm: #c5572a;
+				--radius: 14px;
 				--container: 1040px;
+				--ease: cubic-bezier(0.22, 1, 0.36, 1);
 			}
-
-			* {
-				box-sizing: border-box;
-			}
-
+			* { box-sizing: border-box; }
+			html { scroll-behavior: smooth; }
 			body {
 				margin: 0;
-				font-family: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-				background: radial-gradient(900px circle at 10% 10%, rgba(127, 215, 255, 0.06), transparent 58%),
-					rgba(6, 7, 8, 1);
-				color: var(--text);
-				line-height: 1.6;
+				font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+				background: var(--bg);
+				color: var(--ink);
+				line-height: 1.65;
+				-webkit-font-smoothing: antialiased;
 			}
-
-			a {
-				color: inherit;
-				text-decoration: none;
-			}
-
-			.container {
-				width: min(100% - 48px, var(--container));
-				margin: 0 auto;
-			}
-
-			header {
-				position: sticky;
-				top: 0;
-				z-index: 10;
-				background: rgba(6, 7, 8, 0.88);
-				backdrop-filter: blur(12px);
-				border-bottom: 1px solid rgba(27, 38, 48, 0.7);
-			}
-
-			.nav {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				padding: 18px 0;
-				gap: 24px;
-			}
-
-			.logo {
-				display: inline-flex;
-				align-items: center;
-				gap: 12px;
-				font-family: "Space Grotesk", sans-serif;
-				font-weight: 600;
-				letter-spacing: 0.02em;
-				text-transform: uppercase;
-			}
-
-			.logo img {
-				width: 42px;
-				height: 42px;
-				object-fit: contain;
-			}
-
-			.logo-fallback {
-				display: none;
-				font-size: 0.95rem;
-			}
+			img { max-width: 100%; display: block; }
+			a { color: inherit; text-decoration: none; }
+			h1, h2, h3 { font-family: "Space Grotesk", "Inter", sans-serif; margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 1.08; }
+			.container { width: min(100% - 48px, var(--container)); margin: 0 auto; }
 
 			.btn {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				padding: 12px 20px;
-				border-radius: var(--radius-small);
-				border: 1px solid var(--line);
-				font-family: "Space Grotesk", sans-serif;
-				text-transform: uppercase;
-				letter-spacing: 0.06em;
-				font-size: 0.9rem;
-				transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+				display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+				padding: 14px 24px; border-radius: 100px; border: 1px solid var(--ink);
+				font-family: "Space Grotesk", sans-serif; font-size: 0.8rem; font-weight: 500;
+				text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer;
+				transition: transform 0.35s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease);
 			}
+			.btn-primary { background: var(--ink); color: var(--bg); }
+			.btn-primary:hover, .btn-primary:focus-visible { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(17,16,14,0.22); }
+			.btn-ghost { background: transparent; color: var(--ink); }
+			.btn-ghost:hover, .btn-ghost:focus-visible { background: var(--ink); color: var(--bg); transform: translateY(-2px); }
 
-			.btn-primary {
-				background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-				color: #060708;
-				border-color: transparent;
-				box-shadow: 0 12px 30px rgba(88, 194, 238, 0.25);
+			.site-header {
+				position: sticky; top: 0; z-index: 50;
+				background: rgba(244,241,234,0.85); backdrop-filter: blur(14px);
+				border-bottom: 1px solid var(--line);
 			}
-
-			.btn-primary:hover,
-			.btn-primary:focus-visible {
-				transform: translateY(-1px);
-				box-shadow: 0 18px 34px rgba(88, 194, 238, 0.35);
+			.nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 0; }
+			.nav-right { display: inline-flex; align-items: center; gap: 12px; }
+			.lang-toggle {
+				display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--line-strong);
+				border-radius: 100px; padding: 3px; background: transparent; cursor: pointer; font-family: "Space Grotesk", sans-serif;
 			}
-
-			.hero {
-				padding: 90px 0 60px;
+			.lang-toggle span {
+				font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 100px;
+				color: var(--muted); transition: background 0.25s var(--ease), color 0.25s var(--ease);
 			}
+			.lang-toggle span.is-active { background: var(--ink); color: var(--bg); }
+			.logo { display: inline-flex; align-items: center; gap: 12px; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 1.18rem; }
+			.logo img { width: 36px; height: 36px; object-fit: contain; }
 
-			h1 {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: clamp(2.2rem, 3.6vw, 3.4rem);
-				line-height: 1.1;
-				margin: 0 0 18px;
+			.hero { padding: clamp(56px, 8vw, 100px) 0 40px; }
+			.eyebrow {
+				font-family: "Space Grotesk", sans-serif; font-size: 0.78rem; text-transform: uppercase;
+				letter-spacing: 0.3em; color: var(--accent-warm); margin: 0 0 20px;
 			}
+			h1 { font-size: clamp(2.4rem, 5vw, 4rem); margin: 0 0 18px; max-width: 16ch; }
+			.lead { color: var(--ink-soft); max-width: 62ch; font-size: 1.1rem; }
 
-			.lead {
-				color: var(--muted);
-				max-width: 680px;
-			}
-
-			.role-grid {
-				display: grid;
-				gap: 28px;
-				margin-top: 36px;
-			}
-
+			.role-grid { display: grid; gap: 28px; padding: 40px 0 80px; }
 			.role-card {
-				background: var(--surface);
-				border: 1px solid var(--line);
-				border-radius: var(--radius);
-				padding: 28px;
-				box-shadow: var(--shadow);
+				background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+				padding: clamp(28px, 4vw, 44px);
 			}
-
-			.role-card h2 {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 1.4rem;
-				margin-bottom: 6px;
+			.role-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: baseline; }
+			.role-card h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+			.role-tag {
+				font-family: "Space Grotesk", sans-serif; font-size: 0.74rem; text-transform: uppercase;
+				letter-spacing: 0.14em; color: var(--accent-warm); border: 1px solid var(--line-strong);
+				border-radius: 100px; padding: 6px 14px;
 			}
-
-			.meta {
-				color: var(--muted);
-				font-size: 0.95rem;
-				margin-bottom: 18px;
-			}
-
-			.role-section {
-				margin-top: 18px;
-			}
-
+			.meta { color: var(--muted); font-size: 0.96rem; margin: 8px 0 18px; }
+			.role-card > p { color: var(--ink-soft); }
+			.role-section { margin-top: 24px; }
 			.role-section h3 {
-				font-size: 1rem;
-				text-transform: uppercase;
-				letter-spacing: 0.12em;
-				color: var(--accent);
-				margin-bottom: 10px;
+				font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.16em;
+				color: var(--ink); margin-bottom: 12px;
 			}
+			.role-section ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+			.role-section li { color: var(--muted); padding-left: 20px; position: relative; }
+			.role-section li::before { content: ""; position: absolute; left: 0; top: 11px; width: 9px; height: 2px; background: var(--accent-warm); }
+			.apply-bar { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+			.apply-note { color: var(--muted); font-size: 0.92rem; }
 
-			.role-section ul {
-				list-style: none;
-				margin: 0;
-				padding: 0;
-				display: grid;
-				gap: 10px;
+			footer { background: var(--bg-deep); border-top: 1px solid var(--line); padding: 40px 0; color: var(--muted); font-size: 0.9rem; }
+			.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+			.footer-inner a { border-bottom: 1px solid transparent; }
+			.footer-inner a:hover { border-color: var(--accent-warm); color: var(--ink); }
+
+			@media (max-width: 720px) {
+				.container { width: min(100% - 32px, var(--container)); }
+				.apply-bar .btn { flex: 1 1 180px; }
 			}
-
-			.role-section li {
-				color: var(--muted);
-				padding-left: 16px;
-				position: relative;
-			}
-
-			.role-section li::before {
-				content: "";
-				position: absolute;
-				left: 0;
-				top: 10px;
-				width: 6px;
-				height: 2px;
-				background: var(--accent);
-			}
-
-			.apply-bar {
-				margin-top: 22px;
-				display: flex;
-				flex-wrap: wrap;
-				gap: 14px;
-			}
-
-			.apply-note {
-				color: var(--muted);
-				font-size: 0.92rem;
-			}
-
-			footer {
-				padding: 40px 0 60px;
-				color: var(--muted);
-				font-size: 0.9rem;
-			}
-
-			@media (max-width: 780px) {
-				.container {
-					width: min(100% - 32px, var(--container));
-				}
-
-				.nav {
-					flex-direction: column;
-					align-items: flex-start;
-					gap: 12px;
-				}
-
-				.apply-bar .btn {
-					flex: 1 1 180px;
-				}
-			}
+			@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 		</style>
 	</head>
 	<body>
-		<header>
+		<header class="site-header">
 			<nav class="nav container">
-				<a class="logo" href="index.html" aria-label="Epistemic LLC">
-					<img src="assets/company-logo.png" alt="Epistemic LLC logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-					<span class="logo-fallback">Epistemic</span>
+				<a class="logo" href="index.html" aria-label="Epistemic">
+					<span>Epistemic</span>
 				</a>
-				<a class="btn btn-primary" href="index.html#contact">Work with us</a>
+				<div class="nav-right">
+					<button class="lang-toggle" type="button" aria-label="Language / Sprache">
+						<span data-lang="en">EN</span>
+						<span data-lang="de">DE</span>
+					</button>
+					<a class="btn btn-primary" href="index.html#contact" data-i18n="c.nav.work">Work with us</a>
+				</div>
 			</nav>
 		</header>
 
 		<main>
 			<section class="hero container">
-				<h1>Careers at Epistemic LLC</h1>
-				<p class="lead">
-					We build AI automation systems for document-heavy, process-heavy work. If you care about precision,
+				<p class="eyebrow" data-i18n="c.eyebrow">Careers</p>
+				<h1 data-i18n="c.h1">Build the systems that give people their time back.</h1>
+				<p class="lead" data-i18n="c.lead">
+					We build AI automation for document-heavy, process-heavy work. If you care about precision,
 					reliable delivery, and measurable outcomes, we should talk.
 				</p>
+			</section>
+
+			<div class="container">
 				<div class="role-grid">
 					<article class="role-card" id="junior-ai-developer">
-						<h2>Junior AI Developer</h2>
-						<p class="meta">Focus: workflow automation, document processing, internal tooling</p>
-						<p>
+						<div class="role-head">
+							<h2 data-i18n="c.r1.h2">Junior AI Developer</h2>
+							<span class="role-tag" data-i18n="c.r1.tag">Engineering</span>
+						</div>
+						<p class="meta" data-i18n="c.r1.meta">Focus: workflow automation, document processing, internal tooling</p>
+						<p data-i18n="c.r1.p">
 							You will work alongside senior engineers to implement AI-powered workflow automation. This role is
 							ideal for someone who is curious, detail-oriented, and eager to ship production-grade systems.
 						</p>
 						<div class="role-section">
-							<h3>Responsibilities</h3>
+							<h3 data-i18n="c.r1.s1h">Responsibilities</h3>
 							<ul>
-								<li>Implement and test AI workflow components under senior guidance.</li>
-								<li>Build data extraction, validation, and automation scripts for document-heavy workflows.</li>
-								<li>Assist with evaluation, QA, and monitoring of automation outcomes.</li>
-								<li>Contribute to internal tooling and workflow dashboards.</li>
+								<li data-i18n="c.r1.s1l1">Implement and test AI workflow components under senior guidance.</li>
+								<li data-i18n="c.r1.s1l2">Build data extraction, validation, and automation scripts for document-heavy workflows.</li>
+								<li data-i18n="c.r1.s1l3">Assist with evaluation, QA, and monitoring of automation outcomes.</li>
+								<li data-i18n="c.r1.s1l4">Contribute to internal tooling and workflow dashboards.</li>
 							</ul>
 						</div>
 						<div class="role-section">
-							<h3>What we are looking for</h3>
+							<h3 data-i18n="c.r1.s2h">What we are looking for</h3>
 							<ul>
-								<li>Comfort with Python or JavaScript and basic API usage.</li>
-								<li>Interest in AI systems, automation, and practical engineering.</li>
-								<li>Strong attention to detail and a preference for clean, readable code.</li>
-								<li>Ability to communicate progress clearly and ask good questions.</li>
+								<li data-i18n="c.r1.s2l1">Comfort with Python or JavaScript and basic API usage.</li>
+								<li data-i18n="c.r1.s2l2">Interest in AI systems, automation, and practical engineering.</li>
+								<li data-i18n="c.r1.s2l3">Strong attention to detail and a preference for clean, readable code.</li>
+								<li data-i18n="c.r1.s2l4">Ability to communicate progress clearly and ask good questions.</li>
 							</ul>
 						</div>
 						<div class="role-section">
-							<h3>Nice to have</h3>
+							<h3 data-i18n="c.r1.s3h">Nice to have</h3>
 							<ul>
-								<li>Experience with document parsing, OCR, or data pipelines.</li>
-								<li>Familiarity with automation tools, workflows, or RPA concepts.</li>
+								<li data-i18n="c.r1.s3l1">Experience with document parsing, OCR, or data pipelines.</li>
+								<li data-i18n="c.r1.s3l2">Familiarity with automation tools, workflows, or RPA concepts.</li>
 							</ul>
 						</div>
 						<div class="apply-bar">
-							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Junior%20AI%20Developer%20Application">Apply for this role</a>
-							<span class="apply-note">Include a resume and a short note about your interest.</span>
+							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Junior%20AI%20Developer%20Application" data-i18n="c.r1.apply">Apply for this role</a>
+							<span class="apply-note" data-i18n="c.r1.note">Include a resume and a short note about your interest.</span>
 						</div>
 					</article>
 
 					<article class="role-card" id="marketing-intern">
-						<h2>Marketing Intern</h2>
-						<p class="meta">Focus: B2B positioning, outbound campaigns, and content support</p>
-						<p>
+						<div class="role-head">
+							<h2 data-i18n="c.r2.h2">Marketing Intern</h2>
+							<span class="role-tag" data-i18n="c.r2.tag">Go-to-market</span>
+						</div>
+						<p class="meta" data-i18n="c.r2.meta">Focus: B2B positioning, outbound campaigns, and content support</p>
+						<p data-i18n="c.r2.p">
 							You will support go-to-market execution for a premium B2B automation studio. This role is best for
 							someone who is organized, crisp in writing, and eager to learn how technical services firms grow.
 						</p>
 						<div class="role-section">
-							<h3>Responsibilities</h3>
+							<h3 data-i18n="c.r2.s1h">Responsibilities</h3>
 							<ul>
-								<li>Draft and refine outreach messaging for target professional teams.</li>
-								<li>Support content creation for the website, briefs, and case-style materials.</li>
-								<li>Coordinate campaign lists and organize basic performance tracking.</li>
-								<li>Assist with scheduling, follow-ups, and light market research.</li>
+								<li data-i18n="c.r2.s1l1">Draft and refine outreach messaging for target professional teams.</li>
+								<li data-i18n="c.r2.s1l2">Support content creation for the website, briefs, and case-style materials.</li>
+								<li data-i18n="c.r2.s1l3">Coordinate campaign lists and organize basic performance tracking.</li>
+								<li data-i18n="c.r2.s1l4">Assist with scheduling, follow-ups, and light market research.</li>
 							</ul>
 						</div>
 						<div class="role-section">
-							<h3>What we are looking for</h3>
+							<h3 data-i18n="c.r2.s2h">What we are looking for</h3>
 							<ul>
-								<li>Clear, concise writing ability and comfort with structured messaging.</li>
-								<li>Interest in B2B services, automation, and modern operations.</li>
-								<li>Strong organizational skills and attention to detail.</li>
-								<li>Willingness to learn and iterate quickly on feedback.</li>
+								<li data-i18n="c.r2.s2l1">Clear, concise writing ability and comfort with structured messaging.</li>
+								<li data-i18n="c.r2.s2l2">Interest in B2B services, automation, and modern operations.</li>
+								<li data-i18n="c.r2.s2l3">Strong organizational skills and attention to detail.</li>
+								<li data-i18n="c.r2.s2l4">Willingness to learn and iterate quickly on feedback.</li>
 							</ul>
 						</div>
 						<div class="role-section">
-							<h3>Nice to have</h3>
+							<h3 data-i18n="c.r2.s3h">Nice to have</h3>
 							<ul>
-								<li>Experience with CRM tools, email outreach, or analytics dashboards.</li>
-								<li>Basic knowledge of B2B SaaS or professional services.</li>
+								<li data-i18n="c.r2.s3l1">Experience with CRM tools, email outreach, or analytics dashboards.</li>
+								<li data-i18n="c.r2.s3l2">Basic knowledge of B2B SaaS or professional services.</li>
 							</ul>
 						</div>
 						<div class="apply-bar">
-							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Marketing%20Intern%20Application">Apply for this role</a>
-							<span class="apply-note">Include a resume and one writing sample or portfolio link.</span>
+							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Marketing%20Intern%20Application" data-i18n="c.r2.apply">Apply for this role</a>
+							<span class="apply-note" data-i18n="c.r2.note">Include a resume and one writing sample or portfolio link.</span>
 						</div>
 					</article>
 				</div>
-			</section>
+			</div>
 		</main>
 
-		<footer class="container">
-			<p>Epistemic LLC · 30 N Gould St, STE R, Sheridan, WY 82801, USA · hire@epistemic.llc</p>
+		<footer>
+			<div class="container footer-inner">
+				<span>Epistemic LLC · 30 N Gould St, STE R, Sheridan, WY 82801, USA · <a href="mailto:hire@epistemic.llc">hire@epistemic.llc</a></span>
+				<span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html" data-i18n="foot.ds">Privacy</a> · <a href="index.html" data-i18n="c.foot.back">← Back to home</a></span>
+			</div>
 		</footer>
+		<script src="assets/i18n.js"></script>
 	</body>
 </html>

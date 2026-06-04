@@ -3,83 +3,129 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Privacy Policy | lawsec</title>
-		<meta name="description" content="Privacy Policy for lawsec.">
+		<title>Privacy Policy | Lawsec by Epistemic</title>
+		<meta name="description" content="Privacy Policy for Lawsec, a product of Epistemic LLC.">
 		<link rel="icon" href="assets/company-logo.png" type="image/png">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+			<link rel="stylesheet" href="assets/fonts.css">
 		<style>
 			:root {
-				color-scheme: dark;
-				--bg: #060708;
-				--surface: #0c1014;
-				--surface-strong: #0f151b;
-				--text: #e6edf3;
-				--muted: #a7b4c1;
-				--line: #1b2630;
-				--accent: #7fd7ff;
-				--radius: 6px;
-				--container: 800px;
+				--bg: #f4f1ea;
+				--bg-deep: #ebe6db;
+				--surface: #ffffff;
+				--ink: #11100e;
+				--ink-soft: #2c2a26;
+				--muted: #6a655c;
+				--line: #ddd6c8;
+				--line-strong: #c7bfae;
+				--accent-warm: #c5572a;
+				--container: 820px;
+				--ease: cubic-bezier(0.22, 1, 0.36, 1);
 			}
+			* { box-sizing: border-box; }
 			body {
-				font-family: 'IBM Plex Sans', sans-serif;
-				background-color: var(--bg);
-				color: var(--text);
-				line-height: 1.6;
 				margin: 0;
-				padding: 60px 20px;
+				font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+				background: var(--bg);
+				color: var(--ink-soft);
+				line-height: 1.7;
+				-webkit-font-smoothing: antialiased;
 			}
-			.container {
-				max-width: var(--container);
-				margin: 0 auto;
+			a { color: inherit; text-decoration: none; }
+			img { max-width: 100%; display: block; }
+			.container { width: min(100% - 40px, var(--container)); margin: 0 auto; }
+			h1, h2, h3 { font-family: "Space Grotesk", "Inter", sans-serif; color: var(--ink); letter-spacing: -0.02em; }
+
+			.site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 20; }
+			.nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+			.logo { display: inline-flex; align-items: baseline; gap: 10px; font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.18rem; color: var(--ink); }
+			.logo .ls-accent { color: var(--accent-warm); }
+			.logo .by { font-size: 0.76rem; color: var(--muted); font-weight: 500; }
+			.nav-back { font-size: 0.86rem; color: var(--muted); }
+			.nav-back:hover { color: var(--ink); }
+			.nav-right { display: inline-flex; align-items: center; gap: 12px; }
+			.lang-toggle {
+				display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--line-strong);
+				border-radius: 100px; padding: 3px; background: transparent; cursor: pointer; font-family: "Space Grotesk", sans-serif;
 			}
-			h1, h2, h3 {
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 500;
+			.lang-toggle span {
+				font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 100px;
+				color: var(--muted); transition: background 0.25s var(--ease), color 0.25s var(--ease);
 			}
-			h1 { color: var(--accent); margin-bottom: 10px; }
-			h2 { color: var(--text); margin-top: 40px; margin-bottom: 20px;}
-			p, li { color: var(--muted); margin-bottom: 15px; }
-			ul { color: var(--muted); }
-			a { color: var(--accent); text-decoration: none; }
-			a:hover { text-decoration: underline; }
+			.lang-toggle span.is-active { background: var(--ink); color: var(--bg); }
+
+			.doc { padding: clamp(40px, 7vw, 80px) 0 80px; }
+			.eyebrow { font-family: "Space Grotesk", sans-serif; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.28em; color: var(--accent-warm); margin: 0 0 16px; }
+			h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 10px; }
+			.effective { color: var(--muted); font-size: 0.95rem; margin: 0 0 8px; }
+			h2 { font-size: 1.3rem; margin: 44px 0 14px; }
+			p, li { margin: 0 0 14px; }
+			ul { padding-left: 20px; }
+			.doc a { color: var(--accent-warm); border-bottom: 1px solid transparent; }
+			.doc a:hover { border-color: var(--accent-warm); }
+
+			footer { background: var(--bg-deep); border-top: 1px solid var(--line); padding: 36px 0; color: var(--muted); font-size: 0.88rem; }
+			.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
+			.footer-inner a:hover { color: var(--ink); }
+			@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<h1>Privacy Policy for lawsec</h1>
-			<p><strong>Effective Date:</strong> June 4, 2026</p>
+		<header class="site-header">
+			<nav class="nav container">
+				<a class="logo" href="lawsec.html">Law<span class="ls-accent">sec</span> <span class="by">by Epistemic</span></a>
+				<div class="nav-right">
+					<button class="lang-toggle" type="button" aria-label="Language / Sprache">
+						<span data-lang="en">EN</span>
+						<span data-lang="de">DE</span>
+					</button>
+					<a class="nav-back" href="lawsec.html">← Lawsec</a>
+				</div>
+			</nav>
+		</header>
 
-			<h2>1. Introduction</h2>
-			<p>Welcome to lawsec. We respect your privacy and are committed to protecting it through our compliance with this policy. This Privacy Policy describes the types of information we may collect from you or that you may provide when you use the lawsec product, and our practices for collecting, using, maintaining, protecting, and disclosing that information.</p>
+		<main class="doc">
+			<div class="container">
+				<p class="eyebrow" data-i18n="p.eyebrow">Legal</p>
+				<h1 data-i18n="p.h1">Privacy Policy</h1>
+				<p class="effective" data-i18n="p.product"><strong>Product:</strong> Lawsec, a product of Epistemic LLC</p>
+				<p class="effective" data-i18n="p.eff"><strong>Effective Date:</strong> June 4, 2026</p>
 
-			<h2>2. Information We Collect</h2>
-			<p>We collect several types of information from and about users of lawsec, including:</p>
-			<ul>
-				<li><strong>Personal Information:</strong> Information by which you may be personally identified, such as name, email address, or telephone number.</li>
-				<li><strong>Non-Personal Information:</strong> Information that is about you but individually does not identify you, such as usage details, IP addresses, and non-account specific technical data.</li>
-			</ul>
+				<h2 data-i18n="p.h2_1">1. Introduction</h2>
+				<p data-i18n="p.p1">Welcome to Lawsec. We respect your privacy and are committed to protecting it through our compliance with this policy. This Privacy Policy describes the types of information we may collect from you or that you may provide when you use the Lawsec product, and our practices for collecting, using, maintaining, protecting, and disclosing that information.</p>
 
-			<h2>3. How We Use Your Information</h2>
-			<p>We use information that we collect about you or that you provide to us, including any personal information:</p>
-			<ul>
-				<li>To provide lawsec and its contents and services to you.</li>
-				<li>To provide you with notices about your account or subscription.</li>
-				<li>To carry out our obligations and enforce our rights arising from any contracts entered into between you and us.</li>
-				<li>To notify you about changes to lawsec or any products or services we offer or provide though it.</li>
-			</ul>
+				<h2 data-i18n="p.h2_2">2. Information We Collect</h2>
+				<p data-i18n="p.p2">We collect several types of information from and about users of Lawsec, including:</p>
+				<ul>
+					<li data-i18n="p.li2_1"><strong>Personal Information:</strong> Information by which you may be personally identified, such as name, email address, or telephone number.</li>
+					<li data-i18n="p.li2_2"><strong>Non-Personal Information:</strong> Information that is about you but individually does not identify you, such as usage details, IP addresses, and non-account specific technical data.</li>
+				</ul>
 
-			<h2>4. Data Security</h2>
-			<p>We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. However, the transmission of information via the internet is not completely secure. Although we do our best to protect your personal information, we cannot guarantee the security of your personal information transmitted to lawsec.</p>
+				<h2 data-i18n="p.h2_3">3. How We Use Your Information</h2>
+				<p data-i18n="p.p3">We use information that we collect about you or that you provide to us, including any personal information:</p>
+				<ul>
+					<li data-i18n="p.li3_1">To provide Lawsec and its contents and services to you.</li>
+					<li data-i18n="p.li3_2">To provide you with notices about your account or subscription.</li>
+					<li data-i18n="p.li3_3">To carry out our obligations and enforce our rights arising from any contracts entered into between you and us.</li>
+					<li data-i18n="p.li3_4">To notify you about changes to Lawsec or any products or services we offer or provide through it.</li>
+				</ul>
 
-			<h2>5. Changes to Our Privacy Policy</h2>
-			<p>It is our policy to post any changes we make to our privacy policy on this page. If we make material changes to how we treat our users' personal information, we will notify you through an email to the primary email address specified in your account or through a notice in the product.</p>
+				<h2 data-i18n="p.h2_4">4. Data Security</h2>
+				<p data-i18n="p.p4">We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. However, the transmission of information via the internet is not completely secure. Although we do our best to protect your personal information, we cannot guarantee the security of your personal information transmitted to Lawsec.</p>
 
-			<h2>6. Contact Information</h2>
-			<p>To ask questions or comment about this privacy policy and our privacy practices, contact us at: <a href="mailto:privacy@epistemic.llc">privacy@epistemic.llc</a>.</p>
-            
-            <p style="margin-top: 60px;"><a href="index.html">← Back to Home</a></p>
-		</div>
+				<h2 data-i18n="p.h2_5">5. Changes to Our Privacy Policy</h2>
+				<p data-i18n="p.p5">It is our policy to post any changes we make to our privacy policy on this page. If we make material changes to how we treat our users' personal information, we will notify you through an email to the primary email address specified in your account or through a notice in the product.</p>
+
+				<h2 data-i18n="p.h2_6">6. Contact Information</h2>
+				<p data-i18n="p.p6">To ask questions or comment about this privacy policy and our privacy practices, contact us at: <a href="mailto:privacy@epistemic.llc">privacy@epistemic.llc</a>.</p>
+			</div>
+		</main>
+
+		<footer>
+			<div class="container footer-inner">
+				<span data-i18n="p.foot.note">© 2026 Epistemic LLC · Lawsec is a product of Epistemic LLC</span>
+				<span><a href="lawsec.html">Lawsec</a> · <a href="terms.html" data-i18n="p.foot.l2">Terms</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html" data-i18n="foot.ds">Privacy (Website)</a> · <a href="index.html" data-i18n="p.foot.l3">Epistemic home</a></span>
+			</div>
+		</footer>
+		<script src="assets/i18n.js"></script>
 	</body>
 </html>

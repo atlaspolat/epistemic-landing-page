@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Lawsec — Your AI law secretary on WhatsApp &amp; email | by Epistemic</title>
+		<meta name="description" content="Lawsec is an AI law secretary that answers client questions, captures intake, books consultations, and escalates complex matters — 24/7 on WhatsApp and email.">
+		<link rel="icon" href="assets/company-logo.png" type="image/png">
+			<link rel="stylesheet" href="assets/fonts.css">
+		<style>
+			:root {
+				--bg: #f4f1ea;
+				--bg-deep: #ebe6db;
+				--surface: #ffffff;
+				--ink: #11100e;
+				--ink-soft: #2c2a26;
+				--muted: #6a655c;
+				--line: #ddd6c8;
+				--line-strong: #c7bfae;
+				--wa: #25d366;
+				--wa-deep: #128c4b;
+				--wa-bg: #e3f6ea;
+				--accent-warm: #c5572a;
+				--radius: 14px;
+				--radius-sm: 8px;
+				--container: 1220px;
+				--ease: cubic-bezier(0.22, 1, 0.36, 1);
+			}
+
+			* { box-sizing: border-box; }
+			html { scroll-behavior: smooth; }
+			body {
+				margin: 0;
+				font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+				background: var(--bg);
+				color: var(--ink);
+				line-height: 1.65;
+				-webkit-font-smoothing: antialiased;
+			}
+			img { max-width: 100%; display: block; }
+			a { color: inherit; text-decoration: none; }
+			h1, h2, h3, h4 {
+				font-family: "Space Grotesk", "Inter", sans-serif;
+				margin: 0;
+				font-weight: 600;
+				letter-spacing: -0.02em;
+				line-height: 1.06;
+			}
+			.container { width: min(100% - 48px, var(--container)); margin: 0 auto; }
+
+			.eyebrow {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.78rem;
+				text-transform: uppercase;
+				letter-spacing: 0.3em;
+				color: var(--muted);
+				margin: 0 0 22px;
+				display: inline-flex;
+				align-items: center;
+				gap: 12px;
+			}
+			.eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--wa); }
+
+			/* Buttons */
+			.btn {
+				display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+				padding: 15px 26px; border-radius: 100px; border: 1px solid var(--ink);
+				font-family: "Space Grotesk", sans-serif; font-size: 0.82rem; font-weight: 500;
+				text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer;
+				transition: transform 0.35s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+			}
+			.btn-wa { background: var(--wa); color: #06301a; border-color: var(--wa); }
+			.btn-wa:hover, .btn-wa:focus-visible { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(37,211,102,0.3); }
+			.btn-ghost { background: transparent; color: var(--ink); }
+			.btn-ghost:hover, .btn-ghost:focus-visible { background: var(--ink); color: var(--bg); transform: translateY(-2px); }
+			.btn .arrow { transition: transform 0.3s var(--ease); }
+			.btn:hover .arrow { transform: translateX(4px); }
+
+			/* Header */
+			.site-header {
+				position: sticky; top: 0; z-index: 50;
+				background: rgba(244,241,234,0.82); backdrop-filter: blur(14px);
+				border-bottom: 1px solid transparent;
+				transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+			}
+			.site-header.is-stuck { border-color: var(--line); background: rgba(244,241,234,0.94); }
+			.nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 0; }
+			.brand { display: inline-flex; align-items: baseline; gap: 10px; }
+			.brand .mark {
+				font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.32rem; letter-spacing: -0.02em;
+			}
+			.brand .mark .ls-accent { color: var(--wa-deep); }
+			.brand .by { font-size: 0.78rem; color: var(--muted); font-family: "Space Grotesk", sans-serif; }
+			.brand .by a { border-bottom: 1px solid var(--line-strong); }
+			.nav-actions { display: inline-flex; gap: 12px; align-items: center; }
+			.nav-back { font-size: 0.86rem; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+			.nav-back:hover { color: var(--ink); }
+			.lang-toggle {
+				display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--line-strong);
+				border-radius: 100px; padding: 3px; background: transparent; cursor: pointer; font-family: "Space Grotesk", sans-serif;
+			}
+			.lang-toggle span {
+				font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 100px;
+				color: var(--muted); transition: background 0.25s var(--ease), color 0.25s var(--ease);
+			}
+			.lang-toggle span.is-active { background: var(--ink); color: var(--bg); }
+
+			/* Hero */
+			.hero { padding: clamp(54px, 8vw, 110px) 0 clamp(50px, 7vw, 90px); position: relative; overflow: hidden; }
+			.hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+			.hero h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin: 0 0 24px; max-width: 14ch; }
+			.hero h1 .wa-accent { color: var(--wa-deep); }
+			.hero-lead { font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: var(--ink-soft); max-width: 52ch; margin: 0 0 32px; }
+			.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 30px; }
+			.hero-meta { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: 0.9rem; }
+			.hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+			.hero-meta .tick { color: var(--wa-deep); font-weight: 700; }
+
+			/* Phone mockup */
+			.phone {
+				justify-self: center;
+				width: min(360px, 90%);
+				background: #0b141a;
+				border-radius: 38px;
+				padding: 12px;
+				box-shadow: 0 30px 60px rgba(11,20,26,0.28), 0 0 0 1px rgba(0,0,0,0.05);
+				position: relative;
+				animation: phone-in 1.05s var(--ease) 0.25s both;
+			}
+			.phone::before {
+				content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+				width: 120px; height: 22px; background: #0b141a; border-radius: 0 0 16px 16px; z-index: 3;
+			}
+			.phone-screen {
+				background: #e5ddd5;
+				background-image: linear-gradient(rgba(229,221,213,0.92), rgba(229,221,213,0.92));
+				border-radius: 28px; overflow: hidden; height: 600px; display: flex; flex-direction: column;
+			}
+			.wa-topbar {
+				background: var(--wa-deep); color: #fff; padding: 26px 16px 12px;
+				display: flex; align-items: center; gap: 12px;
+			}
+			.wa-avatar {
+				width: 40px; height: 40px; border-radius: 50%;
+				background: #d7f5e3; color: var(--wa-deep);
+				display: grid; place-items: center; font-family: "Space Grotesk", sans-serif; font-weight: 700;
+			}
+			.wa-title { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 0.98rem; }
+			.wa-sub { font-size: 0.72rem; opacity: 0.85; }
+			.wa-body {
+				flex: 1; padding: 18px 14px; display: flex; flex-direction: column; gap: 10px;
+				overflow: hidden;
+			}
+			.chat {
+				max-width: 82%; padding: 9px 13px; border-radius: 12px; font-size: 0.9rem; line-height: 1.45;
+				box-shadow: 0 1px 1px rgba(0,0,0,0.12);
+				opacity: 0; transform: translateY(8px); animation: pop 0.4s var(--ease) forwards;
+			}
+			.chat .time { display: block; font-size: 0.62rem; color: rgba(0,0,0,0.4); text-align: right; margin-top: 3px; }
+			.chat.in { background: #fff; align-self: flex-start; border-top-left-radius: 3px; color: #111; }
+			.chat.out { background: #d9fdd3; align-self: flex-end; border-top-right-radius: 3px; color: #111; }
+			.chat.out .time { color: rgba(7,94,84,0.55); }
+			.chat .line-text { display: block; }
+			.chat .linkchip {
+				display: inline-flex; align-items: center; gap: 7px; margin-top: 8px;
+				background: #e7f7ee; color: var(--wa-deep); border: 1px solid #bfe6cd;
+				border-radius: 9px; padding: 8px 11px; font-size: 0.82rem; font-weight: 600;
+			}
+			.chat .files { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+			.chat .filechip {
+				display: flex; align-items: center; gap: 8px;
+				background: rgba(0,0,0,0.045); border-radius: 8px; padding: 7px 9px; font-size: 0.8rem; color: #1c2a20;
+			}
+			.chat .filechip .fi {
+				background: var(--wa-deep); color: #fff; font-size: 0.58rem; font-weight: 700;
+				padding: 3px 5px; border-radius: 4px; font-family: "Space Grotesk", sans-serif; letter-spacing: 0.04em;
+			}
+			.typing {
+				align-self: flex-start; background: #fff; border-radius: 12px; border-top-left-radius: 3px;
+				padding: 12px 14px; display: inline-flex; gap: 4px;
+				opacity: 0; animation: pop 0.4s var(--ease) forwards;
+			}
+			.typing i { width: 7px; height: 7px; border-radius: 50%; background: #9aa0a6; display: inline-block; animation: blink 1.2s infinite; }
+			.typing i:nth-child(2) { animation-delay: 0.2s; }
+			.typing i:nth-child(3) { animation-delay: 0.4s; }
+			.wa-inputbar {
+				background: #f0f0f0; padding: 10px 14px; display: flex; align-items: center; gap: 10px;
+				font-size: 0.85rem; color: #8a8a8a;
+			}
+			.wa-inputbar .pill { flex: 1; background: #fff; border-radius: 100px; padding: 9px 14px; }
+			.wa-inputbar .send { width: 36px; height: 36px; border-radius: 50%; background: var(--wa-deep); color: #fff; display: grid; place-items: center; }
+
+			/* Sections */
+			section { padding: clamp(64px, 9vw, 120px) 0; }
+			.section-head { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: end; margin-bottom: 60px; }
+			.section-head .index {
+				font-family: "Space Grotesk", sans-serif; font-size: 0.82rem; letter-spacing: 0.2em;
+				color: var(--wa-deep); text-transform: uppercase; margin-bottom: 18px;
+			}
+			.section-title { font-size: clamp(2rem, 4vw, 3.4rem); max-width: 18ch; }
+			.section-intro { color: var(--ink-soft); font-size: 1.06rem; max-width: 52ch; }
+
+			/* How it works */
+			.how { background: var(--bg-deep); }
+			.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+			.step { background: var(--surface); padding: 32px 26px; }
+			.step .s-num {
+				font-family: "Space Grotesk", sans-serif; font-size: 2.4rem; font-weight: 600;
+				color: var(--wa); letter-spacing: -0.03em; line-height: 1; display: block; margin-bottom: 16px;
+			}
+			.step h3 { font-size: 1.2rem; margin-bottom: 8px; }
+			.step p { color: var(--muted); margin: 0; font-size: 0.94rem; }
+
+			/* Capabilities */
+			.caps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+			.cap { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 30px 28px; transition: background 0.3s var(--ease); }
+			.cap:hover { background: var(--surface); }
+			.cap .ic {
+				width: 40px; height: 40px; border-radius: 10px; background: var(--wa-bg); color: var(--wa-deep);
+				display: grid; place-items: center; font-family: "Space Grotesk", sans-serif; font-weight: 700; margin-bottom: 16px;
+			}
+			.cap h3 { font-size: 1.12rem; margin-bottom: 6px; }
+			.cap p { color: var(--muted); margin: 0; font-size: 0.92rem; }
+
+			/* Why firms (dark) */
+			.why { background: var(--ink); color: var(--bg); }
+			.why .section-title { color: var(--bg); }
+			.why .index { color: var(--wa); }
+			.why .section-intro { color: rgba(244,241,234,0.7); }
+			.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(244,241,234,0.15); border: 1px solid rgba(244,241,234,0.15); border-radius: var(--radius); overflow: hidden; }
+			.why-item { background: var(--ink); padding: 32px; }
+			.why-item h3 { color: var(--bg); font-size: 1.25rem; margin-bottom: 10px; }
+			.why-item p { color: rgba(244,241,234,0.7); margin: 0; font-size: 0.95rem; }
+			.why-item .wnum { font-family: "Space Grotesk", sans-serif; color: var(--wa); font-size: 0.82rem; letter-spacing: 0.18em; }
+
+			/* Channels band */
+			.channels { background: var(--wa-bg); }
+			.channels-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+			.channel {
+				background: var(--surface); border: 1px solid #cfe7d8; border-radius: var(--radius);
+				padding: 38px; display: flex; gap: 22px; align-items: flex-start;
+			}
+			.channel .badge {
+				flex: none; width: 56px; height: 56px; border-radius: 14px;
+				display: grid; place-items: center; background: #fff; border: 1px solid var(--line);
+			}
+			.channel .badge img { width: 34px; height: 34px; object-fit: contain; display: block; }
+			.channel h3 { font-size: 1.3rem; margin-bottom: 6px; }
+			.channel p { color: var(--muted); margin: 0; font-size: 0.96rem; }
+
+			/* Example questions */
+			.examples { display: flex; flex-wrap: wrap; gap: 14px; }
+			.q-bubble {
+				background: var(--surface); border: 1px solid var(--line); border-radius: 16px; border-bottom-left-radius: 4px;
+				padding: 14px 20px; font-size: 1rem; color: var(--ink-soft); max-width: 100%;
+				box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+			}
+
+			/* FAQ */
+			.faq { border-top: 1px solid var(--line); }
+			.faq details { border-bottom: 1px solid var(--line); padding: 8px 0; }
+			.faq summary {
+				list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+				padding: 24px 0; font-family: "Space Grotesk", sans-serif; font-size: clamp(1.05rem, 1.7vw, 1.35rem); font-weight: 500;
+			}
+			.faq summary::-webkit-details-marker { display: none; }
+			.faq summary .icon {
+				flex: none; width: 32px; height: 32px; border: 1px solid var(--line-strong); border-radius: 50%;
+				display: grid; place-items: center; transition: transform 0.35s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
+			}
+			.faq details[open] summary .icon { transform: rotate(45deg); background: var(--wa-deep); color: #fff; border-color: var(--wa-deep); }
+			.faq summary:hover { color: var(--wa-deep); }
+			.faq .answer { color: var(--muted); padding: 0 0 26px; max-width: 70ch; }
+			.faq details[open] .answer { animation: faq-open 0.45s var(--ease); }
+
+			/* CTA */
+			.cta { background: var(--wa-deep); color: #fff; text-align: center; }
+			.cta h2 { color: #fff; font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 18px; max-width: 20ch; margin-left: auto; margin-right: auto; }
+			.cta p { color: rgba(255,255,255,0.85); font-size: 1.08rem; margin: 0 auto 30px; max-width: 50ch; }
+			.cta .btn-wa { background: #fff; color: var(--wa-deep); border-color: #fff; }
+			.cta .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.5); }
+			.cta .btn-ghost:hover { background: #fff; color: var(--wa-deep); }
+			.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+			.cta .disclaimer { margin-top: 28px; font-size: 0.84rem; color: rgba(255,255,255,0.7); }
+
+			/* Footer */
+			footer { background: var(--bg-deep); border-top: 1px solid var(--line); padding: 56px 0 40px; }
+			.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: center; }
+			.footer-inner .brand .mark { font-size: 1.1rem; }
+			.footer-links { display: flex; flex-wrap: wrap; gap: 22px; font-size: 0.92rem; color: var(--muted); }
+			.footer-links a:hover { color: var(--wa-deep); }
+			.footer-note { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.84rem; }
+
+			/* Reveal */
+			.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+			.reveal.is-in { opacity: 1; transform: none; }
+
+			@keyframes pop { to { opacity: 1; transform: none; } }
+			@keyframes blink { 0%, 60%, 100% { opacity: 0.3; } 30% { opacity: 1; } }
+			@keyframes phone-in {
+				from { opacity: 0; transform: translateX(70px) rotate(5deg) scale(0.94); }
+				to { opacity: 1; transform: none; }
+			}
+			@keyframes faq-open {
+				from { opacity: 0; transform: translateY(-8px); }
+				to { opacity: 1; transform: none; }
+			}
+
+			@media (max-width: 980px) {
+				.hero-inner { grid-template-columns: 1fr; gap: 44px; }
+				.section-head { grid-template-columns: 1fr; gap: 16px; }
+				.steps { grid-template-columns: 1fr 1fr; }
+				.caps { grid-template-columns: 1fr; }
+				.why-grid { grid-template-columns: 1fr; }
+				.channels-inner { grid-template-columns: 1fr; }
+			}
+			@media (max-width: 720px) {
+				.container { width: min(100% - 32px, var(--container)); }
+				.nav-back { display: none; }
+				.steps { grid-template-columns: 1fr; }
+			}
+			@media (prefers-reduced-motion: reduce) {
+				html { scroll-behavior: auto; }
+				.reveal { opacity: 1; transform: none; transition: none; }
+				.phone { animation: none; }
+				.chat, .typing { opacity: 1; transform: none; animation: none; }
+				.typing i { animation: none; opacity: 0.5; }
+				* { transition: none !important; }
+			}
+		</style>
+	</head>
+	<body>
+		<header class="site-header" id="top">
+			<nav class="nav container">
+				<div class="brand">
+					<span class="mark">Law<span class="ls-accent">sec</span></span>
+					<span class="by" data-i18n="l.by">by <a href="index.html">Epistemic</a></span>
+				</div>
+				<div class="nav-actions">
+					<a class="nav-back" href="index.html">← Epistemic</a>
+					<button class="lang-toggle" type="button" aria-label="Language / Sprache">
+						<span data-lang="en">EN</span>
+						<span data-lang="de">DE</span>
+					</button>
+					<a class="btn btn-wa" href="#demo" data-i18n="l.demo">Book a demo</a>
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<!-- HERO -->
+			<section class="hero">
+				<div class="container hero-inner">
+					<div>
+						<p class="eyebrow reveal" data-i18n="l.hero.eyebrow">WhatsApp &amp; email · AI law secretary</p>
+						<h1 class="reveal" data-i18n="l.hero.h1">Your AI law secretary, on <span class="wa-accent">WhatsApp</span>.</h1>
+						<p class="hero-lead reveal" data-i18n="l.hero.lead">
+							Lawsec keeps your clients updated on their case status, answers their questions, captures
+							intake, and escalates the complex matters to you — 24/7, in your client's language, on the
+							channels they already use.
+						</p>
+						<div class="hero-cta reveal">
+							<a class="btn btn-wa" href="#demo" data-i18n="l.hero.cta1">Book a demo <span class="arrow">→</span></a>
+							<a class="btn btn-ghost" href="#how" data-i18n="l.hero.cta2">See how it works</a>
+						</div>
+						<div class="hero-meta reveal">
+							<span data-i18n="l.hero.m1"><span class="tick">✓</span> Live case updates</span>
+							<span data-i18n="l.hero.m2"><span class="tick">✓</span> WhatsApp + email</span>
+							<span data-i18n="l.hero.m3"><span class="tick">✓</span> Human handoff</span>
+						</div>
+					</div>
+
+					<!-- Animated phone -->
+					<div class="phone" aria-label="Example WhatsApp conversation with Lawsec">
+						<div class="phone-screen">
+							<div class="wa-topbar">
+								<div class="wa-avatar">LS</div>
+								<div>
+									<div class="wa-title">Lawsec</div>
+									<div class="wa-sub" data-i18n="l.phone.sub">online · law secretary</div>
+								</div>
+							</div>
+							<div class="wa-body" id="chat-body"></div>
+							<div class="wa-inputbar">
+								<div class="pill" data-i18n="l.phone.input">Type a message…</div>
+								<div class="send">➤</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- HOW IT WORKS -->
+			<section id="how" class="how">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="l.how.index">01 — How it works</p>
+							<h2 class="section-title" data-i18n="l.how.title">From first message to booked consultation.</h2>
+						</div>
+						<p class="section-intro" data-i18n="l.how.intro">
+							Lawsec sits on the channels your clients already use, understands what they need, and only
+							pulls you in when it actually matters.
+						</p>
+					</div>
+					<div class="steps reveal">
+						<div class="step">
+							<span class="s-num">01</span>
+							<h3 data-i18n="l.how.1h">Client reaches out</h3>
+							<p data-i18n="l.how.1p">A prospect or client messages your firm on WhatsApp or email, any time of day.</p>
+						</div>
+						<div class="step">
+							<span class="s-num">02</span>
+							<h3 data-i18n="l.how.2h">Shares the latest status</h3>
+							<p data-i18n="l.how.2p">It replies instantly with the current status of their matter — next dates, filings, and what's pending — grounded in your firm's data.</p>
+						</div>
+						<div class="step">
+							<span class="s-num">03</span>
+							<h3 data-i18n="l.how.3h">Captures &amp; books</h3>
+							<p data-i18n="l.how.3p">It collects any new details, qualifies new matters, and books follow-ups straight into your calendar.</p>
+						</div>
+						<div class="step">
+							<span class="s-num">04</span>
+							<h3 data-i18n="l.how.4h">Escalates to you</h3>
+							<p data-i18n="l.how.4p">Anything complex or sensitive is handed to the right person with a clean, structured summary.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CAPABILITIES -->
+			<section id="capabilities">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="l.cap.index">02 — Capabilities</p>
+							<h2 class="section-title" data-i18n="l.cap.title">A secretary that never clocks out.</h2>
+						</div>
+						<p class="section-intro" data-i18n="l.cap.intro">
+							Everything a great front-desk hire does on the routine work — instantly, consistently, and at any hour.
+						</p>
+					</div>
+					<div class="caps reveal">
+						<div class="cap"><div class="ic">24</div><h3 data-i18n="l.cap.1h">24/7 client intake</h3><p data-i18n="l.cap.1p">Capture every inquiry the moment it arrives — no missed calls, no after-hours gaps.</p></div>
+						<div class="cap"><div class="ic">?</div><h3 data-i18n="l.cap.2h">Instant FAQ answers</h3><p data-i18n="l.cap.2p">Fees, process, timelines, documents needed — answered immediately and accurately.</p></div>
+						<div class="cap"><div class="ic">↻</div><h3 data-i18n="l.cap.3h">Live case status</h3><p data-i18n="l.cap.3p">Gives clients the current status of their matter on demand, so your team stops repeating updates.</p></div>
+						<div class="cap"><div class="ic">📅</div><h3 data-i18n="l.cap.4h">Appointment scheduling</h3><p data-i18n="l.cap.4p">Books consultations directly into your calendar and sends confirmations.</p></div>
+						<div class="cap"><div class="ic">≡</div><h3 data-i18n="l.cap.5h">Matter &amp; detail capture</h3><p data-i18n="l.cap.5p">Collects names, contacts, and case details in a clean, structured format.</p></div>
+						<div class="cap"><div class="ic">文</div><h3 data-i18n="l.cap.6h">Multilingual replies</h3><p data-i18n="l.cap.6p">Responds in your client's language so nobody is turned away by a barrier.</p></div>
+						<div class="cap"><div class="ic">⇄</div><h3 data-i18n="l.cap.7h">WhatsApp + email</h3><p data-i18n="l.cap.7p">One assistant across both channels, with consistent answers everywhere.</p></div>
+						<div class="cap"><div class="ic">🔒</div><h3 data-i18n="l.cap.8h">Confidential audit log</h3><p data-i18n="l.cap.8p">Every conversation logged and traceable for compliance and review.</p></div>
+						<div class="cap"><div class="ic">⤴</div><h3 data-i18n="l.cap.9h">Human-handoff guardrails</h3><p data-i18n="l.cap.9p">Knows its limits and escalates sensitive matters to a person, with context.</p></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- WHY FIRMS -->
+			<section class="why">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="l.why.index">03 — Why firms use it</p>
+							<h2 class="section-title" data-i18n="l.why.title">Win the clients you're currently missing.</h2>
+						</div>
+						<p class="section-intro" data-i18n="l.why.intro">
+							Most firms lose work simply because nobody answered fast enough. Lawsec closes that gap.
+						</p>
+					</div>
+					<div class="why-grid reveal">
+						<div class="why-item"><span class="wnum">01</span><h3 data-i18n="l.why.1h">Never miss a client</h3><p data-i18n="l.why.1p">Every inquiry gets an instant, professional response — so leads don't drift to the firm that replied first.</p></div>
+						<div class="why-item"><span class="wnum">02</span><h3 data-i18n="l.why.2h">After-hours coverage</h3><p data-i18n="l.why.2p">Evenings, weekends, holidays — Lawsec is on duty when your office isn't.</p></div>
+						<div class="why-item"><span class="wnum">03</span><h3 data-i18n="l.why.3h">Consistent, professional tone</h3><p data-i18n="l.why.3p">Every client gets the same accurate, courteous answer, on-brand for your firm.</p></div>
+						<div class="why-item"><span class="wnum">04</span><h3 data-i18n="l.why.4h">No more status-chasing</h3><p data-i18n="l.why.4p">Clients stop calling and emailing for updates — Lawsec handles it, so lawyers get back to billable work instead of repeating themselves.</p></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CHANNELS -->
+			<section class="channels">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="l.ch.index">04 — Channels</p>
+							<h2 class="section-title" data-i18n="l.ch.title">Where your clients already are.</h2>
+						</div>
+						<p class="section-intro" data-i18n="l.ch.intro">
+							No new apps for clients to download. Lawsec meets them on the channels they use every day.
+						</p>
+					</div>
+					<div class="channels-inner reveal">
+						<div class="channel wa">
+							<div class="badge"><img src="assets/whatsapp.png" alt="WhatsApp"></div>
+							<div>
+								<h3 data-i18n="l.ch.1h">WhatsApp</h3>
+								<p data-i18n="l.ch.1p">Real-time conversations where clients are most comfortable — quick questions, intake, and booking, all in chat.</p>
+							</div>
+						</div>
+						<div class="channel mail">
+							<div class="badge"><img src="assets/mail.webp" alt="E-Mail"></div>
+							<div>
+								<h3 data-i18n="l.ch.2h">Email</h3>
+								<p data-i18n="l.ch.2p">Longer inquiries handled with the same intelligence — drafted, structured replies and clean follow-ups.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- COMPLIANCE -->
+			<section id="compliance">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="l.comp.index">Compliance</p>
+							<h2 class="section-title" data-i18n="l.comp.title">Built for German data protection.</h2>
+						</div>
+						<p class="section-intro" data-i18n="l.comp.intro">Designed for German firms — GDPR-compliant, hosted in Germany, and built on EU-based AI models.</p>
+					</div>
+					<div class="caps reveal">
+						<div class="cap"><div class="ic">§</div><h3 data-i18n="l.comp.1h">GDPR-compliant</h3><p data-i18n="l.comp.1p">Built to meet the GDPR/DSGVO from the ground up.</p></div>
+						<div class="cap"><div class="ic">📑</div><h3 data-i18n="l.comp.2h">DPA available</h3><p data-i18n="l.comp.2p">We sign a Data Processing Agreement (DPA/AVV) with every firm.</p></div>
+						<div class="cap"><div class="ic">📋</div><h3 data-i18n="l.comp.3h">DPIA support</h3><p data-i18n="l.comp.3p">We support your Data Protection Impact Assessment (DPIA/DSFA) with documentation.</p></div>
+						<div class="cap"><div class="ic">🇩🇪</div><h3 data-i18n="l.comp.4h">Hosted in Germany</h3><p data-i18n="l.comp.4p">Infrastructure hosted in Germany and the EU.</p></div>
+						<div class="cap"><div class="ic">🇪🇺</div><h3 data-i18n="l.comp.5h">EU-based AI models</h3><p data-i18n="l.comp.5p">Powered by EU-based AI models — your data stays in Europe.</p></div>
+						<div class="cap"><div class="ic">🔒</div><h3 data-i18n="l.comp.6h">Confidential by design</h3><p data-i18n="l.comp.6p">Encrypted, access-controlled, and fully audit-logged.</p></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- EXAMPLES -->
+			<section id="examples" style="background: var(--bg-deep);">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="l.ex.index">05 — What Lawsec can answer</p>
+							<h2 class="section-title" data-i18n="l.ex.title">The questions clients actually ask.</h2>
+						</div>
+						<p class="section-intro" data-i18n="l.ex.intro">
+							Lawsec handles the routine, repetitive questions instantly — and escalates the rest.
+						</p>
+					</div>
+					<div class="examples reveal">
+						<div class="q-bubble" data-i18n="l.ex.q1">"Any update on my case?"</div>
+						<div class="q-bubble" data-i18n="l.ex.q2">"Has the court responded to our filing yet?"</div>
+						<div class="q-bubble" data-i18n="l.ex.q3">"When is my next hearing date?"</div>
+						<div class="q-bubble" data-i18n="l.ex.q4">"What's the status of my application?"</div>
+						<div class="q-bubble" data-i18n="l.ex.q5">"What documents do I still need to send?"</div>
+						<div class="q-bubble" data-i18n="l.ex.q6">"How long until the next step?"</div>
+						<div class="q-bubble" data-i18n="l.ex.q7">"Can someone call me back today?"</div>
+						<div class="q-bubble" data-i18n="l.ex.q8">"What were the outcomes from last week?"</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- FAQ -->
+			<section id="faq">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="l.faq.index">06 — FAQ</p>
+							<h2 class="section-title" data-i18n="l.faq.title">Good questions.</h2>
+						</div>
+						<p class="section-intro" data-i18n="l.faq.intro">
+							The things law firms ask us most before getting started.
+						</p>
+					</div>
+					<div class="faq reveal">
+						<details>
+							<summary data-i18n="l.faq.q1">Is client data kept confidential and secure? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="l.faq.a1">Yes. Conversations are handled with confidentiality in mind, access is restricted, and every interaction is logged for traceability. We configure data handling and retention to match your firm's obligations.</p>
+						</details>
+						<details>
+							<summary data-i18n="l.faq.q2">Does Lawsec give legal advice? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="l.faq.a2">No. Lawsec acts as a secretary — it answers informational and procedural questions, captures intake, and schedules. Anything requiring legal judgment is escalated to a qualified person at your firm, with clear disclaimers to clients.</p>
+						</details>
+						<details>
+							<summary data-i18n="l.faq.q3">How long does setup take? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="l.faq.a3">Most firms are live within a couple of weeks. We configure Lawsec with your firm's information, tone, FAQs, and booking flow, then test thoroughly before going live.</p>
+						</details>
+						<details>
+							<summary data-i18n="l.faq.q4">What languages does it support? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="l.faq.a4">Lawsec can converse in multiple languages and reply in your client's language automatically, so you can serve a broader client base without extra staff.</p>
+						</details>
+						<details>
+							<summary data-i18n="l.faq.q5">How is it priced? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="l.faq.a5">Pricing is based on your firm's volume and channels. Book a demo and we'll put together a clear, transparent plan — no surprises.</p>
+						</details>
+						<details>
+							<summary data-i18n="l.faq.q6">What happens with complex matters? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="l.faq.a6">Lawsec recognizes when something is sensitive or out of scope and hands it to the right person at your firm with a structured summary, so nothing falls through the cracks.</p>
+						</details>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA -->
+			<section id="demo" class="cta">
+				<div class="container">
+					<h2 data-i18n="l.cta.h2">Stop losing clients to a missed message.</h2>
+					<p data-i18n="l.cta.p">See Lawsec answer, qualify, and book in a 30-minute demo tailored to your firm.</p>
+					<div class="cta-actions">
+						<a class="btn btn-wa" href="mailto:contact@epistemic.llc?subject=Lawsec%20demo" data-i18n="l.cta.b1">Book a demo <span class="arrow">→</span></a>
+						<a class="btn btn-ghost" href="index.html" data-i18n="l.cta.b2">Back to Epistemic</a>
+					</div>
+					<p class="disclaimer" data-i18n="l.cta.disc">Lawsec is a product of Epistemic LLC. It provides administrative assistance, not legal advice.</p>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="container">
+				<div class="footer-inner">
+					<div class="brand">
+						<span class="mark">Law<span class="ls-accent" style="color:var(--wa-deep);">sec</span></span>
+						<span class="by" data-i18n="l.foot.by">by <a href="index.html" style="border-bottom:1px solid var(--line-strong);">Epistemic</a></span>
+					</div>
+					<div class="footer-links">
+						<a href="index.html" data-i18n="l.foot.l1">Epistemic home</a>
+						<a href="#how" data-i18n="l.foot.l2">How it works</a>
+						<a href="#capabilities" data-i18n="l.foot.l3">Capabilities</a>
+						<a href="#demo" data-i18n="l.foot.l4">Book a demo</a>
+						<a href="privacy.html" data-i18n="foot.lawsecpriv">Lawsec Privacy</a>
+						<a href="terms.html" data-i18n="l.foot.l6">Terms</a>
+						<a href="impressum.html">Impressum</a>
+						<a href="datenschutz.html" data-i18n="foot.ds">Privacy (Website)</a>
+					</div>
+				</div>
+				<p class="footer-note" data-i18n="l.foot.note">© <span id="year">2026</span> Epistemic LLC · Lawsec is a product of Epistemic LLC · 30 N Gould St, STE R, Sheridan, WY 82801, USA</p>
+			</div>
+		</footer>
+
+		<script src="assets/i18n.js"></script>
+		<script>
+			// Sticky header
+			const header = document.querySelector(".site-header");
+			const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 8);
+			onScroll();
+			window.addEventListener("scroll", onScroll, { passive: true });
+
+			// Year (re-applied after language switches recreate the span)
+			const setYear = () => { const y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear(); };
+			setYear();
+			document.addEventListener("langchange", setYear);
+
+			const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+			// Scroll reveal
+			const reveals = document.querySelectorAll(".reveal");
+			if (prefersReduced || !("IntersectionObserver" in window)) {
+				reveals.forEach((el) => el.classList.add("is-in"));
+			} else {
+				const io = new IntersectionObserver((entries) => {
+					entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+				}, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+				reveals.forEach((el) => io.observe(el));
+			}
+
+			// Animated WhatsApp conversation
+			const chatBody = document.getElementById("chat-body");
+			const scripts = {
+				en: [
+					{ side: "out", text: "Hi Maria 👋 There's an update on your case — the court needs two documents before your hearing.", t: "09:40" },
+					{ side: "out", text: "You can upload them securely here:", link: "Secure upload link", t: "09:40" },
+					{ side: "in", files: ["ID_Maria.pdf", "Proof_of_address.pdf"], t: "09:42" },
+					{ side: "out", text: "Got them — both verified and filed with the court. ✅", t: "09:42" },
+					{ side: "out", text: "Everything's in place. Your hearing is confirmed for March 14 at 10:00. I'll remind you the day before. 🔔", t: "09:43" }
+				],
+				de: [
+					{ side: "out", text: "Hallo Maria 👋 Es gibt ein Update zu Ihrem Fall — das Gericht benötigt vor Ihrem Termin zwei Unterlagen.", t: "09:40" },
+					{ side: "out", text: "Sie können sie hier sicher hochladen:", link: "Sicherer Upload-Link", t: "09:40" },
+					{ side: "in", files: ["Ausweis_Maria.pdf", "Meldebescheinigung.pdf"], t: "09:42" },
+					{ side: "out", text: "Erhalten — beide geprüft und beim Gericht eingereicht. ✅", t: "09:42" },
+					{ side: "out", text: "Alles ist vorbereitet. Ihr Termin ist für den 14. März um 10:00 Uhr bestätigt. Ich erinnere Sie am Tag davor. 🔔", t: "09:43" }
+				]
+			};
+			function curScript() { return scripts[(window.EpiI18n && window.EpiI18n.lang) || "en"] || scripts.en; }
+
+			function bubbleHTML(item) {
+				let h = "";
+				if (item.text) h += '<span class="line-text">' + item.text + "</span>";
+				if (item.link) h += '<a class="linkchip" href="#" onclick="return false">🔗 ' + item.link + "</a>";
+				if (item.files) {
+					h += '<span class="files">' + item.files.map(function (f) {
+						return '<span class="filechip"><span class="fi">PDF</span><span>' + f + "</span></span>";
+					}).join("") + "</span>";
+				}
+				h += '<span class="time">' + item.t + "</span>";
+				return h;
+			}
+
+			function addBubble(item) {
+				const b = document.createElement("div");
+				b.className = "chat " + item.side;
+				b.innerHTML = bubbleHTML(item);
+				chatBody.appendChild(b);
+				chatBody.scrollTop = chatBody.scrollHeight;
+			}
+
+			function addTyping() {
+				const t = document.createElement("div");
+				t.className = "typing";
+				t.innerHTML = "<i></i><i></i><i></i>";
+				chatBody.appendChild(t);
+				chatBody.scrollTop = chatBody.scrollHeight;
+				return t;
+			}
+
+			// gen cancels any in-flight timers when the conversation restarts (e.g. on language switch)
+			let gen = 0;
+			let started = false;
+
+			function play() {
+				gen += 1;
+				const myGen = gen;
+				chatBody.innerHTML = "";
+				const seq = curScript();
+				if (prefersReduced) { seq.forEach(addBubble); return; }
+				let i = 0;
+				const run = () => {
+					if (myGen !== gen) return;
+					if (i >= seq.length) {
+						setTimeout(() => { if (myGen === gen) play(); }, 4500);
+						return;
+					}
+					const item = seq[i];
+					if (item.side === "out") {
+						const typing = addTyping();
+						setTimeout(() => {
+							if (myGen !== gen) { typing.remove(); return; }
+							typing.remove();
+							addBubble(item);
+							i += 1;
+							setTimeout(run, 900);
+						}, 1100);
+					} else {
+						addBubble(item);
+						i += 1;
+						setTimeout(run, 900);
+					}
+				};
+				run();
+			}
+
+			function startChat() { if (!started) { started = true; play(); } }
+
+			// Start when the phone scrolls into view (or immediately as a fallback)
+			const phone = document.querySelector(".phone");
+			if (!prefersReduced && "IntersectionObserver" in window) {
+				const pObs = new IntersectionObserver((entries) => {
+					entries.forEach((e) => { if (e.isIntersecting) { startChat(); pObs.disconnect(); } });
+				}, { threshold: 0.3 });
+				pObs.observe(phone);
+			} else {
+				startChat();
+			}
+
+			// Replay in the new language when the visitor toggles EN/DE
+			document.addEventListener("langchange", function () { if (started) play(); });
+		</script>
+	</body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Datenschutzerklärung (Website) | Epistemic LLC</title>
+		<meta name="description" content="Privacy policy for the Epistemic LLC website (GDPR/DSGVO). The Lawsec product privacy policy is separate.">
+		<link rel="icon" href="assets/company-logo.png" type="image/png">
+			<link rel="stylesheet" href="assets/fonts.css">
+		<style>
+			:root {
+				--bg: #f4f1ea;
+				--bg-deep: #ebe6db;
+				--surface: #ffffff;
+				--ink: #11100e;
+				--ink-soft: #2c2a26;
+				--muted: #6a655c;
+				--line: #ddd6c8;
+				--line-strong: #c7bfae;
+				--accent-warm: #c5572a;
+				--container: 820px;
+				--ease: cubic-bezier(0.22, 1, 0.36, 1);
+			}
+			* { box-sizing: border-box; }
+			body {
+				margin: 0;
+				font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+				background: var(--bg);
+				color: var(--ink-soft);
+				line-height: 1.7;
+				-webkit-font-smoothing: antialiased;
+			}
+			a { color: inherit; text-decoration: none; }
+			.container { width: min(100% - 40px, var(--container)); margin: 0 auto; }
+			h1, h2, h3 { font-family: "Space Grotesk", "Inter", sans-serif; color: var(--ink); letter-spacing: -0.02em; }
+
+			.site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 20; }
+			.nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+			.logo { display: inline-flex; align-items: center; gap: 10px; font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.18rem; color: var(--ink); }
+			.nav-right { display: inline-flex; align-items: center; gap: 12px; }
+			.nav-back { font-size: 0.86rem; color: var(--muted); }
+			.nav-back:hover { color: var(--ink); }
+			.lang-toggle {
+				display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--line-strong);
+				border-radius: 100px; padding: 3px; background: transparent; cursor: pointer; font-family: "Space Grotesk", sans-serif;
+			}
+			.lang-toggle span {
+				font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 100px;
+				color: var(--muted); transition: background 0.25s var(--ease), color 0.25s var(--ease);
+			}
+			.lang-toggle span.is-active { background: var(--ink); color: var(--bg); }
+
+			.doc { padding: clamp(40px, 7vw, 80px) 0 80px; }
+			.eyebrow { font-family: "Space Grotesk", sans-serif; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.28em; color: var(--accent-warm); margin: 0 0 16px; }
+			h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 10px; }
+			.sub { color: var(--muted); font-size: 0.96rem; margin: 0 0 6px; max-width: 64ch; }
+			.eff { color: var(--muted); font-size: 0.92rem; margin: 0 0 8px; }
+			.callout {
+				margin: 20px 0 0; padding: 14px 18px; border: 1px solid var(--line-strong);
+				border-left: 3px solid var(--accent-warm); border-radius: 8px; background: var(--surface); font-size: 0.95rem;
+			}
+			.callout a { color: var(--accent-warm); border-bottom: 1px solid transparent; }
+			.callout a:hover { border-color: var(--accent-warm); }
+			h2 { font-size: 1.2rem; margin: 40px 0 12px; }
+			p { margin: 0 0 12px; }
+			.doc a[href^="mailto"], .doc a[href^="http"] { color: var(--accent-warm); border-bottom: 1px solid transparent; }
+			.doc a[href^="mailto"]:hover, .doc a[href^="http"]:hover { border-color: var(--accent-warm); }
+
+			footer { background: var(--bg-deep); border-top: 1px solid var(--line); padding: 36px 0; color: var(--muted); font-size: 0.88rem; }
+			.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
+			.footer-inner a:hover { color: var(--ink); }
+			@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+		</style>
+	</head>
+	<body>
+		<header class="site-header">
+			<nav class="nav container">
+				<a class="logo" href="index.html">Epistemic</a>
+				<div class="nav-right">
+					<button class="lang-toggle" type="button" aria-label="Language / Sprache">
+						<span data-lang="en">EN</span>
+						<span data-lang="de">DE</span>
+					</button>
+					<a class="nav-back" href="index.html">← Home</a>
+				</div>
+			</nav>
+		</header>
+
+		<main class="doc">
+			<div class="container">
+				<p class="eyebrow" data-i18n="ds.eyebrow">Legal</p>
+				<h1 data-i18n="ds.h1">Privacy Policy</h1>
+				<p class="sub" data-i18n="ds.sub">This privacy policy applies to the epistemic.llc website. The privacy policy for the Lawsec product is provided on a separate page.</p>
+				<p class="eff" data-i18n="ds.eff">Last updated: June 4, 2026</p>
+				<div class="callout">
+					Looking for the <strong>Lawsec</strong> product privacy policy? See <a href="privacy.html">privacy.html</a>.
+				</div>
+
+				<h2 data-i18n="ds.s1h">1. Controller</h2>
+				<p data-i18n="ds.s1p">The controller for data processing on this website is Epistemic LLC, 30 N Gould St, STE R, Sheridan, WY 82801, USA, email: <a href="mailto:privacy@epistemic.llc">privacy@epistemic.llc</a>.</p>
+
+				<h2 data-i18n="ds.s2h">2. What data we process</h2>
+				<p data-i18n="ds.s2p">When you visit this website, our hosting provider processes technically necessary server log data (e.g. IP address, date and time, page accessed, browser type). This data is required to provide the website securely (Art. 6 (1) (f) GDPR).</p>
+
+				<h2 data-i18n="ds.s3h">3. Cookies</h2>
+				<p data-i18n="ds.s3p">This website uses no tracking cookies. No analytics or advertising cookies are set.</p>
+
+				<h2 data-i18n="ds.s4h">4. Third-party services</h2>
+				<p data-i18n="ds.s4p">This website loads fonts from Google Fonts and a scheduling widget from Calendly. In doing so, data (including your IP address) may be transmitted to these providers. The legal basis is Art. 6 (1) (f) GDPR. For more information, see the privacy policies of Google and Calendly.</p>
+
+				<h2 data-i18n="ds.s5h">5. Hosting</h2>
+				<p data-i18n="ds.s5p">The website is hosted by a service provider that processes data on our behalf (processing on behalf pursuant to Art. 28 GDPR).</p>
+
+				<h2 data-i18n="ds.s6h">6. Your rights</h2>
+				<p data-i18n="ds.s6p">You have the right to access, rectification, erasure, restriction of processing, data portability, and objection (Art. 15–21 GDPR). To exercise these, contact privacy@epistemic.llc.</p>
+
+				<h2 data-i18n="ds.s7h">7. Right to complain</h2>
+				<p data-i18n="ds.s7p">You have the right to lodge a complaint with a data protection supervisory authority regarding the processing of your personal data.</p>
+
+				<h2 data-i18n="ds.s8h">8. Contact</h2>
+				<p data-i18n="ds.s8p">For questions about data protection, contact us at <a href="mailto:privacy@epistemic.llc">privacy@epistemic.llc</a>.</p>
+			</div>
+		</main>
+
+		<footer>
+			<div class="container footer-inner">
+				<span data-i18n="ds.foot.note">© 2026 Epistemic LLC</span>
+				<span><a href="impressum.html">Impressum</a> · <a href="index.html">Epistemic home</a> · <a href="lawsec.html">Lawsec</a></span>
+			</div>
+		</footer>
+		<script src="assets/i18n.js"></script>
+	</body>
+</html>

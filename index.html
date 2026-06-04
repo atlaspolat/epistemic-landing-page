@@ -3,79 +3,53 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Epistemic LLC | AI agents and automation to save time</title>
-		<meta name="description" content="Epistemic LLC builds AI agents and automation for professionals and teams to save time, reduce operating cost, and keep work moving.">
+		<title>Epistemic — AI strategy, agents & automation for professionals and companies</title>
+		<meta name="description" content="Epistemic helps professionals and companies leverage AI — strategy, custom agents, workflow automation, document intelligence, RAG systems, integrations, training, and managed AI operations.">
 		<link rel="icon" href="assets/company-logo.png" type="image/png">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+			<link rel="stylesheet" href="assets/fonts.css">
 		<style>
 			:root {
-				color-scheme: dark;
-				--bg: #060708;
-				--surface: #0c1014;
-				--surface-strong: #0f151b;
-				--text: #e6edf3;
-				--muted: #a7b4c1;
-				--line: #1b2630;
-				--accent: #7fd7ff;
-				--accent-strong: #58c2ee;
-				--accent-warm: #f1c66a;
-				--glow: rgba(127, 215, 255, 0.16);
-				--shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
-				--radius: 6px;
-				--radius-small: 4px;
-				--container: 1120px;
+				--bg: #f4f1ea;
+				--bg-deep: #ebe6db;
+				--surface: #ffffff;
+				--ink: #11100e;
+				--ink-soft: #2c2a26;
+				--muted: #6a655c;
+				--line: #ddd6c8;
+				--line-strong: #c7bfae;
+				--accent: #11100e;
+				--accent-warm: #c5572a;
+				--accent-warm-soft: #f0d9cd;
+				--radius: 14px;
+				--radius-sm: 8px;
+				--container: 1220px;
+				--ease: cubic-bezier(0.22, 1, 0.36, 1);
 			}
 
-			* {
-				box-sizing: border-box;
-			}
+			* { box-sizing: border-box; }
+
+			html { scroll-behavior: smooth; }
 
 			body {
 				margin: 0;
-				font-family: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-				background: radial-gradient(1200px circle at 10% 10%, rgba(127, 215, 255, 0.06), transparent 58%),
-					radial-gradient(800px circle at 80% 0%, rgba(88, 194, 238, 0.08), transparent 60%),
-					#060708;
-				color: var(--text);
-				line-height: 1.6;
+				font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+				background: var(--bg);
+				color: var(--ink);
+				line-height: 1.65;
+				-webkit-font-smoothing: antialiased;
+				font-feature-settings: "ss01" on, "cv01" on;
 			}
 
-			.page {
-				position: relative;
-				z-index: 1;
-			}
+			img { max-width: 100%; display: block; }
 
-			.global-bg {
-				position: fixed;
-				inset: 0;
-				z-index: 0;
-				pointer-events: none;
-				overflow: hidden;
-			}
+			a { color: inherit; text-decoration: none; }
 
-			.global-bg::before {
-				content: "";
-				position: absolute;
-				inset: 0;
-				background: radial-gradient(700px circle at 20% 20%, rgba(127, 215, 255, 0.08), transparent 60%),
-					radial-gradient(900px circle at 80% 10%, rgba(88, 194, 238, 0.07), transparent 55%),
-					linear-gradient(180deg, rgba(6, 7, 8, 0.25) 0%, rgba(6, 7, 8, 0.7) 65%, rgba(6, 7, 8, 1) 100%);
-			}
-
-			html {
-				scroll-behavior: smooth;
-			}
-
-			img {
-				max-width: 100%;
-				display: block;
-			}
-
-			a {
-				color: inherit;
-				text-decoration: none;
+			h1, h2, h3, h4 {
+				font-family: "Space Grotesk", "Inter", sans-serif;
+				margin: 0;
+				font-weight: 600;
+				letter-spacing: -0.02em;
+				line-height: 1.05;
 			}
 
 			.container {
@@ -83,1116 +57,1448 @@
 				margin: 0 auto;
 			}
 
-			.site-header {
-				position: sticky;
-				top: 0;
-				z-index: 10;
-				backdrop-filter: blur(12px);
-				background: linear-gradient(180deg, rgba(6, 7, 8, 0.32), rgba(6, 7, 8, 0.12));
-				border-bottom: 1px solid rgba(27, 38, 48, 0.6);
+			.eyebrow {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.78rem;
+				text-transform: uppercase;
+				letter-spacing: 0.32em;
+				color: var(--muted);
+				margin: 0 0 22px;
+				display: inline-flex;
+				align-items: center;
+				gap: 12px;
 			}
+
+			.eyebrow::before {
+				content: "";
+				width: 28px;
+				height: 1px;
+				background: var(--accent-warm);
+			}
+
+			/* ---------- Buttons ---------- */
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+				padding: 15px 26px;
+				border-radius: 100px;
+				border: 1px solid var(--ink);
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.82rem;
+				font-weight: 500;
+				text-transform: uppercase;
+				letter-spacing: 0.12em;
+				cursor: pointer;
+				transition: transform 0.35s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+			}
+
+			.btn-primary {
+				background: var(--ink);
+				color: var(--bg);
+			}
+
+			.btn-primary:hover,
+			.btn-primary:focus-visible {
+				transform: translateY(-2px);
+				box-shadow: 0 16px 30px rgba(17, 16, 14, 0.22);
+			}
+
+			.btn-ghost {
+				background: transparent;
+				color: var(--ink);
+			}
+
+			.btn-ghost:hover,
+			.btn-ghost:focus-visible {
+				background: var(--ink);
+				color: var(--bg);
+				transform: translateY(-2px);
+			}
+
+			.btn .arrow { transition: transform 0.3s var(--ease); }
+			.btn:hover .arrow { transform: translateX(4px); }
+
+			/* ---------- Intro / cinematic opening ---------- */
+			.intro {
+				position: relative;
+				height: 100vh;
+				height: 100svh;
+				min-height: 560px;
+				display: grid;
+				place-items: center;
+				overflow: hidden;
+				background: #0a0a0b;
+			}
+			.intro-media {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				z-index: 0;
+			}
+			.intro-overlay {
+				position: absolute;
+				inset: 0;
+				z-index: 1;
+				background:
+					radial-gradient(120% 90% at 50% 32%, rgba(0,0,0,0) 42%, rgba(0,0,0,0.42) 100%),
+					linear-gradient(180deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.05) 36%, rgba(10,10,11,0.7) 100%);
+			}
+			.intro-content {
+				position: relative;
+				z-index: 2;
+				text-align: center;
+				color: #fff;
+				padding: 0 24px;
+			}
+			.intro-eyebrow {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(0.68rem, 1.4vw, 0.9rem);
+				text-transform: uppercase;
+				letter-spacing: 0.42em;
+				color: rgba(255,255,255,0.82);
+				margin: 0 0 clamp(18px, 4vh, 38px);
+				text-indent: 0.42em;
+				animation: intro-rise 1.1s var(--ease) 0.1s both;
+			}
+			.intro-name {
+				font-family: "Space Grotesk", sans-serif;
+				font-weight: 600;
+				font-size: clamp(3.2rem, 15vw, 13rem);
+				line-height: 0.9;
+				letter-spacing: -0.03em;
+				margin: 0;
+				color: #fff;
+				text-shadow: 0 6px 50px rgba(0,0,0,0.4);
+				animation: intro-rise 1.2s var(--ease) 0.24s both;
+			}
+			.scroll-cue {
+				position: absolute;
+				left: 50%;
+				bottom: 32px;
+				transform: translateX(-50%);
+				z-index: 2;
+				display: inline-flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 12px;
+				color: rgba(255,255,255,0.85);
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.7rem;
+				text-transform: uppercase;
+				letter-spacing: 0.28em;
+				animation: intro-rise 1.2s var(--ease) 0.6s both;
+			}
+			.scroll-cue .line {
+				width: 1px;
+				height: 46px;
+				background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0));
+				transform-origin: top;
+				animation: cue-pulse 2s ease-in-out infinite;
+			}
+
+			/* ---------- Header ---------- */
+			.site-header {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				z-index: 50;
+				background: rgba(244, 241, 234, 0.92);
+				backdrop-filter: blur(14px);
+				border-bottom: 1px solid var(--line);
+				transform: translateY(-110%);
+				transition: transform 0.55s var(--ease);
+				will-change: transform;
+			}
+
+			.site-header.is-visible {
+				transform: translateY(0);
+			}
+
+			/* offset anchor jumps for the fixed header */
+			section[id], header[id] { scroll-margin-top: 84px; }
 
 			.nav {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				padding: 18px 0;
 				gap: 24px;
+				padding: 16px 0;
 			}
 
 			.logo {
 				display: inline-flex;
 				align-items: center;
 				gap: 12px;
-				font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
+				font-family: "Space Grotesk", sans-serif;
 				font-weight: 600;
-				letter-spacing: 0.02em;
-				text-transform: uppercase;
+				font-size: 1.18rem;
+				letter-spacing: -0.01em;
 			}
 
-			.logo img {
-				width: 58px;
-				height: 58px;
-				object-fit: contain;
-			}
-
-			.logo-fallback {
-				display: none;
-				font-size: 0.95rem;
-			}
+			.logo img { width: 38px; height: 38px; object-fit: contain; }
 
 			.nav-links {
 				display: flex;
 				align-items: center;
-				gap: 22px;
-				color: var(--muted);
-				font-size: 0.92rem;
+				gap: 30px;
+				font-size: 0.9rem;
+				color: var(--ink-soft);
 			}
 
 			.nav-links a {
 				position: relative;
-				padding-bottom: 4px;
+				font-weight: 400;
 			}
 
 			.nav-links a::after {
 				content: "";
 				position: absolute;
 				left: 0;
-				bottom: -2px;
+				bottom: -5px;
 				width: 0;
 				height: 1px;
-				background: var(--accent);
-				transition: width 0.25s ease;
+				background: var(--accent-warm);
+				transition: width 0.3s var(--ease);
 			}
 
 			.nav-links a:hover::after,
-			.nav-links a:focus-visible::after {
-				width: 100%;
+			.nav-links a:focus-visible::after { width: 100%; }
+
+			.nav-cta { display: inline-flex; }
+
+			.nav-toggle {
+				display: none;
+				background: none;
+				border: 1px solid var(--line-strong);
+				border-radius: 100px;
+				padding: 9px 16px;
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.78rem;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				cursor: pointer;
+				color: var(--ink);
 			}
 
-			.btn {
+			.lang-toggle {
 				display: inline-flex;
 				align-items: center;
-				justify-content: center;
-				gap: 10px;
-				padding: 12px 20px;
-				border-radius: var(--radius-small);
-				border: 1px solid var(--line);
-				font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
-				font-size: 0.95rem;
-				text-transform: uppercase;
-				letter-spacing: 0.06em;
-				transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-			}
-
-			.btn-primary {
-				background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-				color: #060708;
-				border-color: transparent;
-				box-shadow: 0 12px 30px rgba(88, 194, 238, 0.25);
-			}
-
-			.btn-primary:hover,
-			.btn-primary:focus-visible {
-				transform: translateY(-1px);
-				box-shadow: 0 18px 34px rgba(88, 194, 238, 0.35);
-			}
-
-			.btn-secondary {
+				gap: 2px;
+				border: 1px solid var(--line-strong);
+				border-radius: 100px;
+				padding: 3px;
 				background: transparent;
-				color: var(--text);
+				cursor: pointer;
+				font-family: "Space Grotesk", sans-serif;
 			}
-
-			.btn-secondary:hover,
-			.btn-secondary:focus-visible {
-				border-color: var(--accent);
-				box-shadow: 0 0 0 1px rgba(127, 215, 255, 0.4);
-				transform: translateY(-1px);
+			.lang-toggle span {
+				font-size: 0.72rem;
+				font-weight: 600;
+				letter-spacing: 0.06em;
+				padding: 5px 10px;
+				border-radius: 100px;
+				color: var(--muted);
+				transition: background 0.25s var(--ease), color 0.25s var(--ease);
 			}
+			.lang-toggle span.is-active { background: var(--ink); color: var(--bg); }
 
+			/* ---------- Hero ---------- */
 			.hero {
+				padding: clamp(70px, 11vw, 150px) 0 clamp(50px, 7vw, 90px);
 				position: relative;
-				min-height: 82vh;
-				padding: 120px 0 110px;
 				overflow: hidden;
 			}
 
-			.global-grid {
+			.hero-blob {
 				position: absolute;
-				inset: -25%;
-				background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-					linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-				background-size: 60px 60px;
-				opacity: 0.18;
-				animation: grid-drift 24s linear infinite;
+				top: -10%;
+				right: -8%;
+				width: 48vw;
+				max-width: 720px;
+				aspect-ratio: 1;
+				background: radial-gradient(circle at 30% 30%, rgba(197, 87, 42, 0.16), transparent 62%),
+					radial-gradient(circle at 70% 70%, rgba(17, 16, 14, 0.06), transparent 60%);
+				filter: blur(10px);
+				border-radius: 50%;
+				z-index: 0;
+				animation: float-blob 18s ease-in-out infinite;
 			}
 
-			#hero-canvas {
-				position: absolute;
-				inset: 0;
-				width: 100%;
-				height: 100%;
-				opacity: 0.55;
+			.hero .container { position: relative; z-index: 1; }
+
+			.hero h1 {
+				font-size: clamp(2.9rem, 7.4vw, 6.4rem);
+				max-width: 16ch;
+				margin: 0 0 28px;
 			}
 
-			.hero-content {
-				position: relative;
-				z-index: 1;
-				display: grid;
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 48px;
-				align-items: center;
+			.hero h1 .ink-accent { color: var(--accent-warm); font-style: italic; font-weight: 500; }
+
+			.hero-lead {
+				font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+				color: var(--ink-soft);
+				max-width: 60ch;
+				margin: 0 0 36px;
 			}
 
-			.eyebrow {
-				font-size: 0.82rem;
+			.hero-cta {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 14px;
+				margin-bottom: 56px;
+			}
+
+			.hero-stats {
+				display: flex;
+				flex-wrap: wrap;
+				gap: clamp(28px, 6vw, 72px);
+				border-top: 1px solid var(--line);
+				padding-top: 32px;
+			}
+
+			.stat .num {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(2rem, 3.4vw, 3rem);
+				font-weight: 600;
+				letter-spacing: -0.03em;
+				display: block;
+			}
+
+			.stat .label {
+				color: var(--muted);
+				font-size: 0.92rem;
+				max-width: 22ch;
+			}
+
+			/* ---------- Marquee ---------- */
+			.marquee {
+				border-top: 1px solid var(--line);
+				border-bottom: 1px solid var(--line);
+				padding: 26px 0;
+				overflow: hidden;
+				background: var(--bg-deep);
+			}
+
+			.marquee-label {
+				text-align: center;
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.74rem;
 				text-transform: uppercase;
-				letter-spacing: 0.4em;
-				color: var(--muted);
-				margin: 0 0 16px;
-			}
-
-			h1,
-			h2,
-			h3 {
-				font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
-				margin: 0;
-			}
-
-			h1 {
-				font-size: clamp(2.6rem, 3.8vw, 4.2rem);
-				line-height: 1.05;
-				letter-spacing: -0.02em;
-			}
-
-			.subheadline {
-				font-size: 1.1rem;
-				color: var(--muted);
-				margin: 18px 0 30px;
-			}
-
-			.cta-group {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 16px;
-				margin-bottom: 26px;
-			}
-
-			.hero-tags {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 10px;
-				color: var(--muted);
-				font-size: 0.9rem;
-			}
-
-			.hero-tags span {
-				padding: 8px 12px;
-				border: 1px solid var(--line);
-				border-radius: var(--radius-small);
-				background: rgba(12, 16, 20, 0.7);
-			}
-
-			.hero-panel {
-				padding: 28px;
-				border-radius: var(--radius);
-				border: 1px solid rgba(127, 215, 255, 0.2);
-				background: linear-gradient(145deg, rgba(12, 16, 20, 0.8), rgba(15, 21, 27, 0.9));
-				box-shadow: var(--shadow);
-			}
-
-			.hero-panel h3 {
-				font-size: 1.15rem;
-				margin-bottom: 10px;
-			}
-
-			.hero-panel p {
+				letter-spacing: 0.28em;
 				color: var(--muted);
 				margin-bottom: 22px;
 			}
 
-			.panel-list {
+			.marquee-track {
+				display: flex;
+				gap: 56px;
+				width: max-content;
+				animation: scroll-x 32s linear infinite;
+			}
+
+			.marquee:hover .marquee-track { animation-play-state: paused; }
+
+			.marquee-track span {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(1.1rem, 2vw, 1.6rem);
+				font-weight: 500;
+				color: var(--ink);
+				opacity: 0.55;
+				white-space: nowrap;
+				transition: opacity 0.3s var(--ease);
+			}
+			.marquee-track span:hover { opacity: 1; }
+
+			/* ---------- Section scaffolding ---------- */
+			section { padding: clamp(72px, 10vw, 130px) 0; }
+
+			.section-head {
 				display: grid;
-				gap: 14px;
-				margin: 0;
-				padding: 0;
-				list-style: none;
+				grid-template-columns: 0.9fr 1.1fr;
+				gap: 40px;
+				align-items: end;
+				margin-bottom: 64px;
 			}
 
-			.panel-list li {
-				padding: 14px;
-				border-radius: var(--radius-small);
-				background: rgba(7, 10, 13, 0.7);
-				border: 1px solid rgba(27, 38, 48, 0.8);
-			}
-
-			section {
-				padding: 96px 0;
+			.section-head .index {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.82rem;
+				letter-spacing: 0.2em;
+				color: var(--accent-warm);
+				text-transform: uppercase;
+				margin-bottom: 18px;
 			}
 
 			.section-title {
-				font-size: clamp(1.8rem, 2.6vw, 2.6rem);
-				margin-bottom: 16px;
+				font-size: clamp(2rem, 4.2vw, 3.6rem);
+				max-width: 18ch;
 			}
 
-			.section-subtitle {
-				color: var(--muted);
-				max-width: 720px;
+			.section-intro {
+				color: var(--ink-soft);
+				font-size: 1.08rem;
+				max-width: 52ch;
 			}
 
-			.interactive-grid {
+			.divider { border: none; border-top: 1px solid var(--line); margin: 0; }
+
+			/* ---------- Services ---------- */
+			.services-grid {
 				display: grid;
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 28px;
-				margin-top: 36px;
-			}
-
-			.manual-card,
-			.ai-card {
-				padding: 28px;
-				border-radius: var(--radius);
-				background: var(--surface);
-				border: 1px solid var(--line);
-				box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
-			}
-
-			.ai-card {
-				background: linear-gradient(150deg, rgba(12, 16, 20, 0.9), rgba(15, 21, 27, 0.95));
-				border-color: rgba(127, 215, 255, 0.2);
-			}
-
-			.flow-stage {
-				position: relative;
-				margin-top: 18px;
-				height: 460px;
-				border-radius: var(--radius-small);
-				border: 1px solid rgba(127, 215, 255, 0.2);
-				background: rgba(9, 12, 16, 0.6);
-				overflow: hidden;
-			}
-
-			.flow-floor {
-				position: absolute;
-				left: 14px;
-				right: 14px;
-				bottom: 16px;
-				height: 80px;
-				border-radius: var(--radius-small);
-				border: 1px dashed rgba(127, 215, 255, 0.35);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				color: var(--muted);
-				background: rgba(12, 16, 20, 0.75);
-				z-index: 1;
-			}
-
-			.flow-task,
-			.pile-task {
-				position: absolute;
-				width: 140px;
-				z-index: 2;
-				border-radius: var(--radius-small);
-				border: 1px solid rgba(127, 215, 255, 0.2);
-				background: rgba(12, 16, 20, 0.7);
-				color: var(--text);
-				padding: 10px 12px;
-				text-align: left;
-				font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
-				text-transform: uppercase;
-				letter-spacing: 0.08em;
-				font-size: 0.78rem;
-				cursor: pointer;
-				user-select: none;
-				box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-			}
-
-			.pile-task {
-				transition: border-color 0.2s ease, transform 0.2s ease;
-			}
-
-			.pile-task:hover {
-				border-color: var(--accent);
-				z-index: 5;
-			}
-
-			.flow-status {
-				margin-top: 14px;
-				color: var(--muted);
-				font-size: 0.92rem;
-			}
-
-			.agent-catcher {
-				position: absolute;
-				right: 18px;
-				bottom: 86px;
-				display: inline-flex;
-				align-items: center;
-				gap: 10px;
-				font-size: 0.85rem;
-				color: var(--muted);
-			}
-
-			.agent-logo {
-				width: 40px;
-				height: 40px;
-				border-radius: 50%;
-				background: linear-gradient(140deg, rgba(127, 215, 255, 0.35), rgba(88, 194, 238, 0.18));
-				display: grid;
-				place-items: center;
-				font-family: "Space Grotesk", sans-serif;
-				color: var(--text);
-				border: 1px solid rgba(127, 215, 255, 0.4);
-				box-shadow: 0 0 20px rgba(88, 194, 238, 0.25);
-			}
-
-			.agent-catcher.is-active .agent-logo {
-				box-shadow: 0 0 28px rgba(127, 215, 255, 0.5);
-			}
-
-
-			.grid-2 {
-				display: grid;
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 36px;
-				margin-top: 38px;
-			}
-
-			.grid-3 {
-				display: grid;
-				grid-template-columns: repeat(3, minmax(0, 1fr));
-				gap: 24px;
-				margin-top: 32px;
-			}
-
-			.card {
-				padding: 24px;
-				border-radius: var(--radius);
-				background: var(--surface);
-				border: 1px solid var(--line);
-				box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
-			}
-
-			.card h3 {
-				margin-bottom: 10px;
-				font-size: 1.1rem;
-			}
-
-			.card p {
-				color: var(--muted);
-				margin: 0;
-			}
-
-			.list {
-				margin: 0;
-				padding: 0;
-				list-style: none;
-				display: grid;
-				gap: 14px;
-			}
-
-			.list li {
-				padding-left: 18px;
-				position: relative;
-				color: var(--muted);
-			}
-
-			.list li::before {
-				content: "";
-				position: absolute;
-				left: 0;
-				top: 10px;
-				width: 8px;
-				height: 2px;
-				background: var(--accent);
-			}
-
-			.process-steps {
-				display: grid;
-				gap: 18px;
-				margin-top: 32px;
-			}
-
-			.process-step {
-				display: grid;
-				grid-template-columns: 120px 1fr;
-				gap: 18px;
-				padding: 20px 24px;
-				border-radius: var(--radius);
-				border: 1px solid var(--line);
-				background: var(--surface-strong);
-			}
-
-			.process-step span {
-				font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
-				text-transform: uppercase;
-				letter-spacing: 0.18em;
-				font-size: 0.75rem;
-				color: var(--accent);
-			}
-
-			.cta-section {
-				padding: 110px 0;
-				background: linear-gradient(180deg, rgba(12, 16, 20, 0.85), rgba(6, 7, 8, 0.9));
+				grid-template-columns: repeat(2, 1fr);
 				border-top: 1px solid var(--line);
+				border-left: 1px solid var(--line);
+			}
+
+			.service {
+				border-right: 1px solid var(--line);
 				border-bottom: 1px solid var(--line);
+				padding: 40px 36px;
+				background: transparent;
+				transition: background 0.35s var(--ease), transform 0.35s var(--ease);
+				position: relative;
 			}
 
-			.cta-panel {
-				display: grid;
-				grid-template-columns: 1.3fr 1fr;
-				gap: 32px;
-				padding: 36px;
-				border-radius: var(--radius);
-				border: 1px solid rgba(127, 215, 255, 0.18);
-				background: rgba(12, 16, 20, 0.8);
-				box-shadow: var(--shadow);
-			}
+			.service:hover { background: var(--surface); }
 
-			.form-placeholder {
-				border: 1px dashed rgba(127, 215, 255, 0.4);
-				border-radius: var(--radius-small);
-				padding: 20px;
+			.service .s-num {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.8rem;
 				color: var(--muted);
-				font-size: 0.92rem;
+				letter-spacing: 0.18em;
 			}
 
-			footer {
-				padding: 50px 0 40px;
-				color: var(--muted);
-				font-size: 0.9rem;
+			.service h3 {
+				font-size: 1.5rem;
+				margin: 18px 0 12px;
 			}
 
-			.footer-grid {
-				display: grid;
-				grid-template-columns: 1.3fr 1fr 1fr;
-				gap: 24px;
-				border-top: 1px solid var(--line);
-				padding-top: 30px;
-			}
+			.service p { color: var(--muted); margin: 0; font-size: 0.98rem; }
 
-			.footer-nav {
-				display: grid;
+			.service .tags {
+				margin-top: 18px;
+				display: flex;
+				flex-wrap: wrap;
 				gap: 8px;
 			}
 
-			@keyframes grid-drift {
-				0% {
-					transform: translate3d(0, 0, 0);
-				}
-				100% {
-					transform: translate3d(80px, 40px, 0);
-				}
+			.tag {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.72rem;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: var(--ink-soft);
+				border: 1px solid var(--line-strong);
+				border-radius: 100px;
+				padding: 5px 12px;
 			}
 
-
-			@media (max-width: 980px) {
-				.hero-content {
-					grid-template-columns: 1fr;
-				}
-
-				.interactive-grid {
-					grid-template-columns: 1fr;
-				}
-
-				.cta-panel {
-					grid-template-columns: 1fr;
-				}
-
-				.grid-3 {
-					grid-template-columns: repeat(2, minmax(0, 1fr));
-				}
+			/* ---------- Audiences / industries ---------- */
+			.audience-wrap {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 24px;
+				margin-bottom: 56px;
 			}
 
-			@media (max-width: 780px) {
-				.container {
-					width: min(100% - 32px, var(--container));
-				}
-
-				.nav {
-					flex-direction: column;
-					align-items: flex-start;
-					gap: 14px;
-					padding: 14px 0 18px;
-				}
-
-				.nav-links {
-					flex-wrap: wrap;
-					gap: 14px;
-					font-size: 0.88rem;
-				}
-
-				.hero {
-					padding: 96px 0 84px;
-				}
-
-				.cta-group {
-					width: 100%;
-				}
-
-				.cta-group .btn {
-					flex: 1 1 160px;
-				}
-
-				.grid-2 {
-					grid-template-columns: 1fr;
-				}
-
-				.grid-3 {
-					grid-template-columns: 1fr;
-				}
-
-				.process-step {
-					grid-template-columns: 1fr;
-				}
-
-				.footer-grid {
-					grid-template-columns: 1fr;
-				}
-			}
-
-			@media (prefers-reduced-motion: reduce) {
-				html {
-					scroll-behavior: auto;
-				}
-
-				.global-grid {
-					animation: none;
-				}
-
-				.btn,
-				.btn-primary,
-				.btn-secondary {
-					transition: none;
-				}
-			}
-
-			.cookie-banner {
-				position: fixed;
-				bottom: 24px;
-				left: 50%;
-				transform: translateX(-50%);
-				width: calc(100% - 48px);
-				max-width: 600px;
-				z-index: 1000;
-				background: linear-gradient(145deg, rgba(12, 16, 20, 0.95), rgba(15, 21, 27, 0.98));
-				border: 1px solid rgba(127, 215, 255, 0.2);
+			.audience-card {
+				border: 1px solid var(--line);
 				border-radius: var(--radius);
-				box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
-				padding: 20px 24px;
-				backdrop-filter: blur(12px);
-				display: none;
+				padding: 32px;
+				background: var(--surface);
 			}
 
-			.cookie-banner.is-visible {
+			.audience-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+			.audience-card p { color: var(--muted); margin: 0; font-size: 0.96rem; }
+
+			.industry-row {
 				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
 				align-items: center;
-				justify-content: space-between;
-				gap: 20px;
 			}
 
-			.cookie-banner p {
-				margin: 0;
-				color: var(--text);
-				font-size: 0.95rem;
+			.industry-row .label {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.76rem;
+				text-transform: uppercase;
+				letter-spacing: 0.18em;
+				color: var(--muted);
+				margin-right: 8px;
 			}
 
-			.cookie-banner .btn {
-				padding: 8px 16px;
-				font-size: 0.85rem;
+			.chip {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.9rem;
+				border: 1px solid var(--line-strong);
+				border-radius: 100px;
+				padding: 9px 18px;
+				background: var(--bg-deep);
+				transition: background 0.3s var(--ease), color 0.3s var(--ease);
+			}
+			.chip:hover { background: var(--ink); color: var(--bg); }
+
+			/* ---------- Approach ---------- */
+			.approach { background: var(--ink); color: var(--bg); }
+			.approach .section-title, .approach h3 { color: var(--bg); }
+			.approach .index { color: var(--accent-warm); }
+			.approach .section-intro { color: rgba(244, 241, 234, 0.72); }
+			.approach .divider { border-color: rgba(244, 241, 234, 0.15); }
+
+			.principles {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1px;
+				background: rgba(244, 241, 234, 0.15);
+				border: 1px solid rgba(244, 241, 234, 0.15);
+				border-radius: var(--radius);
+				overflow: hidden;
+			}
+
+			.principle {
+				background: var(--ink);
+				padding: 36px;
+			}
+
+			.principle .p-num {
+				font-family: "Space Grotesk", sans-serif;
+				color: var(--accent-warm);
+				font-size: 0.82rem;
+				letter-spacing: 0.18em;
+			}
+
+			.principle h3 { font-size: 1.35rem; margin: 14px 0 10px; }
+			.principle p { color: rgba(244, 241, 234, 0.7); margin: 0; font-size: 0.96rem; }
+
+			/* ---------- Process ---------- */
+			.process-step {
+				display: grid;
+				grid-template-columns: 140px 1fr auto;
+				gap: 32px;
+				align-items: baseline;
+				padding: 38px 0;
+				border-top: 1px solid var(--line);
+				transition: padding-left 0.4s var(--ease);
+			}
+			.process-step:last-child { border-bottom: 1px solid var(--line); }
+			.process-step:hover { padding-left: 14px; }
+
+			.process-step .p-index {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(2.4rem, 5vw, 4rem);
+				font-weight: 600;
+				color: var(--line-strong);
+				letter-spacing: -0.03em;
+				line-height: 1;
+				transition: color 0.4s var(--ease);
+			}
+			.process-step:hover .p-index { color: var(--accent-warm); }
+
+			.process-step h3 { font-size: 1.7rem; margin-bottom: 8px; }
+			.process-step .p-body { color: var(--muted); max-width: 60ch; }
+			.process-step .p-tag {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.78rem;
+				text-transform: uppercase;
+				letter-spacing: 0.16em;
+				color: var(--muted);
 				white-space: nowrap;
 			}
 
-			@media (max-width: 600px) {
-				.cookie-banner.is-visible {
+			/* ---------- Outcomes ---------- */
+			.outcomes {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 24px;
+			}
+
+			.outcome {
+				border: 1px solid var(--line);
+				border-radius: var(--radius);
+				padding: 32px;
+				background: var(--surface);
+			}
+
+			.outcome .o-num {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(2.2rem, 4vw, 3rem);
+				font-weight: 600;
+				color: var(--accent-warm);
+				letter-spacing: -0.03em;
+				display: block;
+				margin-bottom: 10px;
+			}
+			.outcome h3 { font-size: 1.15rem; margin-bottom: 8px; }
+			.outcome p { color: var(--muted); margin: 0; font-size: 0.95rem; }
+
+			/* ---------- Lawsec teaser ---------- */
+			.lawsec-band { background: var(--bg-deep); }
+			.lawsec-inner {
+				display: grid;
+				grid-template-columns: 1.1fr 0.9fr;
+				gap: 56px;
+				align-items: center;
+				border: 1px solid var(--line);
+				border-radius: var(--radius);
+				background: var(--surface);
+				padding: clamp(36px, 5vw, 64px);
+				overflow: hidden;
+			}
+
+			.lawsec-badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 9px;
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.74rem;
+				text-transform: uppercase;
+				letter-spacing: 0.18em;
+				color: #128c4b;
+				background: #e3f6ea;
+				border-radius: 100px;
+				padding: 7px 14px;
+				margin-bottom: 22px;
+			}
+			.lawsec-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #25d366; }
+
+			.lawsec-inner h2 { font-size: clamp(1.9rem, 3.4vw, 3rem); margin-bottom: 18px; }
+			.lawsec-inner p { color: var(--ink-soft); margin: 0 0 28px; font-size: 1.05rem; }
+
+			.chat-mini {
+				display: grid;
+				gap: 12px;
+				background: linear-gradient(160deg, #e9f6ee, #d9efe0);
+				border-radius: var(--radius);
+				padding: 26px;
+				border: 1px solid #cfe7d8;
+			}
+			.bubble {
+				max-width: 80%;
+				padding: 12px 16px;
+				border-radius: 16px;
+				font-size: 0.95rem;
+				line-height: 1.5;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+			}
+			.bubble.in { background: #ffffff; border-bottom-left-radius: 4px; align-self: flex-start; color: var(--ink-soft); }
+			.bubble.out { background: #d6f5c9; border-bottom-right-radius: 4px; align-self: flex-end; color: #14331a; }
+
+			/* ---------- FAQ ---------- */
+			.faq { border-top: 1px solid var(--line); }
+			.faq details {
+				border-bottom: 1px solid var(--line);
+				padding: 8px 0;
+			}
+			.faq summary {
+				list-style: none;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 24px;
+				padding: 24px 0;
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+				font-weight: 500;
+			}
+			.faq summary::-webkit-details-marker { display: none; }
+			.faq summary .icon {
+				flex: none;
+				width: 32px; height: 32px;
+				border: 1px solid var(--line-strong);
+				border-radius: 50%;
+				display: grid; place-items: center;
+				transition: transform 0.35s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
+			}
+			.faq details[open] summary .icon { transform: rotate(45deg); background: var(--ink); color: var(--bg); }
+			.faq summary:hover { color: var(--accent-warm); }
+			.faq .answer { color: var(--muted); padding: 0 0 26px; max-width: 70ch; }
+			.faq details[open] .answer { animation: faq-open 0.45s var(--ease); }
+
+			/* ---------- CTA / Calendly ---------- */
+			.cta-section { background: var(--ink); color: var(--bg); }
+			.cta-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 48px;
+				align-items: start;
+			}
+			.cta-section h2 { color: var(--bg); font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 20px; }
+			.cta-section p { color: rgba(244,241,234,0.72); font-size: 1.08rem; margin: 0 0 28px; max-width: 46ch; }
+			.cta-section .btn-primary { background: var(--bg); color: var(--ink); border-color: var(--bg); }
+			.cta-section .btn-ghost { color: var(--bg); border-color: rgba(244,241,234,0.4); }
+			.cta-section .btn-ghost:hover { background: var(--bg); color: var(--ink); }
+			.cta-contact { margin-top: 26px; font-family: "Space Grotesk", sans-serif; }
+			.cta-contact a { color: var(--bg); border-bottom: 1px solid var(--accent-warm); }
+
+			.scheduler {
+				border-radius: var(--radius);
+				overflow: hidden;
+				background: #ffffff;
+				border: 1px solid rgba(244,241,234,0.2);
+			}
+
+			.consent-card {
+				min-height: 360px;
+				padding: 44px 28px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				gap: 16px;
+			}
+			.consent-card h3 { font-size: 1.3rem; color: var(--ink); }
+			.consent-card p { color: var(--muted); font-size: 0.95rem; max-width: 42ch; margin: 0; }
+			.consent-card p a { color: var(--accent-warm); border-bottom: 1px solid var(--accent-warm); }
+			.consent-card .btn { margin-top: 6px; }
+
+			/* ---------- Careers teaser ---------- */
+			.careers-teaser {
+				display: grid;
+				grid-template-columns: 1.2fr 0.8fr;
+				gap: 40px;
+				align-items: center;
+				border: 1px solid var(--line);
+				border-radius: var(--radius);
+				padding: clamp(32px, 4vw, 56px);
+				background: var(--surface);
+			}
+			.careers-teaser h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 14px; }
+			.careers-teaser p { color: var(--muted); margin: 0; }
+			.careers-teaser .actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-end; }
+
+			/* ---------- Footer ---------- */
+			footer {
+				background: var(--bg-deep);
+				border-top: 1px solid var(--line);
+				padding: 72px 0 40px;
+			}
+			.footer-grid {
+				display: grid;
+				grid-template-columns: 1.6fr 1fr 1fr 1fr;
+				gap: 36px;
+			}
+			.footer-grid p { color: var(--muted); font-size: 0.92rem; margin: 6px 0; }
+			.footer-col strong {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.76rem;
+				text-transform: uppercase;
+				letter-spacing: 0.18em;
+				color: var(--ink);
+				display: block;
+				margin-bottom: 16px;
+			}
+			.footer-col a, .footer-col span {
+				display: block;
+				color: var(--muted);
+				font-size: 0.94rem;
+				padding: 5px 0;
+				transition: color 0.25s var(--ease);
+			}
+			.footer-col a:hover { color: var(--accent-warm); }
+			.footer-bottom {
+				margin-top: 56px;
+				padding-top: 28px;
+				border-top: 1px solid var(--line);
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				gap: 14px;
+				color: var(--muted);
+				font-size: 0.86rem;
+			}
+			.footer-bottom a { border-bottom: 1px solid transparent; }
+			.footer-bottom a:hover { border-color: var(--accent-warm); }
+
+			/* ---------- Scroll reveal ---------- */
+			.reveal {
+				opacity: 0;
+				transform: translateY(26px);
+				transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+			}
+			.reveal.is-in { opacity: 1; transform: none; }
+
+			/* ---------- Cookie banner ---------- */
+			.cookie-banner {
+				position: fixed;
+				bottom: 22px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: calc(100% - 40px);
+				max-width: 560px;
+				z-index: 100;
+				background: var(--surface);
+				border: 1px solid var(--line-strong);
+				border-radius: var(--radius);
+				box-shadow: 0 22px 50px rgba(17,16,14,0.18);
+				padding: 18px 22px;
+				display: none;
+				align-items: center;
+				justify-content: space-between;
+				gap: 18px;
+			}
+			.cookie-banner.is-visible { display: flex; }
+			.cookie-banner p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+			.cookie-banner .btn { padding: 10px 18px; font-size: 0.74rem; white-space: nowrap; }
+
+			/* ---------- Responsive ---------- */
+			@media (max-width: 980px) {
+				.section-head { grid-template-columns: 1fr; gap: 18px; }
+				.services-grid { grid-template-columns: 1fr; }
+				.audience-wrap { grid-template-columns: 1fr; }
+				.principles { grid-template-columns: 1fr; }
+				.outcomes { grid-template-columns: 1fr; }
+				.lawsec-inner { grid-template-columns: 1fr; gap: 32px; }
+				.cta-grid { grid-template-columns: 1fr; }
+				.careers-teaser { grid-template-columns: 1fr; }
+				.careers-teaser .actions { justify-content: flex-start; }
+				.footer-grid { grid-template-columns: 1fr 1fr; }
+				.process-step { grid-template-columns: 70px 1fr; }
+				.process-step .p-tag { grid-column: 2; }
+			}
+
+			@media (max-width: 720px) {
+				.container { width: min(100% - 32px, var(--container)); }
+				.nav-links, .nav-cta { display: none; }
+				.nav-links.is-open {
+					display: flex;
+					position: absolute;
+					top: 100%;
+					left: 0;
+					right: 0;
 					flex-direction: column;
-					text-align: center;
-					gap: 16px;
+					align-items: flex-start;
+					gap: 4px;
+					background: var(--bg);
+					border-bottom: 1px solid var(--line);
+					padding: 16px 24px 24px;
+					animation: menu-drop 0.32s var(--ease);
+					transform-origin: top;
 				}
+				.nav-links.is-open a {
+					padding: 10px 0;
+					width: 100%;
+					animation: menu-item 0.4s var(--ease) backwards;
+				}
+				.nav-links.is-open a:nth-child(1) { animation-delay: 0.04s; }
+				.nav-links.is-open a:nth-child(2) { animation-delay: 0.08s; }
+				.nav-links.is-open a:nth-child(3) { animation-delay: 0.12s; }
+				.nav-links.is-open a:nth-child(4) { animation-delay: 0.16s; }
+				.nav-links.is-open a:nth-child(5) { animation-delay: 0.20s; }
+				.nav-links.is-open a:nth-child(6) { animation-delay: 0.24s; }
+				.nav-toggle { transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease); }
+				.nav-toggle[aria-expanded="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+				.nav-toggle { display: inline-flex; }
+				.footer-grid { grid-template-columns: 1fr; }
+				.hero-stats { gap: 28px; }
+			}
+
+			@keyframes scroll-x {
+				from { transform: translateX(0); }
+				to { transform: translateX(-50%); }
+			}
+			@keyframes float-blob {
+				0%, 100% { transform: translate(0, 0) scale(1); }
+				50% { transform: translate(-24px, 24px) scale(1.06); }
+			}
+			@keyframes cue-pulse {
+				0%, 100% { transform: scaleY(0.4); opacity: 0.4; }
+				50% { transform: scaleY(1); opacity: 1; }
+			}
+			@keyframes intro-rise {
+				from { opacity: 0; transform: translateY(22px); }
+				to { opacity: 1; transform: none; }
+			}
+			@keyframes faq-open {
+				from { opacity: 0; transform: translateY(-8px); }
+				to { opacity: 1; transform: none; }
+			}
+			@keyframes menu-drop {
+				from { opacity: 0; transform: scaleY(0.92); }
+				to { opacity: 1; transform: scaleY(1); }
+			}
+			@keyframes menu-item {
+				from { opacity: 0; transform: translateX(-10px); }
+				to { opacity: 1; transform: none; }
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				html { scroll-behavior: auto; }
+				.marquee-track, .hero-blob, .scroll-cue .line { animation: none; }
+				.intro-eyebrow, .intro-name, .scroll-cue { animation: none; opacity: 1; transform: none; }
+				.reveal { opacity: 1; transform: none; transition: none; }
+				* { transition: none !important; }
 			}
 		</style>
 	</head>
 	<body>
-		<div class="global-bg" aria-hidden="true">
-			<div class="global-grid"></div>
-			<canvas id="hero-canvas"></canvas>
-		</div>
-		<div class="page">
-			<header class="site-header">
-				<nav class="nav container">
-					<a class="logo" href="#top" aria-label="Epistemic LLC">
-						<img src="assets/company-logo.png" alt="Epistemic LLC logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-						<span class="logo-fallback">Epistemic</span>
-					</a>
-					<div class="nav-links">
-						<a href="#problem">Problem</a>
-						<a href="#solution">Solution</a>
-						<a href="#benefits">Benefits</a>
-						<a href="#process">Process</a>
-						<a href="careers.html">Careers</a>
-					</div>
-					<a class="btn btn-primary" href="#contact">Book a call</a>
-				</nav>
-			</header>
+		<section class="intro" id="top">
+			<img class="intro-media" src="assets/sun.gif" alt="" aria-hidden="true">
+			<div class="intro-overlay" aria-hidden="true"></div>
+			<div class="intro-content">
+				<p class="intro-eyebrow" data-i18n="h.intro.eyebrow">AI strategy · agents · automation</p>
+				<h1 class="intro-name">Epistemic</h1>
+			</div>
+			<a class="scroll-cue" href="#start" aria-label="Scroll to content">
+				<span data-i18n="h.intro.scroll">Scroll</span>
+				<span class="line" aria-hidden="true"></span>
+			</a>
+		</section>
 
-			<main>
-				<section class="hero" id="top">
-					<div class="container hero-content">
-					<div class="hero-copy">
-						<p class="eyebrow">AI agents + automation</p>
-						<h1>AI agents that save time and reduce cost.</h1>
-						<p class="subheadline">
-							We build AI agents and automation that remove repetitive admin, reduce operating cost, and keep your
-							teams focused on high-value work.
+		<header class="site-header" id="start">
+			<nav class="nav container">
+				<a class="logo" href="#top" aria-label="Epistemic">
+					<span>Epistemic</span>
+				</a>
+				<div class="nav-links" id="nav-links">
+					<a href="#services" data-i18n="h.nav.services">Services</a>
+					<a href="#industries" data-i18n="h.nav.who">Who we help</a>
+					<a href="#approach" data-i18n="h.nav.approach">Approach</a>
+					<a href="#process" data-i18n="h.nav.process">Process</a>
+					<a href="lawsec.html">Lawsec</a>
+					<a href="careers.html" data-i18n="h.nav.careers">Careers</a>
+				</div>
+				<button class="lang-toggle" type="button" aria-label="Language / Sprache">
+					<span data-lang="en">EN</span>
+					<span data-lang="de">DE</span>
+				</button>
+				<a class="btn btn-primary nav-cta" href="#contact" data-i18n="h.nav.book">Book a call</a>
+				<button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+			</nav>
+		</header>
+
+		<main>
+			<!-- HERO -->
+			<section class="hero">
+				<div class="hero-blob" aria-hidden="true"></div>
+				<div class="container">
+					<p class="eyebrow reveal" data-i18n="h.hero.eyebrow">AI strategy · agents · automation</p>
+					<h1 class="reveal" data-i18n="h.hero.h1">Put AI to work <span class="ink-accent">across</span> your business.</h1>
+					<p class="hero-lead reveal" data-i18n="h.hero.lead">
+						Epistemic helps professionals and companies turn AI from a buzzword into working systems —
+						strategy, custom agents, automation, and the integrations that make them stick. We map your
+						real workflows, build with guardrails, and stay on to keep it reliable.
+					</p>
+					<div class="hero-cta reveal">
+						<a class="btn btn-primary" href="#contact" data-i18n="h.hero.cta1">Book a call <span class="arrow">→</span></a>
+						<a class="btn btn-ghost" href="#services" data-i18n="h.hero.cta2">Explore services</a>
+					</div>
+					<div class="hero-stats reveal">
+						<div class="stat">
+							<span class="num">8+</span>
+							<span class="label" data-i18n="h.hero.s1l">end-to-end AI capabilities, from strategy to managed ops</span>
+						</div>
+						<div class="stat">
+							<span class="num">24/7</span>
+							<span class="label" data-i18n="h.hero.s2l">agents that never miss a request or after-hours inquiry</span>
+						</div>
+						<div class="stat">
+							<span class="num" data-i18n="h.hero.s3n">Wks</span>
+							<span class="label" data-i18n="h.hero.s3l">not quarters — focused delivery to a working first system</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- MARQUEE -->
+			<div class="marquee" aria-hidden="true">
+				<p class="marquee-label" data-i18n="h.marquee.label">Works across your stack</p>
+				<div class="marquee-track">
+					<span>OpenAI</span><span>Anthropic</span><span>Azure AI</span><span>AWS</span>
+					<span>Zapier</span><span>Make</span><span>HubSpot</span><span>Salesforce</span>
+					<span>Notion</span><span>Slack</span><span>Google Workspace</span><span>WhatsApp</span>
+					<span>OpenAI</span><span>Anthropic</span><span>Azure AI</span><span>AWS</span>
+					<span>Zapier</span><span>Make</span><span>HubSpot</span><span>Salesforce</span>
+					<span>Notion</span><span>Slack</span><span>Google Workspace</span><span>WhatsApp</span>
+				</div>
+			</div>
+
+			<!-- SERVICES -->
+			<section id="services">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="h.serv.index">01 — Services</p>
+							<h2 class="section-title" data-i18n="h.serv.title">A full toolkit for working with AI.</h2>
+						</div>
+						<p class="section-intro" data-i18n="h.serv.intro">
+							Whether you need a strategy, a single sharp agent, or an automation backbone across teams,
+							we cover the entire path — and the unglamorous integration and operations work that makes
+							AI actually deliver.
 						</p>
-						<div class="cta-group">
-							<a class="btn btn-primary" href="#contact">Contact us</a>
-							<a class="btn btn-secondary" href="#solution">See how it works</a>
-						</div>
-						<div class="hero-tags">
-							<span>Messaging agents</span>
-							<span>CRM automation</span>
-							<span>Process automation</span>
-							<span>Document workflows</span>
-						</div>
 					</div>
-					<aside class="hero-panel">
-						<h3>Built for time-starved teams</h3>
-						<p>Founder-led delivery for professionals who live in requests, updates, and recurring admin.</p>
-						<ul class="panel-list">
-							<li>Automate inbound requests with clear routing and handoffs.</li>
-							<li>Sync activity into CRMs with clean, structured updates.</li>
-							<li>Automate document intake, summaries, and follow-ups.</li>
-							<li>Remove repetitive re-entry with verified automation.</li>
-						</ul>
-					</aside>
+					<div class="services-grid reveal">
+						<article class="service">
+							<span class="s-num">01</span>
+							<h3 data-i18n="h.serv.1h">AI Strategy &amp; Advisory</h3>
+							<p data-i18n="h.serv.1p">Find the highest-leverage opportunities, size the impact, and build a roadmap your team can actually execute.</p>
+							<div class="tags"><span class="tag" data-i18n="h.serv.1t1">Roadmap</span><span class="tag" data-i18n="h.serv.1t2">Use-case scan</span><span class="tag" data-i18n="h.serv.1t3">ROI model</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">02</span>
+							<h3 data-i18n="h.serv.2h">Custom AI Agents &amp; Copilots</h3>
+							<p data-i18n="h.serv.2p">Purpose-built assistants that answer, draft, qualify, and act — grounded in your data with human-in-the-loop guardrails.</p>
+							<div class="tags"><span class="tag" data-i18n="h.serv.2t1">Assistants</span><span class="tag" data-i18n="h.serv.2t2">Copilots</span><span class="tag" data-i18n="h.serv.2t3">Guardrails</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">03</span>
+							<h3 data-i18n="h.serv.3h">Workflow &amp; Process Automation</h3>
+							<p data-i18n="h.serv.3p">Remove the repetitive admin between your tools — routing, follow-ups, data entry, and approvals handled automatically.</p>
+							<div class="tags"><span class="tag" data-i18n="h.serv.3t1">Routing</span><span class="tag" data-i18n="h.serv.3t2">Approvals</span><span class="tag" data-i18n="h.serv.3t3">No re-entry</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">04</span>
+							<h3 data-i18n="h.serv.4h">Document Intelligence</h3>
+							<p data-i18n="h.serv.4p">Ingest, extract, validate, classify, and summarize messy documents into clean, structured, trustworthy output.</p>
+							<div class="tags"><span class="tag" data-i18n="h.serv.4t1">Extraction</span><span class="tag" data-i18n="h.serv.4t2">Validation</span><span class="tag" data-i18n="h.serv.4t3">Summaries</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">05</span>
+							<h3 data-i18n="h.serv.5h">Data, RAG &amp; Knowledge Systems</h3>
+							<p data-i18n="h.serv.5p">Turn scattered knowledge into a retrieval system your agents can cite — accurate, current, and access-controlled.</p>
+							<div class="tags"><span class="tag" data-i18n="h.serv.5t1">RAG</span><span class="tag" data-i18n="h.serv.5t2">Search</span><span class="tag" data-i18n="h.serv.5t3">Citations</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">06</span>
+							<h3 data-i18n="h.serv.6h">Systems Integration</h3>
+							<p data-i18n="h.serv.6p">Connect AI to the tools you already run — CRM, ERP, email, CMS, and databases — with clean, structured handoffs.</p>
+							<div class="tags"><span class="tag" data-i18n="h.serv.6t1">CRM/ERP</span><span class="tag" data-i18n="h.serv.6t2">APIs</span><span class="tag" data-i18n="h.serv.6t3">Webhooks</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">07</span>
+							<h3 data-i18n="h.serv.7h">AI Training &amp; Team Enablement</h3>
+							<p data-i18n="h.serv.7p">Practical, role-specific training and playbooks so your people use AI confidently, safely, and every day.</p>
+							<div class="tags"><span class="tag" data-i18n="h.serv.7t1">Workshops</span><span class="tag" data-i18n="h.serv.7t2">Playbooks</span><span class="tag" data-i18n="h.serv.7t3">Policy</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">08</span>
+							<h3 data-i18n="h.serv.8h">Managed AI Operations</h3>
+							<p data-i18n="h.serv.8p">We don't disappear at launch — monitoring, evaluation, QA, and iteration keep systems reliable under real load.</p>
+							<div class="tags"><span class="tag" data-i18n="h.serv.8t1">Monitoring</span><span class="tag" data-i18n="h.serv.8t2">Evals</span><span class="tag" data-i18n="h.serv.8t3">Iteration</span></div>
+						</article>
+					</div>
 				</div>
 			</section>
 
-			<section id="problem">
+			<!-- INDUSTRIES / AUDIENCES -->
+			<section id="industries" style="background: var(--bg-deep);">
 				<div class="container">
-					<h2 class="section-title">Manual admin drains time and money.</h2>
-					<p class="section-subtitle">
-						Teams lose time to triage, updates, paperwork, and internal coordination. The work is repetitive, but the
-						cost is real: delays, rework, and missed deadlines.
-					</p>
-					<div class="grid-2">
-						<div class="card">
-							<h3>Operational drag</h3>
-							<p>
-								Requests and updates pile up across channels while systems lag behind.
-							</p>
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="h.ind.index">02 — Who we help</p>
+							<h2 class="section-title" data-i18n="h.ind.title">Built for the people doing the work.</h2>
 						</div>
-						<div class="card">
-							<h3>Process overload</h3>
-							<p>
-								Forms, packets, and approvals slow down when everything is handled manually.
-							</p>
+						<p class="section-intro" data-i18n="h.ind.intro">
+							From a solo professional drowning in admin to an enterprise team standardizing operations —
+							we meet you where you are and scale with you.
+						</p>
+					</div>
+					<div class="audience-wrap reveal">
+						<div class="audience-card">
+							<h3 data-i18n="h.ind.a1h">Professionals &amp; solo experts</h3>
+							<p data-i18n="h.ind.a1p">Reclaim hours from inbox triage, intake, scheduling, and paperwork so you can focus on billable, high-judgment work.</p>
+						</div>
+						<div class="audience-card">
+							<h3 data-i18n="h.ind.a2h">Small &amp; mid-sized businesses</h3>
+							<p data-i18n="h.ind.a2p">Add capacity without adding headcount — automate the operational glue that quietly slows every team down.</p>
+						</div>
+						<div class="audience-card">
+							<h3 data-i18n="h.ind.a3h">Enterprise teams</h3>
+							<p data-i18n="h.ind.a3p">Standardize high-volume processes with auditable, guardrailed AI that meets your security and compliance bar.</p>
 						</div>
 					</div>
-					<div class="interactive-grid">
-						<div class="manual-card">
-							<h3>Manual workflow (do it yourself)</h3>
-							<p class="section-subtitle">Tasks fall in. Click them to clear the pile.</p>
-							<div class="flow-stage" data-flow="manual">
-								<div class="flow-floor">Manual pile</div>
-							</div>
-						</div>
-						<div class="ai-card">
-							<h3>Agent automation (handled for you)</h3>
-							<p class="section-subtitle">Tasks fall in, the agent catches them, and the bottom stays clean.</p>
-							<div class="flow-stage" data-flow="agent">
-								<div class="agent-catcher">
-									<div class="agent-logo">AI</div>
-									<span>Agent</span>
-								</div>
-								<div class="flow-floor">Clear</div>
-							</div>
-							<ul class="panel-list">
-								<li>Extract, validate, and summarize automatically.</li>
-								<li>Route approvals and signatures with guardrails.</li>
-								<li>Send clean outputs to clients and systems.</li>
-								<li>Log every step for visibility and audit.</li>
-							</ul>
-						</div>
+					<div class="industry-row reveal">
+						<span class="label" data-i18n="h.ind.label">Industries</span>
+						<span class="chip" data-i18n="h.ind.c1">Legal</span>
+						<span class="chip" data-i18n="h.ind.c2">Finance</span>
+						<span class="chip" data-i18n="h.ind.c3">Real Estate</span>
+						<span class="chip" data-i18n="h.ind.c4">Healthcare</span>
+						<span class="chip" data-i18n="h.ind.c5">Professional Services</span>
+						<span class="chip" data-i18n="h.ind.c6">Operations</span>
+						<span class="chip" data-i18n="h.ind.c7">Insurance</span>
+						<span class="chip" data-i18n="h.ind.c8">Recruiting</span>
 					</div>
 				</div>
 			</section>
 
-			<section id="solution">
+			<!-- APPROACH -->
+			<section id="approach" class="approach">
 				<div class="container">
-					<h2 class="section-title">AI agents and automation that fit real workflows.</h2>
-					<p class="section-subtitle">
-						Epistemic maps your workflow, then automates high-volume steps with guardrails. The result: faster
-						throughput, lower operating cost, and clean handoffs.
-					</p>
-					<div class="grid-3">
-						<div class="card">
-							<h3>Messaging agents</h3>
-							<p>Capture inquiries, qualify requests, and answer routine questions with clean handoffs.</p>
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="h.app.index">03 — Approach</p>
+							<h2 class="section-title" data-i18n="h.app.title">Rigorous, measurable, and built to last.</h2>
 						</div>
-						<div class="card">
-							<h3>CRM automation</h3>
-							<p>Sync conversations, update records, and create tasks without manual copy-paste.</p>
+						<p class="section-intro" data-i18n="h.app.intro">
+							We're named Epistemic for a reason: we care about what's actually true. No demos that fall
+							apart in production — just systems grounded in evidence and your real constraints.
+						</p>
+					</div>
+					<div class="principles reveal">
+						<div class="principle">
+							<span class="p-num">01</span>
+							<h3 data-i18n="h.app.1h">Outcome-first</h3>
+							<p data-i18n="h.app.1p">We start from the metric you want to move — time, cost, throughput — not the technology we want to use.</p>
 						</div>
-						<div class="card">
-							<h3>Document processing</h3>
-							<p>Ingest, extract, validate, and classify incoming paperwork with consistent output formats.</p>
+						<div class="principle">
+							<span class="p-num">02</span>
+							<h3 data-i18n="h.app.2h">Guardrailed by design</h3>
+							<p data-i18n="h.app.2p">Human-in-the-loop, validation, and clear escalation paths so automation stays safe and trustworthy.</p>
 						</div>
-						<div class="card">
-							<h3>Approval orchestration</h3>
-							<p>Route requests to the right owners, manage exceptions, and keep SLA-critical work moving.</p>
+						<div class="principle">
+							<span class="p-num">03</span>
+							<h3 data-i18n="h.app.3h">Measured, not assumed</h3>
+							<p data-i18n="h.app.3p">Evaluations and monitoring prove the system works — and keep proving it as inputs change.</p>
 						</div>
-						<div class="card">
-							<h3>Summaries and packets</h3>
-							<p>Generate concise decision packets and audit summaries from long, messy source files.</p>
-						</div>
-						<div class="card">
-							<h3>Internal workflows</h3>
-							<p>Automate recurring internal tasks like onboarding, vendor reviews, and compliance updates.</p>
-						</div>
-						<div class="card">
-							<h3>Structured handoffs</h3>
-							<p>Deliver clean, structured outputs that flow into your existing systems without re-entry.</p>
-						</div>
-						<div class="card">
-							<h3>Monitoring and QA</h3>
-							<p>Track exceptions, log changes, and keep a traceable record for every automated step.</p>
+						<div class="principle">
+							<span class="p-num">04</span>
+							<h3 data-i18n="h.app.4h">Founder-led delivery</h3>
+							<p data-i18n="h.app.4p">Senior, hands-on attention from first call to production. You always know who's accountable.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section id="benefits">
-				<div class="container">
-					<h2 class="section-title">Clear gains in cost, time, and throughput.</h2>
-					<p class="section-subtitle">Focus experts on judgment calls, not repetitive processing.</p>
-					<div class="grid-3">
-						<div class="card">
-							<h3>Save real time</h3>
-							<p>Remove repetitive steps so teams reclaim hours every week.</p>
-						</div>
-						<div class="card">
-							<h3>Reduce operational drag</h3>
-							<p>Keep work flowing through approvals and handoffs without constant follow-ups.</p>
-						</div>
-						<div class="card">
-							<h3>Lower cost per workflow</h3>
-							<p>Reduce manual effort without adding headcount or overhead.</p>
-						</div>
-						<div class="card">
-							<h3>Lower repetitive labor</h3>
-							<p>Automate the busywork that quietly consumes headcount.</p>
-						</div>
-						<div class="card">
-							<h3>Sharper decision cycles</h3>
-							<p>Deliver clean summaries so stakeholders can decide faster.</p>
-						</div>
-						<div class="card">
-							<h3>Stronger compliance</h3>
-							<p>Standardize inputs and outputs with traceable workflows.</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
+			<!-- PROCESS -->
 			<section id="process">
 				<div class="container">
-					<h2 class="section-title">A focused delivery process.</h2>
-					<p class="section-subtitle">Clear steps, tight feedback loops, and automation that fits your reality.</p>
-					<div class="process-steps">
-						<div class="process-step">
-							<span>Discovery</span>
-							<div>
-								<h3>Align on outcomes</h3>
-								<p>We define the workflows that are draining time, then identify automation-ready opportunities.</p>
-							</div>
-						</div>
-						<div class="process-step">
-							<span>Analysis</span>
-							<div>
-								<h3>Map the workflow</h3>
-								<p>We document the real process, dependencies, edge cases, and approval logic.</p>
-							</div>
-						</div>
-						<div class="process-step">
-							<span>Design</span>
-							<div>
-								<h3>Build the automation</h3>
-								<p>We design the automation stack, validation rules, and outputs you need.</p>
-							</div>
-						</div>
-						<div class="process-step">
-							<span>Deploy</span>
-							<div>
-								<h3>Iterate and harden</h3>
-								<p>We ship, monitor, and refine until the system is reliable under real workload.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="cta-section" id="contact">
-				<div class="container">
-					<div class="cta-panel">
+					<div class="section-head reveal">
 						<div>
-							<h2 class="section-title">Ready to cut cost and reclaim time?</h2>
-							<p class="section-subtitle">
-								Tell us where your team is losing time. We will map it, automate it, and keep the workflow visible.
-							</p>
-							<div class="cta-group">
-								<a class="btn btn-primary" href="mailto:contact@epistemic.llc">Contact us</a>
-								<a class="btn btn-secondary" href="#contact">Book a call</a>
-							</div>
+							<p class="index" data-i18n="h.proc.index">04 — Process</p>
+							<h2 class="section-title" data-i18n="h.proc.title">Five steps from idea to reliable system.</h2>
 						</div>
-						<div class="scheduler-container" style="border-radius: var(--radius-small); overflow: hidden; background: #0c1014; border: 1px solid rgba(127, 215, 255, 0.18);">
-							<!-- Calendly inline widget begin -->
-							<div class="calendly-inline-widget" data-url="https://calendly.com/atlaspolat-epistemic/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0c1014&text_color=e6edf3&primary_color=7fd7ff" style="min-width:320px;height:650px;"></div>
-							<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-							<!-- Calendly inline widget end -->
+						<p class="section-intro" data-i18n="h.proc.intro">
+							A focused engagement with tight feedback loops. You see working software early and often —
+							no months of silence before the reveal.
+						</p>
+					</div>
+					<div class="reveal">
+						<div class="process-step">
+							<span class="p-index">01</span>
+							<div>
+								<h3 data-i18n="h.proc.1h">Discover</h3>
+								<p class="p-body" data-i18n="h.proc.1p">We pinpoint where time and money are leaking and agree on the outcomes that matter most.</p>
+							</div>
+							<span class="p-tag" data-i18n="h.proc.1t">Week 1</span>
+						</div>
+						<div class="process-step">
+							<span class="p-index">02</span>
+							<div>
+								<h3 data-i18n="h.proc.2h">Map</h3>
+								<p class="p-body" data-i18n="h.proc.2p">We document the real workflow — dependencies, edge cases, and approval logic — before building anything.</p>
+							</div>
+							<span class="p-tag" data-i18n="h.proc.2t">Week 1–2</span>
+						</div>
+						<div class="process-step">
+							<span class="p-index">03</span>
+							<div>
+								<h3 data-i18n="h.proc.3h">Build</h3>
+								<p class="p-body" data-i18n="h.proc.3p">We design the agent and automation stack with validation rules and the exact outputs you need.</p>
+							</div>
+							<span class="p-tag" data-i18n="h.proc.3t">Week 2–4</span>
+						</div>
+						<div class="process-step">
+							<span class="p-index">04</span>
+							<div>
+								<h3 data-i18n="h.proc.4h">Integrate</h3>
+								<p class="p-body" data-i18n="h.proc.4p">We wire it into your existing tools so outputs flow where work already happens — no copy-paste.</p>
+							</div>
+							<span class="p-tag" data-i18n="h.proc.4t">Week 4–5</span>
+						</div>
+						<div class="process-step">
+							<span class="p-index">05</span>
+							<div>
+								<h3 data-i18n="h.proc.5h">Operate &amp; iterate</h3>
+								<p class="p-body" data-i18n="h.proc.5p">We ship, monitor, and refine until the system is dependable under real workload — then keep it sharp.</p>
+							</div>
+							<span class="p-tag" data-i18n="h.proc.5t">Ongoing</span>
 						</div>
 					</div>
 				</div>
 			</section>
 
+			<!-- OUTCOMES -->
+			<section id="outcomes" style="background: var(--bg-deep);">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="h.out.index">05 — Outcomes</p>
+							<h2 class="section-title" data-i18n="h.out.title">What changes when AI does the busywork.</h2>
+						</div>
+						<p class="section-intro" data-i18n="h.out.intro">
+							The goal isn't novelty — it's measurable relief. Here's where teams feel the difference first.
+						</p>
+					</div>
+					<div class="outcomes reveal">
+						<div class="outcome">
+							<span class="o-num">↓</span>
+							<h3 data-i18n="h.out.1h">Hours reclaimed weekly</h3>
+							<p data-i18n="h.out.1p">Repetitive triage, data entry, and follow-ups handled automatically frees your team for judgment work.</p>
+						</div>
+						<div class="outcome">
+							<span class="o-num">$</span>
+							<h3 data-i18n="h.out.2h">Lower cost per workflow</h3>
+							<p data-i18n="h.out.2p">Reduce manual effort and overhead without adding headcount as volume grows.</p>
+						</div>
+						<div class="outcome">
+							<span class="o-num">↑</span>
+							<h3 data-i18n="h.out.3h">Higher throughput</h3>
+							<p data-i18n="h.out.3p">Work moves through approvals and handoffs without stalling on someone's inbox.</p>
+						</div>
+						<div class="outcome">
+							<span class="o-num">✓</span>
+							<h3 data-i18n="h.out.4h">Stronger compliance</h3>
+							<p data-i18n="h.out.4p">Standardized inputs, outputs, and traceable logs make audits and reviews painless.</p>
+						</div>
+						<div class="outcome">
+							<span class="o-num">⚡</span>
+							<h3 data-i18n="h.out.5h">Faster decisions</h3>
+							<p data-i18n="h.out.5p">Clean summaries and structured data put the right context in front of decision-makers sooner.</p>
+						</div>
+						<div class="outcome">
+							<span class="o-num">★</span>
+							<h3 data-i18n="h.out.6h">Better client experience</h3>
+							<p data-i18n="h.out.6p">Instant, consistent, professional responses — even after hours and across channels.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- LAWSEC TEASER -->
+			<section class="lawsec-band">
+				<div class="container">
+					<div class="lawsec-inner reveal">
+						<div>
+							<span class="lawsec-badge" data-i18n="h.ls.badge"><span class="dot"></span> Our product · Lawsec</span>
+							<h2 data-i18n="h.ls.h2">Stop fielding "any update on my case?"</h2>
+							<p data-i18n="h.ls.p">
+								Lawsec keeps clients informed on their case status, answers their questions, and
+								escalates the complex matters to you — 24/7, in your client's language, on the channels
+								they already use. Your team stops repeating updates and gets back to the law.
+							</p>
+							<a class="btn btn-primary" href="lawsec.html" data-i18n="h.ls.cta">Meet Lawsec <span class="arrow">→</span></a>
+						</div>
+						<div class="chat-mini" aria-hidden="true">
+							<div class="bubble in" data-i18n="h.ls.b1">Hi, any update on my case?</div>
+							<div class="bubble out" data-i18n="h.ls.b2">Yes — your filing was accepted Tuesday and your hearing is set for March 14. I'll message you the moment anything changes. ✅</div>
+							<div class="bubble in" data-i18n="h.ls.b3">Do I need to prepare anything?</div>
+							<div class="bubble out" data-i18n="h.ls.b4">Just a photo ID. I've emailed your full checklist. 📄</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- FAQ -->
+			<section id="faq">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index" data-i18n="h.faq.index">06 — FAQ</p>
+							<h2 class="section-title" data-i18n="h.faq.title">Questions, answered.</h2>
+						</div>
+						<p class="section-intro" data-i18n="h.faq.intro">
+							Still curious about something? Book a call and we'll talk through your specific situation.
+						</p>
+					</div>
+					<div class="faq reveal">
+						<details>
+							<summary data-i18n="h.faq.q1">How do engagements work? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="h.faq.a1">Most start with a short discovery call and a fixed-scope first build, so you see a working system in weeks. From there, many clients move onto a managed plan where we monitor and improve the systems over time.</p>
+						</details>
+						<details>
+							<summary data-i18n="h.faq.q2">How do you handle data security and privacy? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="h.faq.a2">We design for least-privilege access, keep sensitive data inside your controlled environments where possible, and document data flows. We're happy to work within your security, retention, and compliance requirements.</p>
+						</details>
+						<details>
+							<summary data-i18n="h.faq.q3">How long until we see something working? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="h.faq.a3">A focused first system typically lands in a few weeks rather than quarters. We deliberately scope the first build tight so you get a real, usable result fast — then expand from proven ground.</p>
+						</details>
+						<details>
+							<summary data-i18n="h.faq.q4">What does it cost? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="h.faq.a4">It depends on scope, but we use clear fixed pricing for defined builds and transparent plans for ongoing operations. No surprise invoices — you approve scope before we build.</p>
+						</details>
+						<details>
+							<summary data-i18n="h.faq.q5">Which tools and models do you use? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="h.faq.a5">We're model- and vendor-agnostic. We pick the right model and tools for the job — OpenAI, Anthropic, Azure, AWS, and automation platforms like Zapier or Make — and integrate with the systems you already run.</p>
+						</details>
+						<details>
+							<summary data-i18n="h.faq.q6">Do you only build agents, or strategy too? <span class="icon">+</span></summary>
+							<p class="answer" data-i18n="h.faq.a6">Both. Some clients want advisory and a roadmap; others want us to build and run systems. We can start anywhere on that spectrum and grow into the rest.</p>
+						</details>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA / CONTACT -->
+			<section id="contact" class="cta-section">
+				<div class="container">
+					<div class="cta-grid">
+						<div class="reveal">
+							<p class="eyebrow" style="color: rgba(244,241,234,0.6);" data-i18n="h.cta.eyebrow">Let's talk</p>
+							<h2 data-i18n="h.cta.h2">Ready to put AI to work?</h2>
+							<p data-i18n="h.cta.p">Tell us where your team is losing time. We'll map it, build it, integrate it, and keep it running.</p>
+							<div class="hero-cta" style="margin-bottom: 0;">
+								<a class="btn btn-primary" href="mailto:contact@epistemic.llc" data-i18n="h.cta.b1">Email us</a>
+								<a class="btn btn-ghost" href="lawsec.html" data-i18n="h.cta.b2">See Lawsec</a>
+							</div>
+							<p class="cta-contact"><a href="mailto:contact@epistemic.llc">contact@epistemic.llc</a></p>
+						</div>
+						<div class="scheduler reveal" id="scheduler" data-calendly="https://calendly.com/atlaspolat-epistemic/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=11100e&primary_color=c5572a">
+							<div class="consent-card" id="calendly-consent">
+								<h3 data-i18n="h.cal.title">Schedule a call</h3>
+								<p data-i18n="h.cal.text">We use Calendly to book calls. Loading it connects to Calendly (USA) and may transfer personal data. See our <a href="datenschutz.html">privacy policy</a>.</p>
+								<button class="btn btn-primary" id="load-calendly" type="button" data-i18n="h.cal.btn">Load scheduler</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CAREERS TEASER -->
 			<section id="careers">
 				<div class="container">
-					<h2 class="section-title">Join the team</h2>
-					<p class="section-subtitle">
-						We are hiring people who care about rigorous engineering, clean execution, and measurable outcomes.
-					</p>
-					<div class="cta-group">
-						<a class="btn btn-primary" href="careers.html">View open roles</a>
-						<a class="btn btn-secondary" href="mailto:hire@epistemic.llc?subject=Careers">Email the team</a>
+					<div class="careers-teaser reveal">
+						<div>
+							<p class="index" data-i18n="h.car.index">07 — Careers</p>
+							<h2 data-i18n="h.car.h2">Build the systems that give people their time back.</h2>
+							<p data-i18n="h.car.p">We're hiring people who care about rigorous engineering, clean execution, and measurable outcomes.</p>
+						</div>
+						<div class="actions">
+							<a class="btn btn-primary" href="careers.html" data-i18n="h.car.b1">View open roles <span class="arrow">→</span></a>
+							<a class="btn btn-ghost" href="mailto:hire@epistemic.llc?subject=Careers" data-i18n="h.car.b2">Email the team</a>
+						</div>
 					</div>
 				</div>
 			</section>
-			</main>
+		</main>
 
-			<footer>
-				<div class="container footer-grid">
-					<div>
-						<div class="logo" aria-label="Epistemic LLC">
-							<img src="assets/company-logo.png" alt="Epistemic LLC logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-							<span class="logo-fallback">Epistemic LLC</span>
-						</div>
+		<footer>
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-col">
+						<a class="logo" href="#top" aria-label="Epistemic" style="margin-bottom: 16px;">
+							<span>Epistemic</span>
+						</a>
 						<p>Epistemic LLC</p>
-						<p>30 N Gould St, STE R, Sheridan, WY 82801, USA</p>
-						<p><a href="mailto:contact@epistemic.llc">contact@epistemic.llc</a></p>
+						<p>30 N Gould St, STE R,<br>Sheridan, WY 82801, USA</p>
+						<p><a href="mailto:contact@epistemic.llc" style="border-bottom:1px solid var(--accent-warm);">contact@epistemic.llc</a></p>
 					</div>
-					<div class="footer-nav">
-						<strong>Navigate</strong>
-						<a href="#problem">Problem</a>
-						<a href="#solution">Solution</a>
-						<a href="#benefits">Benefits</a>
-						<a href="#process">Process</a>
-						<a href="#contact">Contact</a>
-						<a href="careers.html">Careers</a>
+					<div class="footer-col">
+						<strong data-i18n="h.foot.nav">Navigate</strong>
+						<a href="#services" data-i18n="h.nav.services">Services</a>
+						<a href="#industries" data-i18n="h.nav.who">Who we help</a>
+						<a href="#approach" data-i18n="h.nav.approach">Approach</a>
+						<a href="#process" data-i18n="h.nav.process">Process</a>
+						<a href="#faq">FAQ</a>
 					</div>
-					<div class="footer-nav">
-						<strong>Focus areas</strong>
-						<span>Approvals and routing</span>
-						<span>Document processing</span>
-						<span>Compliance workflows</span>
-						<span>Internal operations</span>
+					<div class="footer-col">
+						<strong data-i18n="h.foot.company">Company</strong>
+						<a href="lawsec.html">Lawsec</a>
+						<a href="careers.html" data-i18n="h.nav.careers">Careers</a>
+						<a href="#contact" data-i18n="h.foot.contact">Contact</a>
+						<a href="impressum.html">Impressum</a>
+						<a href="datenschutz.html" data-i18n="foot.ds">Privacy</a>
+					</div>
+					<div class="footer-col">
+						<strong data-i18n="h.foot.focus">Focus areas</strong>
+						<span data-i18n="h.foot.f1">AI strategy</span>
+						<span data-i18n="h.foot.f2">Agents &amp; copilots</span>
+						<span data-i18n="h.foot.f3">Document workflows</span>
+						<span data-i18n="h.foot.f4">Managed AI ops</span>
 					</div>
 				</div>
-			</footer>
-
-			<div id="cookie-banner" class="cookie-banner">
-				<p>This website uses no cookies. Your privacy matters to us.</p>
-				<button id="dismiss-cookie" class="btn btn-secondary">Got it</button>
+				<div class="footer-bottom">
+					<span data-i18n="h.foot.rights">© <span id="year">2026</span> Epistemic LLC. All rights reserved.</span>
+					<span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html" data-i18n="foot.ds">Privacy</a></span>
+				</div>
 			</div>
+		</footer>
+
+		<div id="cookie-banner" class="cookie-banner">
+			<p data-i18n="h.cookie.text">This website uses no tracking cookies. Your privacy matters to us.</p>
+			<button id="dismiss-cookie" class="btn btn-ghost" data-i18n="h.cookie.btn">Got it</button>
 		</div>
 
+		<script src="assets/i18n.js"></script>
 		<script>
-			const canvas = document.getElementById("hero-canvas");
-			const ctx = canvas.getContext("2d");
-			const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-			let width = 0;
-			let height = 0;
-			const maxDpr = 2;
-
-			const resizeCanvas = () => {
-				const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
-				width = window.innerWidth;
-				height = window.innerHeight;
-				canvas.width = width * dpr;
-				canvas.height = height * dpr;
-				ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			// Header slides down like a drawer once the intro is scrolled past
+			const header = document.querySelector(".site-header");
+			const onScroll = () => {
+				const trigger = window.innerHeight * 0.6;
+				header.classList.toggle("is-visible", window.scrollY > trigger);
 			};
+			onScroll();
+			window.addEventListener("scroll", onScroll, { passive: true });
+			window.addEventListener("resize", onScroll, { passive: true });
 
-			const draw = (time = 0) => {
-				const t = time * 0.00012;
-				ctx.clearRect(0, 0, width, height);
-				ctx.lineWidth = 1;
-
-				const waveCount = 14;
-				for (let i = 0; i < waveCount; i += 1) {
-					const base = ((i + 1) / (waveCount + 1)) * height;
-					const amp = height * (0.03 + (i % 3) * 0.004);
-					ctx.beginPath();
-					for (let x = 0; x <= width; x += 18) {
-						const y = base
-							+ Math.sin(x * 0.006 + t * 2 + i) * amp
-							+ Math.sin(x * 0.014 - t * 1.4 + i * 0.7) * amp * 0.45;
-						if (x === 0) {
-							ctx.moveTo(x, y);
-						} else {
-							ctx.lineTo(x, y);
-						}
-					}
-					const alpha = 0.08 + i * 0.004;
-					ctx.strokeStyle = `rgba(127, 215, 255, ${alpha})`;
-					ctx.stroke();
-				}
-
-				if (!prefersReducedMotion) {
-					requestAnimationFrame(draw);
-				}
-			};
-
-			resizeCanvas();
-			if (!prefersReducedMotion) {
-				requestAnimationFrame(draw);
-			} else {
-				draw(0);
-			}
-
-			window.addEventListener("resize", () => {
-				resizeCanvas();
-				if (prefersReducedMotion) {
-					draw(0);
-				}
+			// Mobile nav toggle
+			const navToggle = document.getElementById("nav-toggle");
+			const navLinks = document.getElementById("nav-links");
+			navToggle.addEventListener("click", () => {
+				const open = navLinks.classList.toggle("is-open");
+				navToggle.setAttribute("aria-expanded", String(open));
 			});
+			navLinks.querySelectorAll("a").forEach((a) =>
+				a.addEventListener("click", () => {
+					navLinks.classList.remove("is-open");
+					navToggle.setAttribute("aria-expanded", "false");
+				})
+			);
 
-			const manualStage = document.querySelector('[data-flow="manual"]');
-			const agentStage = document.querySelector('[data-flow="agent"]');
-			const agentCatcher = agentStage?.querySelector(".agent-catcher");
-			const taskLabels = ["Read", "Approve", "Sign", "Send", "Review", "Update"];
-			
-			const activeTasks = [];
-			const settledTasks = [];
-			
-			let lastTick = 0;
-			let manualTimer = 0;
-			let agentTimer = 0;
-			const spawnRate = 1200;
-			const minSpeed = 0.08;
-			const maxSpeed = 0.16;
-			const taskWidth = 140;
-			const taskHeight = 40;
-			const gravity = 0.0006;
-
-			const createTask = (stage, lane) => {
-				if (!stage) return;
-				const task = document.createElement("div");
-				task.className = "flow-task";
-				task.textContent = taskLabels[Math.floor(Math.random() * taskLabels.length)];
-				stage.appendChild(task);
-				
-				const maxX = Math.max(10, stage.clientWidth - taskWidth - 10);
-				const x = 10 + Math.random() * maxX;
-				const speed = minSpeed + Math.random() * (maxSpeed - minSpeed);
-				
-				activeTasks.push({
-					el: task,
-					stage,
-					lane,
-					x,
-					y: -50,
-					vy: speed,
-					rot: (Math.random() - 0.5) * 20
-				});
-			};
-
-			const pulseAgent = () => {
-				if (!agentCatcher) return;
-				agentCatcher.classList.add("is-active");
-				setTimeout(() => agentCatcher.classList.remove("is-active"), 220);
-			};
-
-			const tick = (time) => {
-				if (!lastTick) lastTick = time;
-				const dt = Math.min(time - lastTick, 100);
-				lastTick = time;
-				manualTimer += dt;
-				agentTimer += dt;
-
-				if (manualTimer >= spawnRate) {
-					manualTimer = 0;
-					createTask(manualStage, "manual");
-				}
-
-				if (agentTimer >= spawnRate * 0.9) {
-					agentTimer = 0;
-					createTask(agentStage, "agent");
-				}
-
-				for (let i = activeTasks.length - 1; i >= 0; i -= 1) {
-					const task = activeTasks[i];
-					const stageHeight = task.stage.clientHeight;
-					const floorY = stageHeight - 96;
-					const catchY = stageHeight - 160;
-					
-					task.vy += gravity * dt;
-					task.y += task.vy * dt;
-
-					let hit = false;
-					if (task.lane === "manual") {
-						if (task.y >= floorY - taskHeight) {
-							task.y = Math.min(task.y, floorY - taskHeight);
-							hit = true;
-						} else {
-							for (const settled of settledTasks) {
-								if (
-									task.x < settled.x + taskWidth - 20 &&
-									task.x + taskWidth - 20 > settled.x &&
-									task.y < settled.y + taskHeight - 5 &&
-									task.y + taskHeight > settled.y
-								) {
-									task.y = settled.y - taskHeight + 5;
-									hit = true;
-									break;
-								}
+			// Scroll reveal
+			const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			const reveals = document.querySelectorAll(".reveal");
+			if (prefersReduced || !("IntersectionObserver" in window)) {
+				reveals.forEach((el) => el.classList.add("is-in"));
+			} else {
+				const io = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("is-in");
+								io.unobserve(entry.target);
 							}
-						}
-
-						if (hit) {
-							task.el.classList.remove("flow-task");
-							task.el.classList.add("pile-task");
-							task.el.style.transform = `translate(${task.x}px, ${task.y}px) rotate(${task.rot}deg)`;
-							
-							task.el.addEventListener("click", () => {
-								task.el.remove();
-								const idx = settledTasks.indexOf(task);
-								if (idx > -1) settledTasks.splice(idx, 1);
-								
-								const toWake = [...settledTasks];
-								settledTasks.length = 0;
-								toWake.forEach(t => {
-									t.el.classList.remove("pile-task");
-									t.el.classList.add("flow-task");
-									t.el.style.transform = `translate(${t.x}px, ${t.y}px)`;
-									t.vy = 0;
-									activeTasks.push(t);
-								});
-							});
-							
-							settledTasks.push(task);
-							activeTasks.splice(i, 1);
-							continue;
-						}
-					}
-
-					if (task.lane === "agent" && task.y >= catchY) {
-						pulseAgent();
-						task.el.remove();
-						activeTasks.splice(i, 1);
-						continue;
-					}
-
-					task.el.style.transform = `translate(${task.x}px, ${task.y}px)`;
-				}
-
-				if (!prefersReducedMotion) {
-					requestAnimationFrame(tick);
-				}
-			};
-
-			if (!prefersReducedMotion) {
-				requestAnimationFrame(tick);
+						});
+					},
+					{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+				);
+				reveals.forEach((el) => io.observe(el));
 			}
 
-			// Cookie banner logic
+			// Year (re-applied after language switches recreate the span)
+			const setYear = () => {
+				const y = document.getElementById("year");
+				if (y) y.textContent = new Date().getFullYear();
+			};
+			setYear();
+			document.addEventListener("langchange", setYear);
+
+			// Calendly: only loaded after explicit consent (no third-party request before click)
+			const scheduler = document.getElementById("scheduler");
+			const loadBtn = document.getElementById("load-calendly");
+			if (scheduler && loadBtn) {
+				loadBtn.addEventListener("click", () => {
+					const url = scheduler.getAttribute("data-calendly");
+					scheduler.innerHTML = '<div class="calendly-inline-widget" data-url="' + url + '" style="min-width:320px;height:640px;"></div>';
+					const s = document.createElement("script");
+					s.src = "https://assets.calendly.com/assets/external/widget.js";
+					s.async = true;
+					document.body.appendChild(s);
+				});
+			}
+
+			// Cookie banner
 			const cookieBanner = document.getElementById("cookie-banner");
 			const dismissBtn = document.getElementById("dismiss-cookie");
-			
 			if (!localStorage.getItem("cookie_banner_dismissed")) {
 				cookieBanner.classList.add("is-visible");
 			}
-
 			dismissBtn.addEventListener("click", () => {
 				cookieBanner.classList.remove("is-visible");
 				localStorage.setItem("cookie_banner_dismissed", "true");
