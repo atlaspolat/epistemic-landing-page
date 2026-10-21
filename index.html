@@ -646,14 +646,8 @@
 			.faq .answer { color: var(--muted); padding: 0 0 26px; max-width: 70ch; }
 			.faq details[open] .answer { animation: faq-open 0.45s var(--ease); }
 
-			/* ---------- CTA / Calendly ---------- */
+			/* ---------- CTA ---------- */
 			.cta-section { background: var(--ink); color: var(--bg); }
-			.cta-grid {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 48px;
-				align-items: start;
-			}
 			.cta-section h2 { color: var(--bg); font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 20px; }
 			.cta-section p { color: rgba(244,241,234,0.72); font-size: 1.08rem; margin: 0 0 28px; max-width: 46ch; }
 			.cta-section .btn-primary { background: var(--bg); color: var(--ink); border-color: var(--bg); }
@@ -661,28 +655,6 @@
 			.cta-section .btn-ghost:hover { background: var(--bg); color: var(--ink); }
 			.cta-contact { margin-top: 26px; font-family: "Space Grotesk", sans-serif; }
 			.cta-contact a { color: var(--bg); border-bottom: 1px solid var(--accent-warm); }
-
-			.scheduler {
-				border-radius: var(--radius);
-				overflow: hidden;
-				background: #ffffff;
-				border: 1px solid rgba(244,241,234,0.2);
-			}
-
-			.consent-card {
-				min-height: 360px;
-				padding: 44px 28px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				text-align: center;
-				gap: 16px;
-			}
-			.consent-card h3 { font-size: 1.3rem; color: var(--ink); }
-			.consent-card p { color: var(--muted); font-size: 0.95rem; max-width: 42ch; margin: 0; }
-			.consent-card p a { color: var(--accent-warm); border-bottom: 1px solid var(--accent-warm); }
-			.consent-card .btn { margin-top: 6px; }
 
 			/* ---------- Careers teaser ---------- */
 			.careers-teaser {
@@ -780,7 +752,6 @@
 				.audience-wrap { grid-template-columns: 1fr; }
 				.principles { grid-template-columns: 1fr; }
 				.outcomes { grid-template-columns: 1fr; }
-				.cta-grid { grid-template-columns: 1fr; }
 				.careers-teaser { grid-template-columns: 1fr; }
 				.careers-teaser .actions { justify-content: flex-start; }
 				.footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1234,23 +1205,14 @@
 			<!-- CTA / CONTACT -->
 			<section id="contact" class="cta-section">
 				<div class="container">
-					<div class="cta-grid">
-						<div class="reveal">
-							<p class="eyebrow" style="color: rgba(244,241,234,0.6);">Let's talk</p>
-							<h2>Ready to put AI to work?</h2>
-							<p>Tell us where your team is losing time. We'll map it, build it, integrate it, and keep it running.</p>
-							<div class="hero-cta" style="margin-bottom: 0;">
-								<a class="btn btn-primary" href="mailto:contact@epistemic.llc">Email us</a>
-							</div>
-							<p class="cta-contact"><a href="mailto:contact@epistemic.llc">contact@epistemic.llc</a></p>
+					<div class="reveal">
+						<p class="eyebrow" style="color: rgba(244,241,234,0.6);">Let's talk</p>
+						<h2>Ready to put AI to work?</h2>
+						<p>Tell us where your team is losing time. We'll map it, build it, integrate it, and keep it running.</p>
+						<div class="hero-cta" style="margin-bottom: 0;">
+							<a class="btn btn-primary" href="mailto:contact@epistemic.llc">Email us</a>
 						</div>
-						<div class="scheduler reveal" id="scheduler" data-calendly="https://calendly.com/atlaspolat-epistemic/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=11100e&primary_color=c5572a">
-							<div class="consent-card" id="calendly-consent">
-								<h3>Schedule a call</h3>
-								<p>We use Calendly to book calls. Loading it connects to Calendly (USA) and may transfer personal data.</p>
-								<button class="btn btn-primary" id="load-calendly" type="button">Load scheduler</button>
-							</div>
-						</div>
+						<p class="cta-contact"><a href="mailto:contact@epistemic.llc">contact@epistemic.llc</a></p>
 					</div>
 				</div>
 			</section>
@@ -1367,20 +1329,6 @@
 				if (y) y.textContent = new Date().getFullYear();
 			};
 			setYear();
-
-			// Calendly: only loaded after explicit consent (no third-party request before click)
-			const scheduler = document.getElementById("scheduler");
-			const loadBtn = document.getElementById("load-calendly");
-			if (scheduler && loadBtn) {
-				loadBtn.addEventListener("click", () => {
-					const url = scheduler.getAttribute("data-calendly");
-					scheduler.innerHTML = '<div class="calendly-inline-widget" data-url="' + url + '" style="min-width:320px;height:640px;"></div>';
-					const s = document.createElement("script");
-					s.src = "https://assets.calendly.com/assets/external/widget.js";
-					s.async = true;
-					document.body.appendChild(s);
-				});
-			}
 
 			// Cookie banner
 			const cookieBanner = document.getElementById("cookie-banner");
