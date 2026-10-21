@@ -56,15 +56,6 @@
 			}
 			.nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 0; }
 			.nav-right { display: inline-flex; align-items: center; gap: 12px; }
-			.lang-toggle {
-				display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--line-strong);
-				border-radius: 100px; padding: 3px; background: transparent; cursor: pointer; font-family: "Space Grotesk", sans-serif;
-			}
-			.lang-toggle span {
-				font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 100px;
-				color: var(--muted); transition: background 0.25s var(--ease), color 0.25s var(--ease);
-			}
-			.lang-toggle span.is-active { background: var(--ink); color: var(--bg); }
 			.logo { display: inline-flex; align-items: center; gap: 12px; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 1.18rem; }
 			.logo img { width: 36px; height: 36px; object-fit: contain; }
 
@@ -120,20 +111,16 @@
 					<span>Epistemic</span>
 				</a>
 				<div class="nav-right">
-					<button class="lang-toggle" type="button" aria-label="Language / Sprache">
-						<span data-lang="en">EN</span>
-						<span data-lang="de">DE</span>
-					</button>
-					<a class="btn btn-primary" href="index.html#contact" data-i18n="c.nav.work">Work with us</a>
+					<a class="btn btn-primary" href="index.html#contact">Work with us</a>
 				</div>
 			</nav>
 		</header>
 
 		<main>
 			<section class="hero container">
-				<p class="eyebrow" data-i18n="c.eyebrow">Careers</p>
-				<h1 data-i18n="c.h1">Build the systems that give people their time back.</h1>
-				<p class="lead" data-i18n="c.lead">
+				<p class="eyebrow">Careers</p>
+				<h1>Build the systems that give people their time back.</h1>
+				<p class="lead">
 					We build AI automation for document-heavy, process-heavy work. If you care about precision,
 					reliable delivery, and measurable outcomes, we should talk.
 				</p>
@@ -143,83 +130,83 @@
 				<div class="role-grid">
 					<article class="role-card" id="junior-ai-developer">
 						<div class="role-head">
-							<h2 data-i18n="c.r1.h2">Junior AI Developer</h2>
-							<span class="role-tag" data-i18n="c.r1.tag">Engineering</span>
+							<h2>Junior AI Developer</h2>
+							<span class="role-tag">Engineering</span>
 						</div>
-						<p class="meta" data-i18n="c.r1.meta">Focus: workflow automation, document processing, internal tooling</p>
-						<p data-i18n="c.r1.p">
+						<p class="meta">Focus: workflow automation, document processing, internal tooling</p>
+						<p>
 							You will work alongside senior engineers to implement AI-powered workflow automation. This role is
 							ideal for someone who is curious, detail-oriented, and eager to ship production-grade systems.
 						</p>
 						<div class="role-section">
-							<h3 data-i18n="c.r1.s1h">Responsibilities</h3>
+							<h3>Responsibilities</h3>
 							<ul>
-								<li data-i18n="c.r1.s1l1">Implement and test AI workflow components under senior guidance.</li>
-								<li data-i18n="c.r1.s1l2">Build data extraction, validation, and automation scripts for document-heavy workflows.</li>
-								<li data-i18n="c.r1.s1l3">Assist with evaluation, QA, and monitoring of automation outcomes.</li>
-								<li data-i18n="c.r1.s1l4">Contribute to internal tooling and workflow dashboards.</li>
+								<li>Implement and test AI workflow components under senior guidance.</li>
+								<li>Build data extraction, validation, and automation scripts for document-heavy workflows.</li>
+								<li>Assist with evaluation, QA, and monitoring of automation outcomes.</li>
+								<li>Contribute to internal tooling and workflow dashboards.</li>
 							</ul>
 						</div>
 						<div class="role-section">
-							<h3 data-i18n="c.r1.s2h">What we are looking for</h3>
+							<h3>What we are looking for</h3>
 							<ul>
-								<li data-i18n="c.r1.s2l1">Comfort with Python or JavaScript and basic API usage.</li>
-								<li data-i18n="c.r1.s2l2">Interest in AI systems, automation, and practical engineering.</li>
-								<li data-i18n="c.r1.s2l3">Strong attention to detail and a preference for clean, readable code.</li>
-								<li data-i18n="c.r1.s2l4">Ability to communicate progress clearly and ask good questions.</li>
+								<li>Comfort with Python or JavaScript and basic API usage.</li>
+								<li>Interest in AI systems, automation, and practical engineering.</li>
+								<li>Strong attention to detail and a preference for clean, readable code.</li>
+								<li>Ability to communicate progress clearly and ask good questions.</li>
 							</ul>
 						</div>
 						<div class="role-section">
-							<h3 data-i18n="c.r1.s3h">Nice to have</h3>
+							<h3>Nice to have</h3>
 							<ul>
-								<li data-i18n="c.r1.s3l1">Experience with document parsing, OCR, or data pipelines.</li>
-								<li data-i18n="c.r1.s3l2">Familiarity with automation tools, workflows, or RPA concepts.</li>
+								<li>Experience with document parsing, OCR, or data pipelines.</li>
+								<li>Familiarity with automation tools, workflows, or RPA concepts.</li>
 							</ul>
 						</div>
 						<div class="apply-bar">
-							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Junior%20AI%20Developer%20Application" data-i18n="c.r1.apply">Apply for this role</a>
-							<span class="apply-note" data-i18n="c.r1.note">Include a resume and a short note about your interest.</span>
+							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Junior%20AI%20Developer%20Application">Apply for this role</a>
+							<span class="apply-note">Include a resume and a short note about your interest.</span>
 						</div>
 					</article>
 
 					<article class="role-card" id="marketing-intern">
 						<div class="role-head">
-							<h2 data-i18n="c.r2.h2">Marketing Intern</h2>
-							<span class="role-tag" data-i18n="c.r2.tag">Go-to-market</span>
+							<h2>Marketing Intern</h2>
+							<span class="role-tag">Go-to-market</span>
 						</div>
-						<p class="meta" data-i18n="c.r2.meta">Focus: B2B positioning, outbound campaigns, and content support</p>
-						<p data-i18n="c.r2.p">
+						<p class="meta">Focus: B2B positioning, outbound campaigns, and content support</p>
+						<p>
 							You will support go-to-market execution for a premium B2B automation studio. This role is best for
 							someone who is organized, crisp in writing, and eager to learn how technical services firms grow.
 						</p>
 						<div class="role-section">
-							<h3 data-i18n="c.r2.s1h">Responsibilities</h3>
+							<h3>Responsibilities</h3>
 							<ul>
-								<li data-i18n="c.r2.s1l1">Draft and refine outreach messaging for target professional teams.</li>
-								<li data-i18n="c.r2.s1l2">Support content creation for the website, briefs, and case-style materials.</li>
-								<li data-i18n="c.r2.s1l3">Coordinate campaign lists and organize basic performance tracking.</li>
-								<li data-i18n="c.r2.s1l4">Assist with scheduling, follow-ups, and light market research.</li>
+								<li>Draft and refine outreach messaging for target professional teams.</li>
+								<li>Support content creation for the website, briefs, and case-style materials.</li>
+								<li>Coordinate campaign lists and organize basic performance tracking.</li>
+								<li>Assist with scheduling, follow-ups, and light market research.</li>
 							</ul>
 						</div>
 						<div class="role-section">
-							<h3 data-i18n="c.r2.s2h">What we are looking for</h3>
+							<h3>What we are looking for</h3>
 							<ul>
-								<li data-i18n="c.r2.s2l1">Clear, concise writing ability and comfort with structured messaging.</li>
-								<li data-i18n="c.r2.s2l2">Interest in B2B services, automation, and modern operations.</li>
-								<li data-i18n="c.r2.s2l3">Strong organizational skills and attention to detail.</li>
-								<li data-i18n="c.r2.s2l4">Willingness to learn and iterate quickly on feedback.</li>
+								<li>Clear, concise writing ability and comfort with structured messaging.</li>
+								<li>Interest in B2B services, automation, and modern operations.</li>
+								<li>Strong organizational skills and attention to detail.</li>
+								<li>Willingness to learn and iterate quickly on feedback.</li>
 							</ul>
 						</div>
 						<div class="role-section">
-							<h3 data-i18n="c.r2.s3h">Nice to have</h3>
+							<h3>Nice to have</h3>
 							<ul>
-								<li data-i18n="c.r2.s3l1">Experience with CRM tools, email outreach, or analytics dashboards.</li>
-								<li data-i18n="c.r2.s3l2">Basic knowledge of B2B SaaS or professional services.</li>
+								<li>Experience with CRM tools, email outreach, or analytics dashboards.</li>
+								<li>Basic knowledge of B2B SaaS or professional services.</li>
 							</ul>
 						</div>
 						<div class="apply-bar">
-							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Marketing%20Intern%20Application" data-i18n="c.r2.apply">Apply for this role</a>
-							<span class="apply-note" data-i18n="c.r2.note">Include a resume and one writing sample or portfolio link.</span>
+							<a class="btn btn-primary" href="mailto:hire@epistemic.llc?subject=Marketing%20Intern%20Application">Apply for this role</a>
+							<span class="apply-note">Include a resume and one writing sample or portfolio link.</span>
 						</div>
 					</article>
 				</div>
@@ -229,9 +216,8 @@
 		<footer>
 			<div class="container footer-inner">
 				<span>Epistemic LLC · 30 N Gould St, STE R, Sheridan, WY 82801, USA · <a href="mailto:hire@epistemic.llc">hire@epistemic.llc</a></span>
-				<span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html" data-i18n="foot.ds">Privacy</a> · <a href="index.html" data-i18n="c.foot.back">← Back to home</a></span>
+				<span><a href="index.html">← Back to home</a></span>
 			</div>
 		</footer>
-		<script src="assets/i18n.js"></script>
 	</body>
 </html>

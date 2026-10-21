@@ -285,28 +285,6 @@
 				color: var(--ink);
 			}
 
-			.lang-toggle {
-				display: inline-flex;
-				align-items: center;
-				gap: 2px;
-				border: 1px solid var(--line-strong);
-				border-radius: 100px;
-				padding: 3px;
-				background: transparent;
-				cursor: pointer;
-				font-family: "Space Grotesk", sans-serif;
-			}
-			.lang-toggle span {
-				font-size: 0.72rem;
-				font-weight: 600;
-				letter-spacing: 0.06em;
-				padding: 5px 10px;
-				border-radius: 100px;
-				color: var(--muted);
-				transition: background 0.25s var(--ease), color 0.25s var(--ease);
-			}
-			.lang-toggle span.is-active { background: var(--ink); color: var(--bg); }
-
 			/* ---------- Hero ---------- */
 			.hero {
 				padding: clamp(70px, 11vw, 150px) 0 clamp(50px, 7vw, 90px);
@@ -636,58 +614,6 @@
 			.outcome h3 { font-size: 1.15rem; margin-bottom: 8px; }
 			.outcome p { color: var(--muted); margin: 0; font-size: 0.95rem; }
 
-			/* ---------- Lawsec teaser ---------- */
-			.lawsec-band { background: var(--bg-deep); }
-			.lawsec-inner {
-				display: grid;
-				grid-template-columns: 1.1fr 0.9fr;
-				gap: 56px;
-				align-items: center;
-				border: 1px solid var(--line);
-				border-radius: var(--radius);
-				background: var(--surface);
-				padding: clamp(36px, 5vw, 64px);
-				overflow: hidden;
-			}
-
-			.lawsec-badge {
-				display: inline-flex;
-				align-items: center;
-				gap: 9px;
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.74rem;
-				text-transform: uppercase;
-				letter-spacing: 0.18em;
-				color: #128c4b;
-				background: #e3f6ea;
-				border-radius: 100px;
-				padding: 7px 14px;
-				margin-bottom: 22px;
-			}
-			.lawsec-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #25d366; }
-
-			.lawsec-inner h2 { font-size: clamp(1.9rem, 3.4vw, 3rem); margin-bottom: 18px; }
-			.lawsec-inner p { color: var(--ink-soft); margin: 0 0 28px; font-size: 1.05rem; }
-
-			.chat-mini {
-				display: grid;
-				gap: 12px;
-				background: linear-gradient(160deg, #e9f6ee, #d9efe0);
-				border-radius: var(--radius);
-				padding: 26px;
-				border: 1px solid #cfe7d8;
-			}
-			.bubble {
-				max-width: 80%;
-				padding: 12px 16px;
-				border-radius: 16px;
-				font-size: 0.95rem;
-				line-height: 1.5;
-				box-shadow: 0 2px 5px rgba(0,0,0,0.06);
-			}
-			.bubble.in { background: #ffffff; border-bottom-left-radius: 4px; align-self: flex-start; color: var(--ink-soft); }
-			.bubble.out { background: #d6f5c9; border-bottom-right-radius: 4px; align-self: flex-end; color: #14331a; }
-
 			/* ---------- FAQ ---------- */
 			.faq { border-top: 1px solid var(--line); }
 			.faq details {
@@ -854,7 +780,6 @@
 				.audience-wrap { grid-template-columns: 1fr; }
 				.principles { grid-template-columns: 1fr; }
 				.outcomes { grid-template-columns: 1fr; }
-				.lawsec-inner { grid-template-columns: 1fr; gap: 32px; }
 				.cta-grid { grid-template-columns: 1fr; }
 				.careers-teaser { grid-template-columns: 1fr; }
 				.careers-teaser .actions { justify-content: flex-start; }
@@ -942,11 +867,11 @@
 			<img class="intro-media" src="assets/sun.gif" alt="" aria-hidden="true">
 			<div class="intro-overlay" aria-hidden="true"></div>
 			<div class="intro-content">
-				<p class="intro-eyebrow" data-i18n="h.intro.eyebrow">AI strategy · agents · automation</p>
+				<p class="intro-eyebrow">AI strategy · agents · automation</p>
 				<h1 class="intro-name">Epistemic</h1>
 			</div>
 			<a class="scroll-cue" href="#start" aria-label="Scroll to content">
-				<span data-i18n="h.intro.scroll">Scroll</span>
+				<span>Scroll</span>
 				<span class="line" aria-hidden="true"></span>
 			</a>
 		</section>
@@ -957,18 +882,13 @@
 					<span>Epistemic</span>
 				</a>
 				<div class="nav-links" id="nav-links">
-					<a href="#services" data-i18n="h.nav.services">Services</a>
-					<a href="#industries" data-i18n="h.nav.who">Who we help</a>
-					<a href="#approach" data-i18n="h.nav.approach">Approach</a>
-					<a href="#process" data-i18n="h.nav.process">Process</a>
-					<a href="lawsec.html">Lawsec</a>
-					<a href="careers.html" data-i18n="h.nav.careers">Careers</a>
+					<a href="#services">Services</a>
+					<a href="#industries">Who we help</a>
+					<a href="#approach">Approach</a>
+					<a href="#process">Process</a>
+					<a href="careers.html">Careers</a>
 				</div>
-				<button class="lang-toggle" type="button" aria-label="Language / Sprache">
-					<span data-lang="en">EN</span>
-					<span data-lang="de">DE</span>
-				</button>
-				<a class="btn btn-primary nav-cta" href="#contact" data-i18n="h.nav.book">Book a call</a>
+				<a class="btn btn-primary nav-cta" href="#contact">Book a call</a>
 				<button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
 			</nav>
 		</header>
@@ -978,29 +898,29 @@
 			<section class="hero">
 				<div class="hero-blob" aria-hidden="true"></div>
 				<div class="container">
-					<p class="eyebrow reveal" data-i18n="h.hero.eyebrow">AI strategy · agents · automation</p>
-					<h1 class="reveal" data-i18n="h.hero.h1">Put AI to work <span class="ink-accent">across</span> your business.</h1>
-					<p class="hero-lead reveal" data-i18n="h.hero.lead">
+					<p class="eyebrow reveal">AI strategy · agents · automation</p>
+					<h1 class="reveal">Put AI to work <span class="ink-accent">across</span> your business.</h1>
+					<p class="hero-lead reveal">
 						Epistemic helps professionals and companies turn AI from a buzzword into working systems —
 						strategy, custom agents, automation, and the integrations that make them stick. We map your
 						real workflows, build with guardrails, and stay on to keep it reliable.
 					</p>
 					<div class="hero-cta reveal">
-						<a class="btn btn-primary" href="#contact" data-i18n="h.hero.cta1">Book a call <span class="arrow">→</span></a>
-						<a class="btn btn-ghost" href="#services" data-i18n="h.hero.cta2">Explore services</a>
+						<a class="btn btn-primary" href="#contact">Book a call <span class="arrow">→</span></a>
+						<a class="btn btn-ghost" href="#services">Explore services</a>
 					</div>
 					<div class="hero-stats reveal">
 						<div class="stat">
 							<span class="num">8+</span>
-							<span class="label" data-i18n="h.hero.s1l">end-to-end AI capabilities, from strategy to managed ops</span>
+							<span class="label">end-to-end AI capabilities, from strategy to managed ops</span>
 						</div>
 						<div class="stat">
 							<span class="num">24/7</span>
-							<span class="label" data-i18n="h.hero.s2l">agents that never miss a request or after-hours inquiry</span>
+							<span class="label">agents that never miss a request or after-hours inquiry</span>
 						</div>
 						<div class="stat">
-							<span class="num" data-i18n="h.hero.s3n">Wks</span>
-							<span class="label" data-i18n="h.hero.s3l">not quarters — focused delivery to a working first system</span>
+							<span class="num">Wks</span>
+							<span class="label">not quarters — focused delivery to a working first system</span>
 						</div>
 					</div>
 				</div>
@@ -1008,7 +928,7 @@
 
 			<!-- MARQUEE -->
 			<div class="marquee" aria-hidden="true">
-				<p class="marquee-label" data-i18n="h.marquee.label">Works across your stack</p>
+				<p class="marquee-label">Works across your stack</p>
 				<div class="marquee-track">
 					<span>OpenAI</span><span>Anthropic</span><span>Azure AI</span><span>AWS</span>
 					<span>Zapier</span><span>Make</span><span>HubSpot</span><span>Salesforce</span>
@@ -1024,10 +944,10 @@
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index" data-i18n="h.serv.index">01 — Services</p>
-							<h2 class="section-title" data-i18n="h.serv.title">A full toolkit for working with AI.</h2>
+							<p class="index">01 — Services</p>
+							<h2 class="section-title">A full toolkit for working with AI.</h2>
 						</div>
-						<p class="section-intro" data-i18n="h.serv.intro">
+						<p class="section-intro">
 							Whether you need a strategy, a single sharp agent, or an automation backbone across teams,
 							we cover the entire path — and the unglamorous integration and operations work that makes
 							AI actually deliver.
@@ -1036,51 +956,51 @@
 					<div class="services-grid reveal">
 						<article class="service">
 							<span class="s-num">01</span>
-							<h3 data-i18n="h.serv.1h">AI Strategy &amp; Advisory</h3>
-							<p data-i18n="h.serv.1p">Find the highest-leverage opportunities, size the impact, and build a roadmap your team can actually execute.</p>
-							<div class="tags"><span class="tag" data-i18n="h.serv.1t1">Roadmap</span><span class="tag" data-i18n="h.serv.1t2">Use-case scan</span><span class="tag" data-i18n="h.serv.1t3">ROI model</span></div>
+							<h3>AI Strategy &amp; Advisory</h3>
+							<p>Find the highest-leverage opportunities, size the impact, and build a roadmap your team can actually execute.</p>
+							<div class="tags"><span class="tag">Roadmap</span><span class="tag">Use-case scan</span><span class="tag">ROI model</span></div>
 						</article>
 						<article class="service">
 							<span class="s-num">02</span>
-							<h3 data-i18n="h.serv.2h">Custom AI Agents &amp; Copilots</h3>
-							<p data-i18n="h.serv.2p">Purpose-built assistants that answer, draft, qualify, and act — grounded in your data with human-in-the-loop guardrails.</p>
-							<div class="tags"><span class="tag" data-i18n="h.serv.2t1">Assistants</span><span class="tag" data-i18n="h.serv.2t2">Copilots</span><span class="tag" data-i18n="h.serv.2t3">Guardrails</span></div>
+							<h3>Custom AI Agents &amp; Copilots</h3>
+							<p>Purpose-built assistants that answer, draft, qualify, and act — grounded in your data with human-in-the-loop guardrails.</p>
+							<div class="tags"><span class="tag">Assistants</span><span class="tag">Copilots</span><span class="tag">Guardrails</span></div>
 						</article>
 						<article class="service">
 							<span class="s-num">03</span>
-							<h3 data-i18n="h.serv.3h">Workflow &amp; Process Automation</h3>
-							<p data-i18n="h.serv.3p">Remove the repetitive admin between your tools — routing, follow-ups, data entry, and approvals handled automatically.</p>
-							<div class="tags"><span class="tag" data-i18n="h.serv.3t1">Routing</span><span class="tag" data-i18n="h.serv.3t2">Approvals</span><span class="tag" data-i18n="h.serv.3t3">No re-entry</span></div>
+							<h3>Workflow &amp; Process Automation</h3>
+							<p>Remove the repetitive admin between your tools — routing, follow-ups, data entry, and approvals handled automatically.</p>
+							<div class="tags"><span class="tag">Routing</span><span class="tag">Approvals</span><span class="tag">No re-entry</span></div>
 						</article>
 						<article class="service">
 							<span class="s-num">04</span>
-							<h3 data-i18n="h.serv.4h">Document Intelligence</h3>
-							<p data-i18n="h.serv.4p">Ingest, extract, validate, classify, and summarize messy documents into clean, structured, trustworthy output.</p>
-							<div class="tags"><span class="tag" data-i18n="h.serv.4t1">Extraction</span><span class="tag" data-i18n="h.serv.4t2">Validation</span><span class="tag" data-i18n="h.serv.4t3">Summaries</span></div>
+							<h3>Document Intelligence</h3>
+							<p>Ingest, extract, validate, classify, and summarize messy documents into clean, structured, trustworthy output.</p>
+							<div class="tags"><span class="tag">Extraction</span><span class="tag">Validation</span><span class="tag">Summaries</span></div>
 						</article>
 						<article class="service">
 							<span class="s-num">05</span>
-							<h3 data-i18n="h.serv.5h">Data, RAG &amp; Knowledge Systems</h3>
-							<p data-i18n="h.serv.5p">Turn scattered knowledge into a retrieval system your agents can cite — accurate, current, and access-controlled.</p>
-							<div class="tags"><span class="tag" data-i18n="h.serv.5t1">RAG</span><span class="tag" data-i18n="h.serv.5t2">Search</span><span class="tag" data-i18n="h.serv.5t3">Citations</span></div>
+							<h3>Data, RAG &amp; Knowledge Systems</h3>
+							<p>Turn scattered knowledge into a retrieval system your agents can cite — accurate, current, and access-controlled.</p>
+							<div class="tags"><span class="tag">RAG</span><span class="tag">Search</span><span class="tag">Citations</span></div>
 						</article>
 						<article class="service">
 							<span class="s-num">06</span>
-							<h3 data-i18n="h.serv.6h">Systems Integration</h3>
-							<p data-i18n="h.serv.6p">Connect AI to the tools you already run — CRM, ERP, email, CMS, and databases — with clean, structured handoffs.</p>
-							<div class="tags"><span class="tag" data-i18n="h.serv.6t1">CRM/ERP</span><span class="tag" data-i18n="h.serv.6t2">APIs</span><span class="tag" data-i18n="h.serv.6t3">Webhooks</span></div>
+							<h3>Systems Integration</h3>
+							<p>Connect AI to the tools you already run — CRM, ERP, email, CMS, and databases — with clean, structured handoffs.</p>
+							<div class="tags"><span class="tag">CRM/ERP</span><span class="tag">APIs</span><span class="tag">Webhooks</span></div>
 						</article>
 						<article class="service">
 							<span class="s-num">07</span>
-							<h3 data-i18n="h.serv.7h">AI Training &amp; Team Enablement</h3>
-							<p data-i18n="h.serv.7p">Practical, role-specific training and playbooks so your people use AI confidently, safely, and every day.</p>
-							<div class="tags"><span class="tag" data-i18n="h.serv.7t1">Workshops</span><span class="tag" data-i18n="h.serv.7t2">Playbooks</span><span class="tag" data-i18n="h.serv.7t3">Policy</span></div>
+							<h3>AI Training &amp; Team Enablement</h3>
+							<p>Practical, role-specific training and playbooks so your people use AI confidently, safely, and every day.</p>
+							<div class="tags"><span class="tag">Workshops</span><span class="tag">Playbooks</span><span class="tag">Policy</span></div>
 						</article>
 						<article class="service">
 							<span class="s-num">08</span>
-							<h3 data-i18n="h.serv.8h">Managed AI Operations</h3>
-							<p data-i18n="h.serv.8p">We don't disappear at launch — monitoring, evaluation, QA, and iteration keep systems reliable under real load.</p>
-							<div class="tags"><span class="tag" data-i18n="h.serv.8t1">Monitoring</span><span class="tag" data-i18n="h.serv.8t2">Evals</span><span class="tag" data-i18n="h.serv.8t3">Iteration</span></div>
+							<h3>Managed AI Operations</h3>
+							<p>We don't disappear at launch — monitoring, evaluation, QA, and iteration keep systems reliable under real load.</p>
+							<div class="tags"><span class="tag">Monitoring</span><span class="tag">Evals</span><span class="tag">Iteration</span></div>
 						</article>
 					</div>
 				</div>
@@ -1091,38 +1011,38 @@
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index" data-i18n="h.ind.index">02 — Who we help</p>
-							<h2 class="section-title" data-i18n="h.ind.title">Built for the people doing the work.</h2>
+							<p class="index">02 — Who we help</p>
+							<h2 class="section-title">Built for the people doing the work.</h2>
 						</div>
-						<p class="section-intro" data-i18n="h.ind.intro">
+						<p class="section-intro">
 							From a solo professional drowning in admin to an enterprise team standardizing operations —
 							we meet you where you are and scale with you.
 						</p>
 					</div>
 					<div class="audience-wrap reveal">
 						<div class="audience-card">
-							<h3 data-i18n="h.ind.a1h">Professionals &amp; solo experts</h3>
-							<p data-i18n="h.ind.a1p">Reclaim hours from inbox triage, intake, scheduling, and paperwork so you can focus on billable, high-judgment work.</p>
+							<h3>Professionals &amp; solo experts</h3>
+							<p>Reclaim hours from inbox triage, intake, scheduling, and paperwork so you can focus on billable, high-judgment work.</p>
 						</div>
 						<div class="audience-card">
-							<h3 data-i18n="h.ind.a2h">Small &amp; mid-sized businesses</h3>
-							<p data-i18n="h.ind.a2p">Add capacity without adding headcount — automate the operational glue that quietly slows every team down.</p>
+							<h3>Small &amp; mid-sized businesses</h3>
+							<p>Add capacity without adding headcount — automate the operational glue that quietly slows every team down.</p>
 						</div>
 						<div class="audience-card">
-							<h3 data-i18n="h.ind.a3h">Enterprise teams</h3>
-							<p data-i18n="h.ind.a3p">Standardize high-volume processes with auditable, guardrailed AI that meets your security and compliance bar.</p>
+							<h3>Enterprise teams</h3>
+							<p>Standardize high-volume processes with auditable, guardrailed AI that meets your security and compliance bar.</p>
 						</div>
 					</div>
 					<div class="industry-row reveal">
-						<span class="label" data-i18n="h.ind.label">Industries</span>
-						<span class="chip" data-i18n="h.ind.c1">Legal</span>
-						<span class="chip" data-i18n="h.ind.c2">Finance</span>
-						<span class="chip" data-i18n="h.ind.c3">Real Estate</span>
-						<span class="chip" data-i18n="h.ind.c4">Healthcare</span>
-						<span class="chip" data-i18n="h.ind.c5">Professional Services</span>
-						<span class="chip" data-i18n="h.ind.c6">Operations</span>
-						<span class="chip" data-i18n="h.ind.c7">Insurance</span>
-						<span class="chip" data-i18n="h.ind.c8">Recruiting</span>
+						<span class="label">Industries</span>
+						<span class="chip">Legal</span>
+						<span class="chip">Finance</span>
+						<span class="chip">Real Estate</span>
+						<span class="chip">Healthcare</span>
+						<span class="chip">Professional Services</span>
+						<span class="chip">Operations</span>
+						<span class="chip">Insurance</span>
+						<span class="chip">Recruiting</span>
 					</div>
 				</div>
 			</section>
@@ -1132,10 +1052,10 @@
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index" data-i18n="h.app.index">03 — Approach</p>
-							<h2 class="section-title" data-i18n="h.app.title">Rigorous, measurable, and built to last.</h2>
+							<p class="index">03 — Approach</p>
+							<h2 class="section-title">Rigorous, measurable, and built to last.</h2>
 						</div>
-						<p class="section-intro" data-i18n="h.app.intro">
+						<p class="section-intro">
 							We're named Epistemic for a reason: we care about what's actually true. No demos that fall
 							apart in production — just systems grounded in evidence and your real constraints.
 						</p>
@@ -1143,23 +1063,23 @@
 					<div class="principles reveal">
 						<div class="principle">
 							<span class="p-num">01</span>
-							<h3 data-i18n="h.app.1h">Outcome-first</h3>
-							<p data-i18n="h.app.1p">We start from the metric you want to move — time, cost, throughput — not the technology we want to use.</p>
+							<h3>Outcome-first</h3>
+							<p>We start from the metric you want to move — time, cost, throughput — not the technology we want to use.</p>
 						</div>
 						<div class="principle">
 							<span class="p-num">02</span>
-							<h3 data-i18n="h.app.2h">Guardrailed by design</h3>
-							<p data-i18n="h.app.2p">Human-in-the-loop, validation, and clear escalation paths so automation stays safe and trustworthy.</p>
+							<h3>Guardrailed by design</h3>
+							<p>Human-in-the-loop, validation, and clear escalation paths so automation stays safe and trustworthy.</p>
 						</div>
 						<div class="principle">
 							<span class="p-num">03</span>
-							<h3 data-i18n="h.app.3h">Measured, not assumed</h3>
-							<p data-i18n="h.app.3p">Evaluations and monitoring prove the system works — and keep proving it as inputs change.</p>
+							<h3>Measured, not assumed</h3>
+							<p>Evaluations and monitoring prove the system works — and keep proving it as inputs change.</p>
 						</div>
 						<div class="principle">
 							<span class="p-num">04</span>
-							<h3 data-i18n="h.app.4h">Founder-led delivery</h3>
-							<p data-i18n="h.app.4p">Senior, hands-on attention from first call to production. You always know who's accountable.</p>
+							<h3>Founder-led delivery</h3>
+							<p>Senior, hands-on attention from first call to production. You always know who's accountable.</p>
 						</div>
 					</div>
 				</div>
@@ -1170,10 +1090,10 @@
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index" data-i18n="h.proc.index">04 — Process</p>
-							<h2 class="section-title" data-i18n="h.proc.title">Five steps from idea to reliable system.</h2>
+							<p class="index">04 — Process</p>
+							<h2 class="section-title">Five steps from idea to reliable system.</h2>
 						</div>
-						<p class="section-intro" data-i18n="h.proc.intro">
+						<p class="section-intro">
 							A focused engagement with tight feedback loops. You see working software early and often —
 							no months of silence before the reveal.
 						</p>
@@ -1182,42 +1102,42 @@
 						<div class="process-step">
 							<span class="p-index">01</span>
 							<div>
-								<h3 data-i18n="h.proc.1h">Discover</h3>
-								<p class="p-body" data-i18n="h.proc.1p">We pinpoint where time and money are leaking and agree on the outcomes that matter most.</p>
+								<h3>Discover</h3>
+								<p class="p-body">We pinpoint where time and money are leaking and agree on the outcomes that matter most.</p>
 							</div>
-							<span class="p-tag" data-i18n="h.proc.1t">Week 1</span>
+							<span class="p-tag">Week 1</span>
 						</div>
 						<div class="process-step">
 							<span class="p-index">02</span>
 							<div>
-								<h3 data-i18n="h.proc.2h">Map</h3>
-								<p class="p-body" data-i18n="h.proc.2p">We document the real workflow — dependencies, edge cases, and approval logic — before building anything.</p>
+								<h3>Map</h3>
+								<p class="p-body">We document the real workflow — dependencies, edge cases, and approval logic — before building anything.</p>
 							</div>
-							<span class="p-tag" data-i18n="h.proc.2t">Week 1–2</span>
+							<span class="p-tag">Week 1–2</span>
 						</div>
 						<div class="process-step">
 							<span class="p-index">03</span>
 							<div>
-								<h3 data-i18n="h.proc.3h">Build</h3>
-								<p class="p-body" data-i18n="h.proc.3p">We design the agent and automation stack with validation rules and the exact outputs you need.</p>
+								<h3>Build</h3>
+								<p class="p-body">We design the agent and automation stack with validation rules and the exact outputs you need.</p>
 							</div>
-							<span class="p-tag" data-i18n="h.proc.3t">Week 2–4</span>
+							<span class="p-tag">Week 2–4</span>
 						</div>
 						<div class="process-step">
 							<span class="p-index">04</span>
 							<div>
-								<h3 data-i18n="h.proc.4h">Integrate</h3>
-								<p class="p-body" data-i18n="h.proc.4p">We wire it into your existing tools so outputs flow where work already happens — no copy-paste.</p>
+								<h3>Integrate</h3>
+								<p class="p-body">We wire it into your existing tools so outputs flow where work already happens — no copy-paste.</p>
 							</div>
-							<span class="p-tag" data-i18n="h.proc.4t">Week 4–5</span>
+							<span class="p-tag">Week 4–5</span>
 						</div>
 						<div class="process-step">
 							<span class="p-index">05</span>
 							<div>
-								<h3 data-i18n="h.proc.5h">Operate &amp; iterate</h3>
-								<p class="p-body" data-i18n="h.proc.5p">We ship, monitor, and refine until the system is dependable under real workload — then keep it sharp.</p>
+								<h3>Operate &amp; iterate</h3>
+								<p class="p-body">We ship, monitor, and refine until the system is dependable under real workload — then keep it sharp.</p>
 							</div>
-							<span class="p-tag" data-i18n="h.proc.5t">Ongoing</span>
+							<span class="p-tag">Ongoing</span>
 						</div>
 					</div>
 				</div>
@@ -1228,67 +1148,43 @@
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index" data-i18n="h.out.index">05 — Outcomes</p>
-							<h2 class="section-title" data-i18n="h.out.title">What changes when AI does the busywork.</h2>
+							<p class="index">05 — Outcomes</p>
+							<h2 class="section-title">What changes when AI does the busywork.</h2>
 						</div>
-						<p class="section-intro" data-i18n="h.out.intro">
+						<p class="section-intro">
 							The goal isn't novelty — it's measurable relief. Here's where teams feel the difference first.
 						</p>
 					</div>
 					<div class="outcomes reveal">
 						<div class="outcome">
 							<span class="o-num">↓</span>
-							<h3 data-i18n="h.out.1h">Hours reclaimed weekly</h3>
-							<p data-i18n="h.out.1p">Repetitive triage, data entry, and follow-ups handled automatically frees your team for judgment work.</p>
+							<h3>Hours reclaimed weekly</h3>
+							<p>Repetitive triage, data entry, and follow-ups handled automatically frees your team for judgment work.</p>
 						</div>
 						<div class="outcome">
 							<span class="o-num">$</span>
-							<h3 data-i18n="h.out.2h">Lower cost per workflow</h3>
-							<p data-i18n="h.out.2p">Reduce manual effort and overhead without adding headcount as volume grows.</p>
+							<h3>Lower cost per workflow</h3>
+							<p>Reduce manual effort and overhead without adding headcount as volume grows.</p>
 						</div>
 						<div class="outcome">
 							<span class="o-num">↑</span>
-							<h3 data-i18n="h.out.3h">Higher throughput</h3>
-							<p data-i18n="h.out.3p">Work moves through approvals and handoffs without stalling on someone's inbox.</p>
+							<h3>Higher throughput</h3>
+							<p>Work moves through approvals and handoffs without stalling on someone's inbox.</p>
 						</div>
 						<div class="outcome">
 							<span class="o-num">✓</span>
-							<h3 data-i18n="h.out.4h">Stronger compliance</h3>
-							<p data-i18n="h.out.4p">Standardized inputs, outputs, and traceable logs make audits and reviews painless.</p>
+							<h3>Stronger compliance</h3>
+							<p>Standardized inputs, outputs, and traceable logs make audits and reviews painless.</p>
 						</div>
 						<div class="outcome">
 							<span class="o-num">⚡</span>
-							<h3 data-i18n="h.out.5h">Faster decisions</h3>
-							<p data-i18n="h.out.5p">Clean summaries and structured data put the right context in front of decision-makers sooner.</p>
+							<h3>Faster decisions</h3>
+							<p>Clean summaries and structured data put the right context in front of decision-makers sooner.</p>
 						</div>
 						<div class="outcome">
 							<span class="o-num">★</span>
-							<h3 data-i18n="h.out.6h">Better client experience</h3>
-							<p data-i18n="h.out.6p">Instant, consistent, professional responses — even after hours and across channels.</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- LAWSEC TEASER -->
-			<section class="lawsec-band">
-				<div class="container">
-					<div class="lawsec-inner reveal">
-						<div>
-							<span class="lawsec-badge" data-i18n="h.ls.badge"><span class="dot"></span> Our product · Lawsec</span>
-							<h2 data-i18n="h.ls.h2">Stop fielding "any update on my case?"</h2>
-							<p data-i18n="h.ls.p">
-								Lawsec keeps clients informed on their case status, answers their questions, and
-								escalates the complex matters to you — 24/7, in your client's language, on the channels
-								they already use. Your team stops repeating updates and gets back to the law.
-							</p>
-							<a class="btn btn-primary" href="lawsec.html" data-i18n="h.ls.cta">Meet Lawsec <span class="arrow">→</span></a>
-						</div>
-						<div class="chat-mini" aria-hidden="true">
-							<div class="bubble in" data-i18n="h.ls.b1">Hi, any update on my case?</div>
-							<div class="bubble out" data-i18n="h.ls.b2">Yes — your filing was accepted Tuesday and your hearing is set for March 14. I'll message you the moment anything changes. ✅</div>
-							<div class="bubble in" data-i18n="h.ls.b3">Do I need to prepare anything?</div>
-							<div class="bubble out" data-i18n="h.ls.b4">Just a photo ID. I've emailed your full checklist. 📄</div>
+							<h3>Better client experience</h3>
+							<p>Instant, consistent, professional responses — even after hours and across channels.</p>
 						</div>
 					</div>
 				</div>
@@ -1299,37 +1195,37 @@
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index" data-i18n="h.faq.index">06 — FAQ</p>
-							<h2 class="section-title" data-i18n="h.faq.title">Questions, answered.</h2>
+							<p class="index">06 — FAQ</p>
+							<h2 class="section-title">Questions, answered.</h2>
 						</div>
-						<p class="section-intro" data-i18n="h.faq.intro">
+						<p class="section-intro">
 							Still curious about something? Book a call and we'll talk through your specific situation.
 						</p>
 					</div>
 					<div class="faq reveal">
 						<details>
-							<summary data-i18n="h.faq.q1">How do engagements work? <span class="icon">+</span></summary>
-							<p class="answer" data-i18n="h.faq.a1">Most start with a short discovery call and a fixed-scope first build, so you see a working system in weeks. From there, many clients move onto a managed plan where we monitor and improve the systems over time.</p>
+							<summary>How do engagements work? <span class="icon">+</span></summary>
+							<p class="answer">Most start with a short discovery call and a fixed-scope first build, so you see a working system in weeks. From there, many clients move onto a managed plan where we monitor and improve the systems over time.</p>
 						</details>
 						<details>
-							<summary data-i18n="h.faq.q2">How do you handle data security and privacy? <span class="icon">+</span></summary>
-							<p class="answer" data-i18n="h.faq.a2">We design for least-privilege access, keep sensitive data inside your controlled environments where possible, and document data flows. We're happy to work within your security, retention, and compliance requirements.</p>
+							<summary>How do you handle data security and privacy? <span class="icon">+</span></summary>
+							<p class="answer">We design for least-privilege access, keep sensitive data inside your controlled environments where possible, and document data flows. We're happy to work within your security, retention, and compliance requirements.</p>
 						</details>
 						<details>
-							<summary data-i18n="h.faq.q3">How long until we see something working? <span class="icon">+</span></summary>
-							<p class="answer" data-i18n="h.faq.a3">A focused first system typically lands in a few weeks rather than quarters. We deliberately scope the first build tight so you get a real, usable result fast — then expand from proven ground.</p>
+							<summary>How long until we see something working? <span class="icon">+</span></summary>
+							<p class="answer">A focused first system typically lands in a few weeks rather than quarters. We deliberately scope the first build tight so you get a real, usable result fast — then expand from proven ground.</p>
 						</details>
 						<details>
-							<summary data-i18n="h.faq.q4">What does it cost? <span class="icon">+</span></summary>
-							<p class="answer" data-i18n="h.faq.a4">It depends on scope, but we use clear fixed pricing for defined builds and transparent plans for ongoing operations. No surprise invoices — you approve scope before we build.</p>
+							<summary>What does it cost? <span class="icon">+</span></summary>
+							<p class="answer">It depends on scope, but we use clear fixed pricing for defined builds and transparent plans for ongoing operations. No surprise invoices — you approve scope before we build.</p>
 						</details>
 						<details>
-							<summary data-i18n="h.faq.q5">Which tools and models do you use? <span class="icon">+</span></summary>
-							<p class="answer" data-i18n="h.faq.a5">We're model- and vendor-agnostic. We pick the right model and tools for the job — OpenAI, Anthropic, Azure, AWS, and automation platforms like Zapier or Make — and integrate with the systems you already run.</p>
+							<summary>Which tools and models do you use? <span class="icon">+</span></summary>
+							<p class="answer">We're model- and vendor-agnostic. We pick the right model and tools for the job — OpenAI, Anthropic, Azure, AWS, and automation platforms like Zapier or Make — and integrate with the systems you already run.</p>
 						</details>
 						<details>
-							<summary data-i18n="h.faq.q6">Do you only build agents, or strategy too? <span class="icon">+</span></summary>
-							<p class="answer" data-i18n="h.faq.a6">Both. Some clients want advisory and a roadmap; others want us to build and run systems. We can start anywhere on that spectrum and grow into the rest.</p>
+							<summary>Do you only build agents, or strategy too? <span class="icon">+</span></summary>
+							<p class="answer">Both. Some clients want advisory and a roadmap; others want us to build and run systems. We can start anywhere on that spectrum and grow into the rest.</p>
 						</details>
 					</div>
 				</div>
@@ -1340,20 +1236,19 @@
 				<div class="container">
 					<div class="cta-grid">
 						<div class="reveal">
-							<p class="eyebrow" style="color: rgba(244,241,234,0.6);" data-i18n="h.cta.eyebrow">Let's talk</p>
-							<h2 data-i18n="h.cta.h2">Ready to put AI to work?</h2>
-							<p data-i18n="h.cta.p">Tell us where your team is losing time. We'll map it, build it, integrate it, and keep it running.</p>
+							<p class="eyebrow" style="color: rgba(244,241,234,0.6);">Let's talk</p>
+							<h2>Ready to put AI to work?</h2>
+							<p>Tell us where your team is losing time. We'll map it, build it, integrate it, and keep it running.</p>
 							<div class="hero-cta" style="margin-bottom: 0;">
-								<a class="btn btn-primary" href="mailto:contact@epistemic.llc" data-i18n="h.cta.b1">Email us</a>
-								<a class="btn btn-ghost" href="lawsec.html" data-i18n="h.cta.b2">See Lawsec</a>
+								<a class="btn btn-primary" href="mailto:contact@epistemic.llc">Email us</a>
 							</div>
 							<p class="cta-contact"><a href="mailto:contact@epistemic.llc">contact@epistemic.llc</a></p>
 						</div>
 						<div class="scheduler reveal" id="scheduler" data-calendly="https://calendly.com/atlaspolat-epistemic/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=11100e&primary_color=c5572a">
 							<div class="consent-card" id="calendly-consent">
-								<h3 data-i18n="h.cal.title">Schedule a call</h3>
-								<p data-i18n="h.cal.text">We use Calendly to book calls. Loading it connects to Calendly (USA) and may transfer personal data. See our <a href="datenschutz.html">privacy policy</a>.</p>
-								<button class="btn btn-primary" id="load-calendly" type="button" data-i18n="h.cal.btn">Load scheduler</button>
+								<h3>Schedule a call</h3>
+								<p>We use Calendly to book calls. Loading it connects to Calendly (USA) and may transfer personal data.</p>
+								<button class="btn btn-primary" id="load-calendly" type="button">Load scheduler</button>
 							</div>
 						</div>
 					</div>
@@ -1365,13 +1260,13 @@
 				<div class="container">
 					<div class="careers-teaser reveal">
 						<div>
-							<p class="index" data-i18n="h.car.index">07 — Careers</p>
-							<h2 data-i18n="h.car.h2">Build the systems that give people their time back.</h2>
-							<p data-i18n="h.car.p">We're hiring people who care about rigorous engineering, clean execution, and measurable outcomes.</p>
+							<p class="index">07 — Careers</p>
+							<h2>Build the systems that give people their time back.</h2>
+							<p>We're hiring people who care about rigorous engineering, clean execution, and measurable outcomes.</p>
 						</div>
 						<div class="actions">
-							<a class="btn btn-primary" href="careers.html" data-i18n="h.car.b1">View open roles <span class="arrow">→</span></a>
-							<a class="btn btn-ghost" href="mailto:hire@epistemic.llc?subject=Careers" data-i18n="h.car.b2">Email the team</a>
+							<a class="btn btn-primary" href="careers.html">View open roles <span class="arrow">→</span></a>
+							<a class="btn btn-ghost" href="mailto:hire@epistemic.llc?subject=Careers">Email the team</a>
 						</div>
 					</div>
 				</div>
@@ -1390,42 +1285,37 @@
 						<p><a href="mailto:contact@epistemic.llc" style="border-bottom:1px solid var(--accent-warm);">contact@epistemic.llc</a></p>
 					</div>
 					<div class="footer-col">
-						<strong data-i18n="h.foot.nav">Navigate</strong>
-						<a href="#services" data-i18n="h.nav.services">Services</a>
-						<a href="#industries" data-i18n="h.nav.who">Who we help</a>
-						<a href="#approach" data-i18n="h.nav.approach">Approach</a>
-						<a href="#process" data-i18n="h.nav.process">Process</a>
+						<strong>Navigate</strong>
+						<a href="#services">Services</a>
+						<a href="#industries">Who we help</a>
+						<a href="#approach">Approach</a>
+						<a href="#process">Process</a>
 						<a href="#faq">FAQ</a>
 					</div>
 					<div class="footer-col">
-						<strong data-i18n="h.foot.company">Company</strong>
-						<a href="lawsec.html">Lawsec</a>
-						<a href="careers.html" data-i18n="h.nav.careers">Careers</a>
-						<a href="#contact" data-i18n="h.foot.contact">Contact</a>
-						<a href="impressum.html">Impressum</a>
-						<a href="datenschutz.html" data-i18n="foot.ds">Privacy</a>
+						<strong>Company</strong>
+						<a href="careers.html">Careers</a>
+						<a href="#contact">Contact</a>
 					</div>
 					<div class="footer-col">
-						<strong data-i18n="h.foot.focus">Focus areas</strong>
-						<span data-i18n="h.foot.f1">AI strategy</span>
-						<span data-i18n="h.foot.f2">Agents &amp; copilots</span>
-						<span data-i18n="h.foot.f3">Document workflows</span>
-						<span data-i18n="h.foot.f4">Managed AI ops</span>
+						<strong>Focus areas</strong>
+						<span>AI strategy</span>
+						<span>Agents &amp; copilots</span>
+						<span>Document workflows</span>
+						<span>Managed AI ops</span>
 					</div>
 				</div>
 				<div class="footer-bottom">
-					<span data-i18n="h.foot.rights">© <span id="year">2026</span> Epistemic LLC. All rights reserved.</span>
-					<span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html" data-i18n="foot.ds">Privacy</a></span>
+					<span>© <span id="year">2026</span> Epistemic LLC. All rights reserved.</span>
 				</div>
 			</div>
 		</footer>
 
 		<div id="cookie-banner" class="cookie-banner">
-			<p data-i18n="h.cookie.text">This website uses no tracking cookies. Your privacy matters to us.</p>
-			<button id="dismiss-cookie" class="btn btn-ghost" data-i18n="h.cookie.btn">Got it</button>
+			<p>This website uses no tracking cookies. Your privacy matters to us.</p>
+			<button id="dismiss-cookie" class="btn btn-ghost">Got it</button>
 		</div>
 
-		<script src="assets/i18n.js"></script>
 		<script>
 			// Header slides down like a drawer once the intro is scrolled past
 			const header = document.querySelector(".site-header");
@@ -1471,13 +1361,12 @@
 				reveals.forEach((el) => io.observe(el));
 			}
 
-			// Year (re-applied after language switches recreate the span)
+			// Year
 			const setYear = () => {
 				const y = document.getElementById("year");
 				if (y) y.textContent = new Date().getFullYear();
 			};
 			setYear();
-			document.addEventListener("langchange", setYear);
 
 			// Calendly: only loaded after explicit consent (no third-party request before click)
 			const scheduler = document.getElementById("scheduler");
