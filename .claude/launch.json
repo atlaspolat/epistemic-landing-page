@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "4178"],
       "port": 4178
+    },
+    {
+      "name": "law-web",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd /Users/atlaspolat/law-lead-gen && pnpm --filter @law/web dev --port 5181 --strictPort"],
+      "port": 5181
     }
   ]
 }

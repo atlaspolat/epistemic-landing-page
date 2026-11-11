@@ -3,842 +3,19 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Epistemic — AI strategy, agents & automation for professionals and companies</title>
-		<meta name="description" content="Epistemic helps professionals and companies leverage AI — strategy, custom agents, workflow automation, document intelligence, RAG systems, integrations, training, and managed AI operations.">
+		<title>Epistemic — Legal tech for labour law</title>
+		<meta name="description" content="Epistemic LLC builds legal tech for labour law. Our platform Aufhebungsvertrag-Check helps employees in Germany facing a termination agreement or dismissal and connects them with a lawyer for labour law.">
+		<link rel="canonical" href="https://epistemic.llc/">
 		<link rel="icon" href="assets/company-logo.png" type="image/png">
-			<link rel="stylesheet" href="assets/fonts.css">
-		<style>
-			:root {
-				--bg: #f4f1ea;
-				--bg-deep: #ebe6db;
-				--surface: #ffffff;
-				--ink: #11100e;
-				--ink-soft: #2c2a26;
-				--muted: #6a655c;
-				--line: #ddd6c8;
-				--line-strong: #c7bfae;
-				--accent: #11100e;
-				--accent-warm: #c5572a;
-				--accent-warm-soft: #f0d9cd;
-				--radius: 14px;
-				--radius-sm: 8px;
-				--container: 1220px;
-				--ease: cubic-bezier(0.22, 1, 0.36, 1);
-			}
-
-			* { box-sizing: border-box; }
-
-			html { scroll-behavior: smooth; }
-
-			body {
-				margin: 0;
-				font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-				background: var(--bg);
-				color: var(--ink);
-				line-height: 1.65;
-				-webkit-font-smoothing: antialiased;
-				font-feature-settings: "ss01" on, "cv01" on;
-			}
-
-			img { max-width: 100%; display: block; }
-
-			a { color: inherit; text-decoration: none; }
-
-			h1, h2, h3, h4 {
-				font-family: "Space Grotesk", "Inter", sans-serif;
-				margin: 0;
-				font-weight: 600;
-				letter-spacing: -0.02em;
-				line-height: 1.05;
-			}
-
-			.container {
-				width: min(100% - 48px, var(--container));
-				margin: 0 auto;
-			}
-
-			.eyebrow {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.78rem;
-				text-transform: uppercase;
-				letter-spacing: 0.32em;
-				color: var(--muted);
-				margin: 0 0 22px;
-				display: inline-flex;
-				align-items: center;
-				gap: 12px;
-			}
-
-			.eyebrow::before {
-				content: "";
-				width: 28px;
-				height: 1px;
-				background: var(--accent-warm);
-			}
-
-			/* ---------- Buttons ---------- */
-			.btn {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				gap: 10px;
-				padding: 15px 26px;
-				border-radius: 100px;
-				border: 1px solid var(--ink);
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.82rem;
-				font-weight: 500;
-				text-transform: uppercase;
-				letter-spacing: 0.12em;
-				cursor: pointer;
-				transition: transform 0.35s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease);
-			}
-
-			.btn-primary {
-				background: var(--ink);
-				color: var(--bg);
-			}
-
-			.btn-primary:hover,
-			.btn-primary:focus-visible {
-				transform: translateY(-2px);
-				box-shadow: 0 16px 30px rgba(17, 16, 14, 0.22);
-			}
-
-			.btn-ghost {
-				background: transparent;
-				color: var(--ink);
-			}
-
-			.btn-ghost:hover,
-			.btn-ghost:focus-visible {
-				background: var(--ink);
-				color: var(--bg);
-				transform: translateY(-2px);
-			}
-
-			.btn .arrow { transition: transform 0.3s var(--ease); }
-			.btn:hover .arrow { transform: translateX(4px); }
-
-			/* ---------- Intro / cinematic opening ---------- */
-			.intro {
-				position: relative;
-				height: 100vh;
-				height: 100svh;
-				min-height: 560px;
-				display: grid;
-				place-items: center;
-				overflow: hidden;
-				background: #0a0a0b;
-			}
-			.intro-media {
-				position: absolute;
-				inset: 0;
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				z-index: 0;
-			}
-			.intro-overlay {
-				position: absolute;
-				inset: 0;
-				z-index: 1;
-				background:
-					radial-gradient(120% 90% at 50% 32%, rgba(0,0,0,0) 42%, rgba(0,0,0,0.42) 100%),
-					linear-gradient(180deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.05) 36%, rgba(10,10,11,0.7) 100%);
-			}
-			.intro-content {
-				position: relative;
-				z-index: 2;
-				text-align: center;
-				color: #fff;
-				padding: 0 24px;
-			}
-			.intro-eyebrow {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: clamp(0.68rem, 1.4vw, 0.9rem);
-				text-transform: uppercase;
-				letter-spacing: 0.42em;
-				color: rgba(255,255,255,0.82);
-				margin: 0 0 clamp(18px, 4vh, 38px);
-				text-indent: 0.42em;
-				animation: intro-rise 1.1s var(--ease) 0.1s both;
-			}
-			.intro-name {
-				font-family: "Space Grotesk", sans-serif;
-				font-weight: 600;
-				font-size: clamp(3.2rem, 15vw, 13rem);
-				line-height: 0.9;
-				letter-spacing: -0.03em;
-				margin: 0;
-				color: #fff;
-				text-shadow: 0 6px 50px rgba(0,0,0,0.4);
-				animation: intro-rise 1.2s var(--ease) 0.24s both;
-			}
-			.scroll-cue {
-				position: absolute;
-				left: 50%;
-				bottom: 32px;
-				transform: translateX(-50%);
-				z-index: 2;
-				display: inline-flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 12px;
-				color: rgba(255,255,255,0.85);
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.7rem;
-				text-transform: uppercase;
-				letter-spacing: 0.28em;
-				animation: intro-rise 1.2s var(--ease) 0.6s both;
-			}
-			.scroll-cue .line {
-				width: 1px;
-				height: 46px;
-				background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0));
-				transform-origin: top;
-				animation: cue-pulse 2s ease-in-out infinite;
-			}
-
-			/* ---------- Header ---------- */
-			.site-header {
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				z-index: 50;
-				background: rgba(244, 241, 234, 0.92);
-				backdrop-filter: blur(14px);
-				border-bottom: 1px solid var(--line);
-				transform: translateY(-110%);
-				transition: transform 0.55s var(--ease);
-				will-change: transform;
-			}
-
-			.site-header.is-visible {
-				transform: translateY(0);
-			}
-
-			/* offset anchor jumps for the fixed header */
-			section[id], header[id] { scroll-margin-top: 84px; }
-
-			.nav {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				gap: 24px;
-				padding: 16px 0;
-			}
-
-			.logo {
-				display: inline-flex;
-				align-items: center;
-				gap: 12px;
-				font-family: "Space Grotesk", sans-serif;
-				font-weight: 600;
-				font-size: 1.18rem;
-				letter-spacing: -0.01em;
-			}
-
-			.logo img { width: 38px; height: 38px; object-fit: contain; }
-
-			.nav-links {
-				display: flex;
-				align-items: center;
-				gap: 30px;
-				font-size: 0.9rem;
-				color: var(--ink-soft);
-			}
-
-			.nav-links a {
-				position: relative;
-				font-weight: 400;
-			}
-
-			.nav-links a::after {
-				content: "";
-				position: absolute;
-				left: 0;
-				bottom: -5px;
-				width: 0;
-				height: 1px;
-				background: var(--accent-warm);
-				transition: width 0.3s var(--ease);
-			}
-
-			.nav-links a:hover::after,
-			.nav-links a:focus-visible::after { width: 100%; }
-
-			.nav-cta { display: inline-flex; }
-
-			.nav-toggle {
-				display: none;
-				background: none;
-				border: 1px solid var(--line-strong);
-				border-radius: 100px;
-				padding: 9px 16px;
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.78rem;
-				text-transform: uppercase;
-				letter-spacing: 0.1em;
-				cursor: pointer;
-				color: var(--ink);
-			}
-
-			/* ---------- Hero ---------- */
-			.hero {
-				padding: clamp(70px, 11vw, 150px) 0 clamp(50px, 7vw, 90px);
-				position: relative;
-				overflow: hidden;
-			}
-
-			.hero-blob {
-				position: absolute;
-				top: -10%;
-				right: -8%;
-				width: 48vw;
-				max-width: 720px;
-				aspect-ratio: 1;
-				background: radial-gradient(circle at 30% 30%, rgba(197, 87, 42, 0.16), transparent 62%),
-					radial-gradient(circle at 70% 70%, rgba(17, 16, 14, 0.06), transparent 60%);
-				filter: blur(10px);
-				border-radius: 50%;
-				z-index: 0;
-				animation: float-blob 18s ease-in-out infinite;
-			}
-
-			.hero .container { position: relative; z-index: 1; }
-
-			.hero h1 {
-				font-size: clamp(2.9rem, 7.4vw, 6.4rem);
-				max-width: 16ch;
-				margin: 0 0 28px;
-			}
-
-			.hero h1 .ink-accent { color: var(--accent-warm); font-style: italic; font-weight: 500; }
-
-			.hero-lead {
-				font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-				color: var(--ink-soft);
-				max-width: 60ch;
-				margin: 0 0 36px;
-			}
-
-			.hero-cta {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 14px;
-				margin-bottom: 56px;
-			}
-
-			.hero-stats {
-				display: flex;
-				flex-wrap: wrap;
-				gap: clamp(28px, 6vw, 72px);
-				border-top: 1px solid var(--line);
-				padding-top: 32px;
-			}
-
-			.stat .num {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: clamp(2rem, 3.4vw, 3rem);
-				font-weight: 600;
-				letter-spacing: -0.03em;
-				display: block;
-			}
-
-			.stat .label {
-				color: var(--muted);
-				font-size: 0.92rem;
-				max-width: 22ch;
-			}
-
-			/* ---------- Marquee ---------- */
-			.marquee {
-				border-top: 1px solid var(--line);
-				border-bottom: 1px solid var(--line);
-				padding: 26px 0;
-				overflow: hidden;
-				background: var(--bg-deep);
-			}
-
-			.marquee-label {
-				text-align: center;
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.74rem;
-				text-transform: uppercase;
-				letter-spacing: 0.28em;
-				color: var(--muted);
-				margin-bottom: 22px;
-			}
-
-			.marquee-track {
-				display: flex;
-				gap: 56px;
-				width: max-content;
-				animation: scroll-x 32s linear infinite;
-			}
-
-			.marquee:hover .marquee-track { animation-play-state: paused; }
-
-			.marquee-track span {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: clamp(1.1rem, 2vw, 1.6rem);
-				font-weight: 500;
-				color: var(--ink);
-				opacity: 0.55;
-				white-space: nowrap;
-				transition: opacity 0.3s var(--ease);
-			}
-			.marquee-track span:hover { opacity: 1; }
-
-			/* ---------- Section scaffolding ---------- */
-			section { padding: clamp(72px, 10vw, 130px) 0; }
-
-			.section-head {
-				display: grid;
-				grid-template-columns: 0.9fr 1.1fr;
-				gap: 40px;
-				align-items: end;
-				margin-bottom: 64px;
-			}
-
-			.section-head .index {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.82rem;
-				letter-spacing: 0.2em;
-				color: var(--accent-warm);
-				text-transform: uppercase;
-				margin-bottom: 18px;
-			}
-
-			.section-title {
-				font-size: clamp(2rem, 4.2vw, 3.6rem);
-				max-width: 18ch;
-			}
-
-			.section-intro {
-				color: var(--ink-soft);
-				font-size: 1.08rem;
-				max-width: 52ch;
-			}
-
-			.divider { border: none; border-top: 1px solid var(--line); margin: 0; }
-
-			/* ---------- Services ---------- */
-			.services-grid {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				border-top: 1px solid var(--line);
-				border-left: 1px solid var(--line);
-			}
-
-			.service {
-				border-right: 1px solid var(--line);
-				border-bottom: 1px solid var(--line);
-				padding: 40px 36px;
-				background: transparent;
-				transition: background 0.35s var(--ease), transform 0.35s var(--ease);
-				position: relative;
-			}
-
-			.service:hover { background: var(--surface); }
-
-			.service .s-num {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.8rem;
-				color: var(--muted);
-				letter-spacing: 0.18em;
-			}
-
-			.service h3 {
-				font-size: 1.5rem;
-				margin: 18px 0 12px;
-			}
-
-			.service p { color: var(--muted); margin: 0; font-size: 0.98rem; }
-
-			.service .tags {
-				margin-top: 18px;
-				display: flex;
-				flex-wrap: wrap;
-				gap: 8px;
-			}
-
-			.tag {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.72rem;
-				text-transform: uppercase;
-				letter-spacing: 0.08em;
-				color: var(--ink-soft);
-				border: 1px solid var(--line-strong);
-				border-radius: 100px;
-				padding: 5px 12px;
-			}
-
-			/* ---------- Audiences / industries ---------- */
-			.audience-wrap {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 24px;
-				margin-bottom: 56px;
-			}
-
-			.audience-card {
-				border: 1px solid var(--line);
-				border-radius: var(--radius);
-				padding: 32px;
-				background: var(--surface);
-			}
-
-			.audience-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-			.audience-card p { color: var(--muted); margin: 0; font-size: 0.96rem; }
-
-			.industry-row {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 12px;
-				align-items: center;
-			}
-
-			.industry-row .label {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.76rem;
-				text-transform: uppercase;
-				letter-spacing: 0.18em;
-				color: var(--muted);
-				margin-right: 8px;
-			}
-
-			.chip {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.9rem;
-				border: 1px solid var(--line-strong);
-				border-radius: 100px;
-				padding: 9px 18px;
-				background: var(--bg-deep);
-				transition: background 0.3s var(--ease), color 0.3s var(--ease);
-			}
-			.chip:hover { background: var(--ink); color: var(--bg); }
-
-			/* ---------- Approach ---------- */
-			.approach { background: var(--ink); color: var(--bg); }
-			.approach .section-title, .approach h3 { color: var(--bg); }
-			.approach .index { color: var(--accent-warm); }
-			.approach .section-intro { color: rgba(244, 241, 234, 0.72); }
-			.approach .divider { border-color: rgba(244, 241, 234, 0.15); }
-
-			.principles {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 1px;
-				background: rgba(244, 241, 234, 0.15);
-				border: 1px solid rgba(244, 241, 234, 0.15);
-				border-radius: var(--radius);
-				overflow: hidden;
-			}
-
-			.principle {
-				background: var(--ink);
-				padding: 36px;
-			}
-
-			.principle .p-num {
-				font-family: "Space Grotesk", sans-serif;
-				color: var(--accent-warm);
-				font-size: 0.82rem;
-				letter-spacing: 0.18em;
-			}
-
-			.principle h3 { font-size: 1.35rem; margin: 14px 0 10px; }
-			.principle p { color: rgba(244, 241, 234, 0.7); margin: 0; font-size: 0.96rem; }
-
-			/* ---------- Process ---------- */
-			.process-step {
-				display: grid;
-				grid-template-columns: 140px 1fr auto;
-				gap: 32px;
-				align-items: baseline;
-				padding: 38px 0;
-				border-top: 1px solid var(--line);
-				transition: padding-left 0.4s var(--ease);
-			}
-			.process-step:last-child { border-bottom: 1px solid var(--line); }
-			.process-step:hover { padding-left: 14px; }
-
-			.process-step .p-index {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: clamp(2.4rem, 5vw, 4rem);
-				font-weight: 600;
-				color: var(--line-strong);
-				letter-spacing: -0.03em;
-				line-height: 1;
-				transition: color 0.4s var(--ease);
-			}
-			.process-step:hover .p-index { color: var(--accent-warm); }
-
-			.process-step h3 { font-size: 1.7rem; margin-bottom: 8px; }
-			.process-step .p-body { color: var(--muted); max-width: 60ch; }
-			.process-step .p-tag {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.78rem;
-				text-transform: uppercase;
-				letter-spacing: 0.16em;
-				color: var(--muted);
-				white-space: nowrap;
-			}
-
-			/* ---------- Outcomes ---------- */
-			.outcomes {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 24px;
-			}
-
-			.outcome {
-				border: 1px solid var(--line);
-				border-radius: var(--radius);
-				padding: 32px;
-				background: var(--surface);
-			}
-
-			.outcome .o-num {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: clamp(2.2rem, 4vw, 3rem);
-				font-weight: 600;
-				color: var(--accent-warm);
-				letter-spacing: -0.03em;
-				display: block;
-				margin-bottom: 10px;
-			}
-			.outcome h3 { font-size: 1.15rem; margin-bottom: 8px; }
-			.outcome p { color: var(--muted); margin: 0; font-size: 0.95rem; }
-
-			/* ---------- FAQ ---------- */
-			.faq { border-top: 1px solid var(--line); }
-			.faq details {
-				border-bottom: 1px solid var(--line);
-				padding: 8px 0;
-			}
-			.faq summary {
-				list-style: none;
-				cursor: pointer;
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				gap: 24px;
-				padding: 24px 0;
-				font-family: "Space Grotesk", sans-serif;
-				font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-				font-weight: 500;
-			}
-			.faq summary::-webkit-details-marker { display: none; }
-			.faq summary .icon {
-				flex: none;
-				width: 32px; height: 32px;
-				border: 1px solid var(--line-strong);
-				border-radius: 50%;
-				display: grid; place-items: center;
-				transition: transform 0.35s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
-			}
-			.faq details[open] summary .icon { transform: rotate(45deg); background: var(--ink); color: var(--bg); }
-			.faq summary:hover { color: var(--accent-warm); }
-			.faq .answer { color: var(--muted); padding: 0 0 26px; max-width: 70ch; }
-			.faq details[open] .answer { animation: faq-open 0.45s var(--ease); }
-
-			/* ---------- CTA ---------- */
-			.cta-section { background: var(--ink); color: var(--bg); }
-			.cta-section h2 { color: var(--bg); font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 20px; }
-			.cta-section p { color: rgba(244,241,234,0.72); font-size: 1.08rem; margin: 0 0 28px; max-width: 46ch; }
-			.cta-section .btn-primary { background: var(--bg); color: var(--ink); border-color: var(--bg); }
-			.cta-section .btn-ghost { color: var(--bg); border-color: rgba(244,241,234,0.4); }
-			.cta-section .btn-ghost:hover { background: var(--bg); color: var(--ink); }
-			.cta-contact { margin-top: 26px; font-family: "Space Grotesk", sans-serif; }
-			.cta-contact a { color: var(--bg); border-bottom: 1px solid var(--accent-warm); }
-
-			/* ---------- Careers teaser ---------- */
-			.careers-teaser {
-				display: grid;
-				grid-template-columns: 1.2fr 0.8fr;
-				gap: 40px;
-				align-items: center;
-				border: 1px solid var(--line);
-				border-radius: var(--radius);
-				padding: clamp(32px, 4vw, 56px);
-				background: var(--surface);
-			}
-			.careers-teaser h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 14px; }
-			.careers-teaser p { color: var(--muted); margin: 0; }
-			.careers-teaser .actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-end; }
-
-			/* ---------- Footer ---------- */
-			footer {
-				background: var(--bg-deep);
-				border-top: 1px solid var(--line);
-				padding: 72px 0 40px;
-			}
-			.footer-grid {
-				display: grid;
-				grid-template-columns: 1.6fr 1fr 1fr 1fr;
-				gap: 36px;
-			}
-			.footer-grid p { color: var(--muted); font-size: 0.92rem; margin: 6px 0; }
-			.footer-col strong {
-				font-family: "Space Grotesk", sans-serif;
-				font-size: 0.76rem;
-				text-transform: uppercase;
-				letter-spacing: 0.18em;
-				color: var(--ink);
-				display: block;
-				margin-bottom: 16px;
-			}
-			.footer-col a, .footer-col span {
-				display: block;
-				color: var(--muted);
-				font-size: 0.94rem;
-				padding: 5px 0;
-				transition: color 0.25s var(--ease);
-			}
-			.footer-col a:hover { color: var(--accent-warm); }
-			.footer-bottom {
-				margin-top: 56px;
-				padding-top: 28px;
-				border-top: 1px solid var(--line);
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-between;
-				gap: 14px;
-				color: var(--muted);
-				font-size: 0.86rem;
-			}
-			.footer-bottom a { border-bottom: 1px solid transparent; }
-			.footer-bottom a:hover { border-color: var(--accent-warm); }
-
-			/* ---------- Scroll reveal ---------- */
-			.reveal {
-				opacity: 0;
-				transform: translateY(26px);
-				transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-			}
-			.reveal.is-in { opacity: 1; transform: none; }
-
-			/* ---------- Cookie banner ---------- */
-			.cookie-banner {
-				position: fixed;
-				bottom: 22px;
-				left: 50%;
-				transform: translateX(-50%);
-				width: calc(100% - 40px);
-				max-width: 560px;
-				z-index: 100;
-				background: var(--surface);
-				border: 1px solid var(--line-strong);
-				border-radius: var(--radius);
-				box-shadow: 0 22px 50px rgba(17,16,14,0.18);
-				padding: 18px 22px;
-				display: none;
-				align-items: center;
-				justify-content: space-between;
-				gap: 18px;
-			}
-			.cookie-banner.is-visible { display: flex; }
-			.cookie-banner p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
-			.cookie-banner .btn { padding: 10px 18px; font-size: 0.74rem; white-space: nowrap; }
-
-			/* ---------- Responsive ---------- */
-			@media (max-width: 980px) {
-				.section-head { grid-template-columns: 1fr; gap: 18px; }
-				.services-grid { grid-template-columns: 1fr; }
-				.audience-wrap { grid-template-columns: 1fr; }
-				.principles { grid-template-columns: 1fr; }
-				.outcomes { grid-template-columns: 1fr; }
-				.careers-teaser { grid-template-columns: 1fr; }
-				.careers-teaser .actions { justify-content: flex-start; }
-				.footer-grid { grid-template-columns: 1fr 1fr; }
-				.process-step { grid-template-columns: 70px 1fr; }
-				.process-step .p-tag { grid-column: 2; }
-			}
-
-			@media (max-width: 720px) {
-				.container { width: min(100% - 32px, var(--container)); }
-				.nav-links, .nav-cta { display: none; }
-				.nav-links.is-open {
-					display: flex;
-					position: absolute;
-					top: 100%;
-					left: 0;
-					right: 0;
-					flex-direction: column;
-					align-items: flex-start;
-					gap: 4px;
-					background: var(--bg);
-					border-bottom: 1px solid var(--line);
-					padding: 16px 24px 24px;
-					animation: menu-drop 0.32s var(--ease);
-					transform-origin: top;
-				}
-				.nav-links.is-open a {
-					padding: 10px 0;
-					width: 100%;
-					animation: menu-item 0.4s var(--ease) backwards;
-				}
-				.nav-links.is-open a:nth-child(1) { animation-delay: 0.04s; }
-				.nav-links.is-open a:nth-child(2) { animation-delay: 0.08s; }
-				.nav-links.is-open a:nth-child(3) { animation-delay: 0.12s; }
-				.nav-links.is-open a:nth-child(4) { animation-delay: 0.16s; }
-				.nav-links.is-open a:nth-child(5) { animation-delay: 0.20s; }
-				.nav-links.is-open a:nth-child(6) { animation-delay: 0.24s; }
-				.nav-toggle { transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease); }
-				.nav-toggle[aria-expanded="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-				.nav-toggle { display: inline-flex; }
-				.footer-grid { grid-template-columns: 1fr; }
-				.hero-stats { gap: 28px; }
-			}
-
-			@keyframes scroll-x {
-				from { transform: translateX(0); }
-				to { transform: translateX(-50%); }
-			}
-			@keyframes float-blob {
-				0%, 100% { transform: translate(0, 0) scale(1); }
-				50% { transform: translate(-24px, 24px) scale(1.06); }
-			}
-			@keyframes cue-pulse {
-				0%, 100% { transform: scaleY(0.4); opacity: 0.4; }
-				50% { transform: scaleY(1); opacity: 1; }
-			}
-			@keyframes intro-rise {
-				from { opacity: 0; transform: translateY(22px); }
-				to { opacity: 1; transform: none; }
-			}
-			@keyframes faq-open {
-				from { opacity: 0; transform: translateY(-8px); }
-				to { opacity: 1; transform: none; }
-			}
-			@keyframes menu-drop {
-				from { opacity: 0; transform: scaleY(0.92); }
-				to { opacity: 1; transform: scaleY(1); }
-			}
-			@keyframes menu-item {
-				from { opacity: 0; transform: translateX(-10px); }
-				to { opacity: 1; transform: none; }
-			}
-
-			@media (prefers-reduced-motion: reduce) {
-				html { scroll-behavior: auto; }
-				.marquee-track, .hero-blob, .scroll-cue .line { animation: none; }
-				.intro-eyebrow, .intro-name, .scroll-cue { animation: none; opacity: 1; transform: none; }
-				.reveal { opacity: 1; transform: none; transition: none; }
-				* { transition: none !important; }
-			}
-		</style>
+		<link rel="stylesheet" href="assets/fonts.css">
+		<link rel="stylesheet" href="assets/site.css">
 	</head>
 	<body>
 		<section class="intro" id="top">
 			<img class="intro-media" src="assets/sun.gif" alt="" aria-hidden="true">
 			<div class="intro-overlay" aria-hidden="true"></div>
 			<div class="intro-content">
-				<p class="intro-eyebrow">AI strategy · agents · automation</p>
+				<p class="intro-eyebrow">Legal tech for labour law</p>
 				<h1 class="intro-name">Epistemic</h1>
 			</div>
 			<a class="scroll-cue" href="#start" aria-label="Scroll to content">
@@ -847,51 +24,50 @@
 			</a>
 		</section>
 
-		<header class="site-header" id="start">
+		<header class="site-header">
 			<nav class="nav container">
 				<a class="logo" href="#top" aria-label="Epistemic">
 					<span>Epistemic</span>
 				</a>
-				<div class="nav-links" id="nav-links">
-					<a href="#services">Services</a>
-					<a href="#industries">Who we help</a>
+				<div class="nav-links">
+					<a href="#projects">Projects</a>
+					<a href="#services">What we build</a>
 					<a href="#approach">Approach</a>
-					<a href="#process">Process</a>
+					<a href="#process">How it works</a>
 					<a href="careers.html">Careers</a>
 				</div>
-				<a class="btn btn-primary nav-cta" href="#contact">Book a call</a>
-				<button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+				<a class="btn btn-primary nav-cta" href="#contact">Get in touch</a>
 			</nav>
 		</header>
 
-		<main>
+		<main id="start">
 			<!-- HERO -->
 			<section class="hero">
 				<div class="hero-blob" aria-hidden="true"></div>
 				<div class="container">
-					<p class="eyebrow reveal">AI strategy · agents · automation</p>
-					<h1 class="reveal">Put AI to work <span class="ink-accent">across</span> your business.</h1>
+					<p class="eyebrow reveal">Legal tech · labour law</p>
+					<h1 class="reveal">Legal tech for <span class="ink-accent">labour</span> law.</h1>
 					<p class="hero-lead reveal">
-						Epistemic helps professionals and companies turn AI from a buzzword into working systems —
-						strategy, custom agents, automation, and the integrations that make them stick. We map your
-						real workflows, build with guardrails, and stay on to keep it reliable.
+						Epistemic LLC builds software for employment law. Our platform, Aufhebungsvertrag-Check, gives
+						employees in Germany who are handed a termination agreement or a dismissal one place to understand
+						where they stand — and puts them on the phone with a lawyer for labour law within hours.
 					</p>
 					<div class="hero-cta reveal">
-						<a class="btn btn-primary" href="#contact">Book a call <span class="arrow">→</span></a>
-						<a class="btn btn-ghost" href="#services">Explore services</a>
+						<a class="btn btn-primary" href="#projects">See our project <span class="arrow">→</span></a>
+						<a class="btn btn-ghost" href="#contact">Get in touch</a>
 					</div>
 					<div class="hero-stats reveal">
 						<div class="stat">
-							<span class="num">8+</span>
-							<span class="label">end-to-end AI capabilities, from strategy to managed ops</span>
+							<span class="num">3 h</span>
+							<span class="label">from request to a call back from a lawyer for labour law</span>
 						</div>
 						<div class="stat">
-							<span class="num">24/7</span>
-							<span class="label">agents that never miss a request or after-hours inquiry</span>
+							<span class="num">€0</span>
+							<span class="label">for the first evaluation of a termination agreement</span>
 						</div>
 						<div class="stat">
-							<span class="num">Wks</span>
-							<span class="label">not quarters — focused delivery to a working first system</span>
+							<span class="num">DE</span>
+							<span class="label">servers in Germany, no tracking cookies</span>
 						</div>
 					</div>
 				</div>
@@ -899,121 +75,149 @@
 
 			<!-- MARQUEE -->
 			<div class="marquee" aria-hidden="true">
-				<p class="marquee-label">Works across your stack</p>
-				<div class="marquee-track">
-					<span>OpenAI</span><span>Anthropic</span><span>Azure AI</span><span>AWS</span>
-					<span>Zapier</span><span>Make</span><span>HubSpot</span><span>Salesforce</span>
-					<span>Notion</span><span>Slack</span><span>Google Workspace</span><span>WhatsApp</span>
-					<span>OpenAI</span><span>Anthropic</span><span>Azure AI</span><span>AWS</span>
-					<span>Zapier</span><span>Make</span><span>HubSpot</span><span>Salesforce</span>
-					<span>Notion</span><span>Slack</span><span>Google Workspace</span><span>WhatsApp</span>
+				<p class="marquee-label">What our platform covers</p>
+				<div class="marquee-track" lang="de">
+					<span>Aufhebungsvertrag</span><span>Kündigung</span><span>Abfindung</span><span>Sperrzeit</span>
+					<span>Kündigungsschutzklage</span><span>Freistellung</span><span>Arbeitszeugnis</span><span>Sozialplan</span>
+					<span>Aufhebungsvertrag</span><span>Kündigung</span><span>Abfindung</span><span>Sperrzeit</span>
+					<span>Kündigungsschutzklage</span><span>Freistellung</span><span>Arbeitszeugnis</span><span>Sozialplan</span>
 				</div>
 			</div>
 
-			<!-- SERVICES -->
-			<section id="services">
+			<!-- PROJECTS -->
+			<section id="projects">
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index">01 — Services</p>
-							<h2 class="section-title">A full toolkit for working with AI.</h2>
+							<p class="index">01 — Projects</p>
+							<h2 class="section-title">What we've built.</h2>
 						</div>
 						<p class="section-intro">
-							Whether you need a strategy, a single sharp agent, or an automation backbone across teams,
-							we cover the entire path — and the unglamorous integration and operations work that makes
-							AI actually deliver.
+							We build and run our own products in labour law — starting with the moment someone is handed
+							a termination agreement and has days, not weeks, to decide.
 						</p>
 					</div>
-					<div class="services-grid reveal">
-						<article class="service">
-							<span class="s-num">01</span>
-							<h3>AI Strategy &amp; Advisory</h3>
-							<p>Find the highest-leverage opportunities, size the impact, and build a roadmap your team can actually execute.</p>
-							<div class="tags"><span class="tag">Roadmap</span><span class="tag">Use-case scan</span><span class="tag">ROI model</span></div>
+					<div class="projects reveal">
+						<article class="project">
+							<span class="status">Live · Germany</span>
+							<h3>Aufhebungsvertrag-Check</h3>
+							<p class="domain">aufhebungsvertrag-check.de</p>
+							<p>
+								One platform for employees facing a termination. A lawyer for labour law calls back within
+								three hours and gives a free, no-obligation first evaluation of the <span lang="de">Aufhebungsvertrag</span>
+								on three key points: the options if you don't sign, the risks of signing, and the next step
+								towards your goal.
+							</p>
+							<div class="tags">
+								<span class="tag">Free first evaluation</span>
+								<span class="tag" lang="de">Abfindungsrechner</span>
+								<span class="tag" lang="de">Muster</span>
+								<span class="tag">Court rulings</span>
+								<span class="tag">City pages</span>
+							</div>
+							<div class="actions">
+								<a class="btn btn-primary" href="/aufhebungsvertrag">About the project <span class="arrow">→</span></a>
+								<a class="btn btn-ghost" href="https://aufhebungsvertrag-check.de/" target="_blank" rel="noopener">Visit the site ↗</a>
+							</div>
 						</article>
-						<article class="service">
-							<span class="s-num">02</span>
-							<h3>Custom AI Agents &amp; Copilots</h3>
-							<p>Purpose-built assistants that answer, draft, qualify, and act — grounded in your data with human-in-the-loop guardrails.</p>
-							<div class="tags"><span class="tag">Assistants</span><span class="tag">Copilots</span><span class="tag">Guardrails</span></div>
-						</article>
-						<article class="service">
-							<span class="s-num">03</span>
-							<h3>Workflow &amp; Process Automation</h3>
-							<p>Remove the repetitive admin between your tools — routing, follow-ups, data entry, and approvals handled automatically.</p>
-							<div class="tags"><span class="tag">Routing</span><span class="tag">Approvals</span><span class="tag">No re-entry</span></div>
-						</article>
-						<article class="service">
-							<span class="s-num">04</span>
-							<h3>Document Intelligence</h3>
-							<p>Ingest, extract, validate, classify, and summarize messy documents into clean, structured, trustworthy output.</p>
-							<div class="tags"><span class="tag">Extraction</span><span class="tag">Validation</span><span class="tag">Summaries</span></div>
-						</article>
-						<article class="service">
-							<span class="s-num">05</span>
-							<h3>Data, RAG &amp; Knowledge Systems</h3>
-							<p>Turn scattered knowledge into a retrieval system your agents can cite — accurate, current, and access-controlled.</p>
-							<div class="tags"><span class="tag">RAG</span><span class="tag">Search</span><span class="tag">Citations</span></div>
-						</article>
-						<article class="service">
-							<span class="s-num">06</span>
-							<h3>Systems Integration</h3>
-							<p>Connect AI to the tools you already run — CRM, ERP, email, CMS, and databases — with clean, structured handoffs.</p>
-							<div class="tags"><span class="tag">CRM/ERP</span><span class="tag">APIs</span><span class="tag">Webhooks</span></div>
-						</article>
-						<article class="service">
-							<span class="s-num">07</span>
-							<h3>AI Training &amp; Team Enablement</h3>
-							<p>Practical, role-specific training and playbooks so your people use AI confidently, safely, and every day.</p>
-							<div class="tags"><span class="tag">Workshops</span><span class="tag">Playbooks</span><span class="tag">Policy</span></div>
-						</article>
-						<article class="service">
-							<span class="s-num">08</span>
-							<h3>Managed AI Operations</h3>
-							<p>We don't disappear at launch — monitoring, evaluation, QA, and iteration keep systems reliable under real load.</p>
-							<div class="tags"><span class="tag">Monitoring</span><span class="tag">Evals</span><span class="tag">Iteration</span></div>
+						<article class="project">
+							<span class="status">Live · München</span>
+							<h3 lang="de">Rechtsanwalt für Arbeitsrecht München</h3>
+							<p class="domain">aufhebungsvertrag-check.de/muenchen</p>
+							<p>
+								The platform's first city page. It names what matters locally — the Arbeitsgericht München,
+								the Agentur für Arbeit München and the employers cutting jobs through voluntary programmes —
+								with the same three-hour call back.
+							</p>
+							<div class="tags">
+								<span class="tag">Local labour court</span>
+								<span class="tag">Severance programmes</span>
+								<span class="tag">Sperrzeit</span>
+							</div>
+							<div class="actions">
+								<a class="btn btn-ghost" href="https://aufhebungsvertrag-check.de/muenchen/rechtsanwalt-fuer-arbeitsrecht" target="_blank" rel="noopener">Open the page ↗</a>
+							</div>
 						</article>
 					</div>
 				</div>
 			</section>
 
-			<!-- INDUSTRIES / AUDIENCES -->
-			<section id="industries" style="background: var(--bg-deep);">
+			<!-- WHAT WE BUILD -->
+			<section id="services" style="background: var(--bg-deep);">
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index">02 — Who we help</p>
-							<h2 class="section-title">Built for the people doing the work.</h2>
+							<p class="index">02 — What we build</p>
+							<h2 class="section-title">The pieces behind a labour-law platform.</h2>
 						</div>
 						<p class="section-intro">
-							From a solo professional drowning in admin to an enterprise team standardizing operations —
-							we meet you where you are and scale with you.
+							We build every part ourselves, from the first search to the lawyer's call back — and we can
+							build the same for law firms and organisations working in labour law.
+						</p>
+					</div>
+					<div class="services-grid reveal">
+						<article class="service">
+							<span class="s-num">01</span>
+							<h3>Client intake</h3>
+							<p>A two-field request form — name and phone number — on every page. The request goes straight to the lawyer, who calls back within hours.</p>
+							<div class="tags"><span class="tag">Request form</span><span class="tag">Call back</span><span class="tag">Spam protection</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">02</span>
+							<h3>Self-service tools</h3>
+							<p>A severance calculator and a termination-agreement template, so people can check figures and clauses before the call.</p>
+							<div class="tags"><span class="tag">Calculator</span><span class="tag">Template</span><span class="tag">Step by step</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">03</span>
+							<h3>Lawyer-approved content</h3>
+							<p>Articles and court rulings, drafted in-house and approved by the lawyer before they go live — with court, date and case number every time.</p>
+							<div class="tags"><span class="tag">Rulings</span><span class="tag">Articles</span><span class="tag">Review workflow</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">04</span>
+							<h3>Local search pages</h3>
+							<p>A page per city that names the local labour court, the employment agency and the employers cutting jobs — so people find a lawyer where they live.</p>
+							<div class="tags"><span class="tag">City pages</span><span class="tag">Local SEO</span><span class="tag">Structured data</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">05</span>
+							<h3>Privacy-first infrastructure</h3>
+							<p>Servers in Germany, first-party analytics and no tracking cookies. Built for people who are sharing something sensitive.</p>
+							<div class="tags"><span class="tag">DE servers</span><span class="tag">No tracking cookies</span><span class="tag">First-party</span></div>
+						</article>
+						<article class="service">
+							<span class="s-num">06</span>
+							<h3>Lawyer &amp; admin panels</h3>
+							<p>Sign-in by e-mail link, review and approval of every article, and a clear view of every request that comes in.</p>
+							<div class="tags"><span class="tag">Review</span><span class="tag">Approval</span><span class="tag">Requests</span></div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- WHO WE HELP -->
+			<section id="who">
+				<div class="container">
+					<div class="section-head reveal">
+						<div>
+							<p class="index">03 — Who we help</p>
+							<h2 class="section-title">Built for both ends of the call.</h2>
+						</div>
+						<p class="section-intro">
+							An employee with a deadline and a lawyer with limited time. Our software makes the conversation
+							between them shorter and better.
 						</p>
 					</div>
 					<div class="audience-wrap reveal">
 						<div class="audience-card">
-							<h3>Professionals &amp; solo experts</h3>
-							<p>Reclaim hours from inbox triage, intake, scheduling, and paperwork so you can focus on billable, high-judgment work.</p>
+							<h3>Employees facing a termination</h3>
+							<p>Handed an <span lang="de">Aufhebungsvertrag</span> or a dismissal? Understand your options, the risks of signing and the <span lang="de">Sperrzeit</span> before you decide — then talk to a lawyer for free.</p>
 						</div>
 						<div class="audience-card">
-							<h3>Small &amp; mid-sized businesses</h3>
-							<p>Add capacity without adding headcount — automate the operational glue that quietly slows every team down.</p>
+							<h3>Lawyers for labour law</h3>
+							<p>Requests from people who already know the basics, a local page in your city and content you approve before it goes live.</p>
 						</div>
-						<div class="audience-card">
-							<h3>Enterprise teams</h3>
-							<p>Standardize high-volume processes with auditable, guardrailed AI that meets your security and compliance bar.</p>
-						</div>
-					</div>
-					<div class="industry-row reveal">
-						<span class="label">Industries</span>
-						<span class="chip">Legal</span>
-						<span class="chip">Finance</span>
-						<span class="chip">Real Estate</span>
-						<span class="chip">Healthcare</span>
-						<span class="chip">Professional Services</span>
-						<span class="chip">Operations</span>
-						<span class="chip">Insurance</span>
-						<span class="chip">Recruiting</span>
 					</div>
 				</div>
 			</section>
@@ -1023,146 +227,98 @@
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index">03 — Approach</p>
-							<h2 class="section-title">Rigorous, measurable, and built to last.</h2>
+							<p class="index">04 — Approach</p>
+							<h2 class="section-title">Careful with the law, careful with people.</h2>
 						</div>
 						<p class="section-intro">
-							We're named Epistemic for a reason: we care about what's actually true. No demos that fall
-							apart in production — just systems grounded in evidence and your real constraints.
+							We're named Epistemic for a reason: we care about what's actually true. In labour law that
+							means sources, review and restraint.
 						</p>
 					</div>
 					<div class="principles reveal">
 						<div class="principle">
 							<span class="p-num">01</span>
-							<h3>Outcome-first</h3>
-							<p>We start from the metric you want to move — time, cost, throughput — not the technology we want to use.</p>
+							<h3>Lawyer-approved</h3>
+							<p>Nothing legal goes live without the lawyer's approval. Every article and ruling is reviewed and published in the lawyer's name.</p>
 						</div>
 						<div class="principle">
 							<span class="p-num">02</span>
-							<h3>Guardrailed by design</h3>
-							<p>Human-in-the-loop, validation, and clear escalation paths so automation stays safe and trustworthy.</p>
+							<h3>Sources you can check</h3>
+							<p>Every ruling with court, date and case number; every rule with its section. Readers can verify what we write.</p>
 						</div>
 						<div class="principle">
 							<span class="p-num">03</span>
-							<h3>Measured, not assumed</h3>
-							<p>Evaluations and monitoring prove the system works — and keep proving it as inputs change.</p>
+							<h3>Information, not advice</h3>
+							<p>The platform informs and connects. Legal advice comes from the lawyer — never from Epistemic and never from the software.</p>
 						</div>
 						<div class="principle">
 							<span class="p-num">04</span>
-							<h3>Founder-led delivery</h3>
-							<p>Senior, hands-on attention from first call to production. You always know who's accountable.</p>
+							<h3>Private by default</h3>
+							<p>German servers, first-party analytics, no tracking cookies. People come to us at a hard moment; we treat their data that way.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<!-- PROCESS -->
+			<!-- HOW IT WORKS -->
 			<section id="process">
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
-							<p class="index">04 — Process</p>
-							<h2 class="section-title">Five steps from idea to reliable system.</h2>
+							<p class="index">05 — How it works</p>
+							<h2 class="section-title">From a termination agreement to a lawyer's call.</h2>
 						</div>
 						<p class="section-intro">
-							A focused engagement with tight feedback loops. You see working software early and often —
-							no months of silence before the reveal.
+							Built for people with a deadline: the whole path takes hours, not weeks.
 						</p>
 					</div>
 					<div class="reveal">
 						<div class="process-step">
 							<span class="p-index">01</span>
 							<div>
-								<h3>Discover</h3>
-								<p class="p-body">We pinpoint where time and money are leaking and agree on the outcomes that matter most.</p>
+								<h3>Find</h3>
+								<p class="p-body">A search for “Aufhebungsvertrag” or a lawyer for labour law in their city leads to a page that answers the question they asked.</p>
 							</div>
-							<span class="p-tag">Week 1</span>
+							<span class="p-tag">Search</span>
 						</div>
 						<div class="process-step">
 							<span class="p-index">02</span>
 							<div>
-								<h3>Map</h3>
-								<p class="p-body">We document the real workflow — dependencies, edge cases, and approval logic — before building anything.</p>
+								<h3>Understand</h3>
+								<p class="p-body">The calculator, the template and current court rulings explain severance, the Sperrzeit and the clauses that cause disputes later.</p>
 							</div>
-							<span class="p-tag">Week 1–2</span>
+							<span class="p-tag">Self-service</span>
 						</div>
 						<div class="process-step">
 							<span class="p-index">03</span>
 							<div>
-								<h3>Build</h3>
-								<p class="p-body">We design the agent and automation stack with validation rules and the exact outputs you need.</p>
+								<h3>Request</h3>
+								<p class="p-body">Name and phone number — nothing else. No account, no upload.</p>
 							</div>
-							<span class="p-tag">Week 2–4</span>
+							<span class="p-tag">1 minute</span>
 						</div>
 						<div class="process-step">
 							<span class="p-index">04</span>
 							<div>
-								<h3>Integrate</h3>
-								<p class="p-body">We wire it into your existing tools so outputs flow where work already happens — no copy-paste.</p>
+								<h3>Call</h3>
+								<p class="p-body">A lawyer for labour law calls back and evaluates the situation on three key points, free of charge.</p>
 							</div>
-							<span class="p-tag">Week 4–5</span>
+							<span class="p-tag">Within 3 h</span>
 						</div>
 						<div class="process-step">
 							<span class="p-index">05</span>
 							<div>
-								<h3>Operate &amp; iterate</h3>
-								<p class="p-body">We ship, monitor, and refine until the system is dependable under real workload — then keep it sharp.</p>
+								<h3>Decide</h3>
+								<p class="p-body">The employee knows the sensible next step and decides alone whether to instruct the lawyer.</p>
 							</div>
-							<span class="p-tag">Ongoing</span>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- OUTCOMES -->
-			<section id="outcomes" style="background: var(--bg-deep);">
-				<div class="container">
-					<div class="section-head reveal">
-						<div>
-							<p class="index">05 — Outcomes</p>
-							<h2 class="section-title">What changes when AI does the busywork.</h2>
-						</div>
-						<p class="section-intro">
-							The goal isn't novelty — it's measurable relief. Here's where teams feel the difference first.
-						</p>
-					</div>
-					<div class="outcomes reveal">
-						<div class="outcome">
-							<span class="o-num">↓</span>
-							<h3>Hours reclaimed weekly</h3>
-							<p>Repetitive triage, data entry, and follow-ups handled automatically frees your team for judgment work.</p>
-						</div>
-						<div class="outcome">
-							<span class="o-num">$</span>
-							<h3>Lower cost per workflow</h3>
-							<p>Reduce manual effort and overhead without adding headcount as volume grows.</p>
-						</div>
-						<div class="outcome">
-							<span class="o-num">↑</span>
-							<h3>Higher throughput</h3>
-							<p>Work moves through approvals and handoffs without stalling on someone's inbox.</p>
-						</div>
-						<div class="outcome">
-							<span class="o-num">✓</span>
-							<h3>Stronger compliance</h3>
-							<p>Standardized inputs, outputs, and traceable logs make audits and reviews painless.</p>
-						</div>
-						<div class="outcome">
-							<span class="o-num">⚡</span>
-							<h3>Faster decisions</h3>
-							<p>Clean summaries and structured data put the right context in front of decision-makers sooner.</p>
-						</div>
-						<div class="outcome">
-							<span class="o-num">★</span>
-							<h3>Better client experience</h3>
-							<p>Instant, consistent, professional responses — even after hours and across channels.</p>
+							<span class="p-tag">No obligation</span>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			<!-- FAQ -->
-			<section id="faq">
+			<section id="faq" style="background: var(--bg-deep);">
 				<div class="container">
 					<div class="section-head reveal">
 						<div>
@@ -1170,33 +326,33 @@
 							<h2 class="section-title">Questions, answered.</h2>
 						</div>
 						<p class="section-intro">
-							Still curious about something? Book a call and we'll talk through your specific situation.
+							Something else on your mind? Email us and we'll get back to you.
 						</p>
 					</div>
 					<div class="faq reveal">
 						<details>
-							<summary>How do engagements work? <span class="icon">+</span></summary>
-							<p class="answer">Most start with a short discovery call and a fixed-scope first build, so you see a working system in weeks. From there, many clients move onto a managed plan where we monitor and improve the systems over time.</p>
+							<summary>Is Epistemic a law firm? <span class="icon">+</span></summary>
+							<p class="answer">No. Epistemic LLC builds and operates legal tech. Legal advice on Aufhebungsvertrag-Check is given by an independent, admitted lawyer for labour law — not by Epistemic and not by the software.</p>
 						</details>
 						<details>
-							<summary>How do you handle data security and privacy? <span class="icon">+</span></summary>
-							<p class="answer">We design for least-privilege access, keep sensitive data inside your controlled environments where possible, and document data flows. We're happy to work within your security, retention, and compliance requirements.</p>
+							<summary>What does Aufhebungsvertrag-Check cost employees? <span class="icon">+</span></summary>
+							<p class="answer">The first evaluation by phone is free and without obligation. Whether to instruct the lawyer afterwards is up to the employee alone.</p>
 						</details>
 						<details>
-							<summary>How long until we see something working? <span class="icon">+</span></summary>
-							<p class="answer">A focused first system typically lands in a few weeks rather than quarters. We deliberately scope the first build tight so you get a real, usable result fast — then expand from proven ground.</p>
+							<summary>Where is the platform available? <span class="icon">+</span></summary>
+							<p class="answer">Across Germany, with local pages for individual cities — starting with München.</p>
 						</details>
 						<details>
-							<summary>What does it cost? <span class="icon">+</span></summary>
-							<p class="answer">It depends on scope, but we use clear fixed pricing for defined builds and transparent plans for ongoing operations. No surprise invoices — you approve scope before we build.</p>
+							<summary>How do you handle personal data? <span class="icon">+</span></summary>
+							<p class="answer">Servers in Germany, first-party analytics and no tracking cookies. The request form asks only for a name and a phone number.</p>
 						</details>
 						<details>
-							<summary>Which tools and models do you use? <span class="icon">+</span></summary>
-							<p class="answer">We're model- and vendor-agnostic. We pick the right model and tools for the job — OpenAI, Anthropic, Azure, AWS, and automation platforms like Zapier or Make — and integrate with the systems you already run.</p>
+							<summary>I'm a lawyer for labour law. Can we work together? <span class="icon">+</span></summary>
+							<p class="answer">We're open to it. Email <a class="text-link" href="mailto:contact@epistemic.llc">contact@epistemic.llc</a> and tell us where you practise.</p>
 						</details>
 						<details>
-							<summary>Do you only build agents, or strategy too? <span class="icon">+</span></summary>
-							<p class="answer">Both. Some clients want advisory and a roadmap; others want us to build and run systems. We can start anywhere on that spectrum and grow into the rest.</p>
+							<summary>Do you build legal tech for others? <span class="icon">+</span></summary>
+							<p class="answer">Yes. If you work in labour law and need an intake flow, a calculator, local pages or a content review workflow, tell us what you need.</p>
 						</details>
 					</div>
 				</div>
@@ -1207,8 +363,8 @@
 				<div class="container">
 					<div class="reveal">
 						<p class="eyebrow" style="color: rgba(244,241,234,0.6);">Let's talk</p>
-						<h2>Ready to put AI to work?</h2>
-						<p>Tell us where your team is losing time. We'll map it, build it, integrate it, and keep it running.</p>
+						<h2>Working in labour law?</h2>
+						<p>Whether you're a lawyer, a firm or a partner — tell us what you need. We'll show you what we've built and what we could build for you.</p>
 						<div class="hero-cta" style="margin-bottom: 0;">
 							<a class="btn btn-primary" href="mailto:contact@epistemic.llc">Email us</a>
 						</div>
@@ -1220,11 +376,11 @@
 			<!-- CAREERS TEASER -->
 			<section id="careers">
 				<div class="container">
-					<div class="careers-teaser reveal">
+					<div class="panel reveal">
 						<div>
 							<p class="index">07 — Careers</p>
-							<h2>Build the systems that give people their time back.</h2>
-							<p>We're hiring people who care about rigorous engineering, clean execution, and measurable outcomes.</p>
+							<h2>Build the tools people reach for when their job is on the line.</h2>
+							<p>We're hiring people who care about rigorous engineering, clean execution and getting the law right.</p>
 						</div>
 						<div class="actions">
 							<a class="btn btn-primary" href="careers.html">View open roles <span class="arrow">→</span></a>
@@ -1248,23 +404,22 @@
 					</div>
 					<div class="footer-col">
 						<strong>Navigate</strong>
-						<a href="#services">Services</a>
-						<a href="#industries">Who we help</a>
+						<a href="#projects">Projects</a>
+						<a href="#services">What we build</a>
 						<a href="#approach">Approach</a>
-						<a href="#process">Process</a>
+						<a href="#process">How it works</a>
 						<a href="#faq">FAQ</a>
+					</div>
+					<div class="footer-col">
+						<strong>Projects</strong>
+						<a href="/aufhebungsvertrag">Aufhebungsvertrag-Check</a>
+						<a href="https://aufhebungsvertrag-check.de/" target="_blank" rel="noopener">aufhebungsvertrag-check.de ↗</a>
+						<a href="https://aufhebungsvertrag-check.de/muenchen/rechtsanwalt-fuer-arbeitsrecht" target="_blank" rel="noopener" lang="de">Arbeitsrecht München ↗</a>
 					</div>
 					<div class="footer-col">
 						<strong>Company</strong>
 						<a href="careers.html">Careers</a>
 						<a href="#contact">Contact</a>
-					</div>
-					<div class="footer-col">
-						<strong>Focus areas</strong>
-						<span>AI strategy</span>
-						<span>Agents &amp; copilots</span>
-						<span>Document workflows</span>
-						<span>Managed AI ops</span>
 					</div>
 				</div>
 				<div class="footer-bottom">
@@ -1273,73 +428,6 @@
 			</div>
 		</footer>
 
-		<div id="cookie-banner" class="cookie-banner">
-			<p>This website uses no tracking cookies. Your privacy matters to us.</p>
-			<button id="dismiss-cookie" class="btn btn-ghost">Got it</button>
-		</div>
-
-		<script>
-			// Header slides down like a drawer once the intro is scrolled past
-			const header = document.querySelector(".site-header");
-			const onScroll = () => {
-				const trigger = window.innerHeight * 0.6;
-				header.classList.toggle("is-visible", window.scrollY > trigger);
-			};
-			onScroll();
-			window.addEventListener("scroll", onScroll, { passive: true });
-			window.addEventListener("resize", onScroll, { passive: true });
-
-			// Mobile nav toggle
-			const navToggle = document.getElementById("nav-toggle");
-			const navLinks = document.getElementById("nav-links");
-			navToggle.addEventListener("click", () => {
-				const open = navLinks.classList.toggle("is-open");
-				navToggle.setAttribute("aria-expanded", String(open));
-			});
-			navLinks.querySelectorAll("a").forEach((a) =>
-				a.addEventListener("click", () => {
-					navLinks.classList.remove("is-open");
-					navToggle.setAttribute("aria-expanded", "false");
-				})
-			);
-
-			// Scroll reveal
-			const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-			const reveals = document.querySelectorAll(".reveal");
-			if (prefersReduced || !("IntersectionObserver" in window)) {
-				reveals.forEach((el) => el.classList.add("is-in"));
-			} else {
-				const io = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								entry.target.classList.add("is-in");
-								io.unobserve(entry.target);
-							}
-						});
-					},
-					{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-				);
-				reveals.forEach((el) => io.observe(el));
-			}
-
-			// Year
-			const setYear = () => {
-				const y = document.getElementById("year");
-				if (y) y.textContent = new Date().getFullYear();
-			};
-			setYear();
-
-			// Cookie banner
-			const cookieBanner = document.getElementById("cookie-banner");
-			const dismissBtn = document.getElementById("dismiss-cookie");
-			if (!localStorage.getItem("cookie_banner_dismissed")) {
-				cookieBanner.classList.add("is-visible");
-			}
-			dismissBtn.addEventListener("click", () => {
-				cookieBanner.classList.remove("is-visible");
-				localStorage.setItem("cookie_banner_dismissed", "true");
-			});
-		</script>
+		<script src="assets/site.js"></script>
 	</body>
 </html>
